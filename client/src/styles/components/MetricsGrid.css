@@ -1,0 +1,8 @@
+/* src/styles/components/MetricsGrid.css */
+
+.metrics-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: var(--spacing-lg);
+  margin-bottom: var(--spacing-2xl);
+}

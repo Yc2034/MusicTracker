@@ -1,0 +1,71 @@
+/* src/styles/components/ArtistHeader.css */
+
+.artist-header {
+  position: relative;
+  background: var(--background-header);
+  border-radius: var(--radius-2xl);
+  padding: var(--spacing-2xl);
+  margin-bottom: var(--spacing-xl);
+  backdrop-filter: blur(10px);
+}
+
+.artist-selector {
+  position: absolute;
+  top: var(--spacing-lg);
+  right: var(--spacing-lg);
+}
+
+.artist-selector select {
+  background: rgba(255, 255, 255, 0.2);
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: var(--radius-md);
+  padding: var(--spacing-md) 16px;
+  font-size: 14px;
+}
+
+.artist-selector select option {
+  background: #1a1a1a;
+  color: white;
+}
+
+.artist-name {
+  font-size: var(--font-size-5xl);
+  font-weight: bold;
+  margin-bottom: var(--spacing-md);
+  text-shadow: var(--shadow-text);
+}
+
+.artist-stats {
+  display: flex;
+  gap: var(--spacing-xl);
+  margin-bottom: var(--spacing-lg);
+  font-size: var(--font-size-md);
+}
+
+.chart-positions {
+  display: flex;
+  gap: var(--spacing-lg);
+  align-items: center;
+}
+
+.chart-position {
+  background: rgba(139, 92, 246, 0.8);
+  padding: var(--spacing-md) 16px;
+  border-radius: var(--radius-2xl);
+  font-weight: bold;
+}
+
+.peak-position {
+  background: rgba(249, 115, 22, 0.8);
+  padding: var(--spacing-md) 16px;
+  border-radius: var(--radius-2xl);
+  font-weight: bold;
+}
+
+.total-listeners {
+  background: rgba(139, 92, 246, 0.8);
+  padding: var(--spacing-md) 16px;
+  border-radius: var(--radius-2xl);
+  font-weight: bold;
+}

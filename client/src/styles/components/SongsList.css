@@ -1,0 +1,89 @@
+/* src/styles/components/SongsList.css */
+
+.songs-section {
+  background: var(--background-card);
+  border-radius: var(--radius-2xl);
+  padding: var(--spacing-xl);
+  backdrop-filter: blur(10px);
+}
+
+.songs-title {
+  font-size: var(--font-size-2xl);
+  font-weight: bold;
+  margin-bottom: var(--spacing-sm);
+  text-align: center;
+}
+
+.songs-disclaimer {
+  font-size: var(--font-size-xs);
+  opacity: 0.7;
+  text-align: center;
+  margin-bottom: var(--spacing-xl);
+  line-height: 1.4;
+}
+
+.songs-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--spacing-md);
+}
+
+.song-item {
+  background: var(--background-card);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-md);
+  display: grid;
+  grid-template-columns: 2fr 1fr 1.5fr;
+  gap: var(--spacing-md);
+  align-items: center;
+  transition: transform var(--transition-fast);
+}
+
+.song-item:hover {
+  transform: translateY(-2px);
+  background: var(--background-card-hover);
+}
+
+.song-rank {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+}
+
+.rank-number {
+  font-size: 1.2rem;
+  font-weight: bold;
+  min-width: 30px;
+}
+
+.song-title {
+  font-weight: 600;
+  flex: 1;
+}
+
+.song-streams {
+  text-align: right;
+}
+
+.stream-count {
+  font-size: var(--font-size-md);
+  font-weight: bold;
+  margin-bottom: 4px;
+}
+
+.stream-total {
+  font-size: var(--font-size-xs);
+  opacity: 0.7;
+}
+
+.song-changes {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+  text-align: right;
+}
+
+.change-detail {
+  font-size: var(--font-size-xs);
+  opacity: 0.8;
+}
