@@ -1,3 +1,5 @@
+// prisma/import-csv.ts
+
 import { PrismaClient } from '@prisma/client';
 import * as fs from 'fs';
 import * as path from 'path';
@@ -6,33 +8,53 @@ import * as dotenv from 'dotenv';
 
 dotenv.config();
 
-// 初始化 Prisma Client
 const prisma = new PrismaClient();
 
-// 1. 更新 CsvRow 接口以匹配新的CSV文件列
 interface CsvRow {
   artist_name: string;
   song_title: string;
   streams: string;
   record_date: string;
-  is_liked: string; // CSV中布尔值通常读作 'true' 或 'false' 字符串
-  release_date: string; // 可能为空
-  live_event_date: string; // 可能为空
-  live_event_location: string; // 可能为空
+  is_liked: string;
+  release_date: string;
+  live_event_date: string;
+  live_event_location: string;
 }
 
 async function main() {
-  console.log('Starting CSV data import...');
+
+  // 1. 从命令行参数获取 "artist key" (例如 'olivia' 或 'weeknd')
+  const artistKey = process.argv[2];
+
+  if (!artistKey) {
+    console.error('❌ 错误: 请提供一个 "artist key" 作为命令行参数。');
+    console.log('    用法: npx prisma execute --file prisma/import-csv.ts -- <artist_key>');
+    console.log('    示例: npx prisma execute --file prisma/import-csv.ts -- olivia');
+    process.exit(1); // 以错误码退出程序
+  }
+
+  // 3. 根据 artist key 构建完整的文件名和路径
+  const fileName = `songs-${artistKey}.csv`;
+  const csvFilePath = path.join(__dirname, 'data', fileName); // 您的CSV文件存放目录
+
+  console.log(`🚀 开始导入CSV数据: ${fileName}`);
+
+  // --- 改动结束 ---
 
   const results: CsvRow[] = [];
-  const csvFilePath = path.join('./src/scripts', 'songs.csv'); // 确认路径是否正确
+
+  // 检查文件是否存在
+  if (!fs.existsSync(csvFilePath)) {
+    console.error(`❌ 错误: 文件未找到 at ${csvFilePath}`);
+    process.exit(1);
+  }
 
   await new Promise<void>((resolve, reject) => {
     fs.createReadStream(csvFilePath)
       .pipe(csv())
       .on('data', (data) => results.push(data))
       .on('end', () => {
-        console.log(`Finished reading CSV file. Found ${results.length} records.`);
+        console.log(`  ✅ 完成读取CSV文件. 共找到 ${results.length} 条记录.`);
         resolve();
       })
       .on('error', (error) => {
@@ -41,33 +63,29 @@ async function main() {
   });
 
   let processedCount = 0;
+  let skippedCount = 0;
 
   for (const row of results) {
     if (!row.artist_name || !row.song_title || !row.streams) {
-      console.warn('Skipping row due to missing essential data (artist, title, or streams):', row);
+      console.warn('  ⚠️ 跳过不完整的行:', row);
+      skippedCount++;
       continue;
     }
 
     try {
-      // 使用 upsert 查找或创建歌手，确保不重复
       const artist = await prisma.artist.upsert({
         where: { name: row.artist_name },
         update: {},
-        create: {
-          name: row.artist_name,
-        },
+        create: { name: row.artist_name },
       });
 
-      // 2. 改用 song.upsert 来创建或更新歌曲
-      const song = await prisma.song.upsert({
-        // 使用组合唯一索引来查找歌曲
+      await prisma.song.upsert({
         where: {
           artistId_title: {
             artistId: artist.id,
             title: row.song_title,
           },
         },
-        // 如果歌曲已存在，执行更新操作：只为它添加一条新的播放记录
         update: {
           stream_records: {
             create: {
@@ -76,18 +94,13 @@ async function main() {
             },
           },
         },
-        // 如果歌曲不存在，执行创建操作
         create: {
           title: row.song_title,
           artistId: artist.id,
-          // 3. 处理所有新字段的数据类型转换
-          is_liked: row.is_liked === 'true', // 将 'true' 字符串转为布尔值
-          // 如果日期字段为空字符串，则存为 null
+          is_liked: row.is_liked === 'true',
           release_date: row.release_date ? new Date(row.release_date) : null,
           live_event_date: row.live_event_date ? new Date(row.live_event_date) : null,
-          // 如果地点字段为空字符串，则存为 null
           live_event_location: row.live_event_location || null,
-          // 嵌套创建第一条播放记录
           stream_records: {
             create: {
               streams: BigInt(row.streams),
@@ -98,14 +111,16 @@ async function main() {
       });
 
       processedCount++;
-      console.log(`Successfully processed: ${row.artist_name} - ${row.song_title}`);
-
     } catch (error) {
-      console.error(`Error processing row: ${JSON.stringify(row)}. Error:`, error);
+      console.error(`  ❌ 处理行时发生错误: ${JSON.stringify(row)}. Error:`, error);
     }
   }
 
-  console.log(`\nImport finished! Successfully processed ${processedCount} records.`);
+  console.log(`\n🎉 导入完成!`);
+  console.log(`   成功处理: ${processedCount} 条记录`);
+  if (skippedCount > 0) {
+    console.log(`   跳过: ${skippedCount} 条记录`);
+  }
 }
 
 main()

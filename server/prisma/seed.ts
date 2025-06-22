@@ -23,9 +23,8 @@ async function main() {
 
             // --- 从这里开始是根据您的新格式新增的字段 ---
             is_liked: true,
-            live_event_venue: 'Govball 2024',
-            live_event_location: 'New York',
-            release_date: new Date('2012-03-11'),
+            live_event_location: 'Govball 2024,New York',
+            release_date: new Date('2022-03-11'),
             live_event_date: new Date('2024-06-09'),
             // 同时，为这首歌创建一条播放量记录
             stream_records: {

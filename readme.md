@@ -22,7 +22,8 @@ server文件夹下
 npx prisma migrate dev
 
 ### 注入数据方式
-ts-node prisma/import-csv.ts 
+ts-node prisma/import-csv.ts olivia
+ts-node prisma/import-csv.ts weeknd
 
 ### 删除数据
 ts-node prisma/clear-database.ts
