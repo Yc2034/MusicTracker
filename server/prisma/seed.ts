@@ -14,7 +14,7 @@ async function main() {
     where: { name: 'stephen sanchez' },
     update: {}, 
     create: {
-      name: 'stephen sanchez',
+      name: 'Stephen Sanchez',
       // 使用嵌套写入(nested write)的方式，在创建歌手的同时，也为他创建歌曲
       songs: {
         create: [

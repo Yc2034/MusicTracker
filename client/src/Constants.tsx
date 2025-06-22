@@ -1,2 +1,2 @@
 // Constants
-export const AVAILABLE_ARTISTS = ['olivia rodrigo', 'the weeknd','post malone'];
+export const AVAILABLE_ARTISTS = ['The Weeknd', 'Olivia Rodrigo'];
