@@ -1,30 +1,32 @@
-// server/prisma/import-csv.ts
-
 import { PrismaClient } from '@prisma/client';
 import * as fs from 'fs';
 import * as path from 'path';
 import csv from 'csv-parser';
+import * as dotenv from 'dotenv'; 
+
+dotenv.config();
 
 // 初始化 Prisma Client
 const prisma = new PrismaClient();
 
-// 定义CSV文件中每一行的数据结构
+// 1. 更新 CsvRow 接口以匹配新的CSV文件列
 interface CsvRow {
   artist_name: string;
   song_title: string;
-  streams: string; // 从CSV读取时通常是字符串
+  streams: string;
   record_date: string;
+  is_liked: string; // CSV中布尔值通常读作 'true' 或 'false' 字符串
+  release_date: string; // 可能为空
+  live_event_date: string; // 可能为空
+  live_event_location: string; // 可能为空
 }
 
 async function main() {
   console.log('Starting CSV data import...');
 
   const results: CsvRow[] = [];
-  // CSV文件的路径，可以根据你的项目结构调整
-  const csvFilePath = path.join('./src/scripts', 'songs.csv'); 
+  const csvFilePath = path.join('./src/scripts', 'songs.csv'); // 确认路径是否正确
 
-  // 1. 使用 stream 的方式读取和解析CSV文件
-  // 这种方式对于大文件更高效，因为它不需要一次性把整个文件读入内存
   await new Promise<void>((resolve, reject) => {
     fs.createReadStream(csvFilePath)
       .pipe(csv())
@@ -38,57 +40,74 @@ async function main() {
       });
   });
 
-  let createdCount = 0;
+  let processedCount = 0;
 
-  // 2. 遍历从CSV中解析出的每一行数据
   for (const row of results) {
-    if (!row.artist_name || !row.song_title) {
-      console.warn('Skipping row due to missing artist name or song title:', row);
+    if (!row.artist_name || !row.song_title || !row.streams) {
+      console.warn('Skipping row due to missing essential data (artist, title, or streams):', row);
       continue;
     }
 
     try {
-      // 3. 使用 upsert 查找或创建歌手
-      // 这可以确保即使CSV中有重复的歌手名，数据库中也只有一个对应的记录
+      // 使用 upsert 查找或创建歌手，确保不重复
       const artist = await prisma.artist.upsert({
-        where: { name: row.artist_name.toLowerCase() },
+        where: { name: row.artist_name },
         update: {},
         create: {
-          name: row.artist_name.toLowerCase(),
+          name: row.artist_name,
         },
       });
 
-      // 4. 在该歌手下创建歌曲和播放记录
-      // 我们使用 nested write (嵌套写入) 在一个操作中完成
-      // 注意：这里我们没有检查歌曲是否已存在，如果需要，可以先查询再创建
-      await prisma.song.create({
-        data: {
-          title: row.song_title,
-          artistId: artist.id, // 关联到刚刚找到或创建的歌手
+      // 2. 改用 song.upsert 来创建或更新歌曲
+      const song = await prisma.song.upsert({
+        // 使用组合唯一索引来查找歌曲
+        where: {
+          artistId_title: {
+            artistId: artist.id,
+            title: row.song_title,
+          },
+        },
+        // 如果歌曲已存在，执行更新操作：只为它添加一条新的播放记录
+        update: {
           stream_records: {
             create: {
-              // 将字符串转换为 BigInt
-              streams: BigInt(row.streams), 
-              // 将字符串转换为 Date 对象
+              streams: BigInt(row.streams),
+              record_date: new Date(row.record_date),
+            },
+          },
+        },
+        // 如果歌曲不存在，执行创建操作
+        create: {
+          title: row.song_title,
+          artistId: artist.id,
+          // 3. 处理所有新字段的数据类型转换
+          is_liked: row.is_liked === 'true', // 将 'true' 字符串转为布尔值
+          // 如果日期字段为空字符串，则存为 null
+          release_date: row.release_date ? new Date(row.release_date) : null,
+          live_event_date: row.live_event_date ? new Date(row.live_event_date) : null,
+          // 如果地点字段为空字符串，则存为 null
+          live_event_location: row.live_event_location || null,
+          // 嵌套创建第一条播放记录
+          stream_records: {
+            create: {
+              streams: BigInt(row.streams),
               record_date: new Date(row.record_date),
             },
           },
         },
       });
 
-      createdCount++;
-      console.log(`Successfully imported: ${row.artist_name} - ${row.song_title}`);
+      processedCount++;
+      console.log(`Successfully processed: ${row.artist_name} - ${row.song_title}`);
 
     } catch (error) {
-      // 如果发生错误（例如，同一歌手下的歌曲已存在，违反了@@unique约束），则打印错误并继续
-      console.error(`Error importing row: ${JSON.stringify(row)}. Error:`, error);
+      console.error(`Error processing row: ${JSON.stringify(row)}. Error:`, error);
     }
   }
 
-  console.log(`\nImport finished! Successfully created ${createdCount} song records.`);
+  console.log(`\nImport finished! Successfully processed ${processedCount} records.`);
 }
 
-// 执行 main 函数，并确保在完成后断开数据库连接
 main()
   .catch((e) => {
     console.error(e);
