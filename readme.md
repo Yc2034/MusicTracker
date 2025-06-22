@@ -7,6 +7,7 @@ music tracker
 
 
 ├── client/      # React + Vite 前端
+
 └── server/      # Node.js + Express + Prisma 后端
 
 
@@ -41,6 +42,5 @@ npm run dev
 
 TODO
 
-1. Update database
-2. See if new column required
-3. Create a page for global rank, then create separate rank for each of them
+1.添加更多数据
+2.梳理一下数据关系清理一下前端的mock data

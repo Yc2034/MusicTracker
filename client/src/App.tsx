@@ -11,7 +11,6 @@ import { calculateMetrics, processSongsData } from './services/api';
 // Components
 import { ArtistHeader } from './components/header/ArtistHeader';
 import { MainMetrics } from './components/metrics/MainMetrics';
-import { MetricsGrid } from './components/metrics/MetricsGrid';
 import { SongsList } from './components/songs/SongsList';
 import { AVAILABLE_ARTISTS } from './Constants';
 
@@ -56,9 +55,6 @@ function App() {
 
       {/* Main Metrics */}
       <MainMetrics metrics={metrics} />
-
-      {/* Metrics Grid */}
-      <MetricsGrid metrics={metrics} />
 
       {/* Songs List */}
       <SongsList songs={processedSongs} maxSongs={20} />
