@@ -13,9 +13,8 @@ import { ArtistHeader } from './components/header/ArtistHeader';
 import { MainMetrics } from './components/metrics/MainMetrics';
 import { MetricsGrid } from './components/metrics/MetricsGrid';
 import { SongsList } from './components/songs/SongsList';
+import { AVAILABLE_ARTISTS } from './Constants';
 
-// Constants
-const AVAILABLE_ARTISTS = ['olivia rodrigo', 'the weeknd'];
 
 function App() {
   const [selectedArtist, setSelectedArtist] = useState(AVAILABLE_ARTISTS[0]);

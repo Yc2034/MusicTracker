@@ -21,6 +21,11 @@ server文件夹下
 ### 注入数据
 npx prisma db seed 
 
+### 另一个方式
+ts-node prisma/import-csv.ts 
+
+ts-node prisma/clear-database.ts
+
 ### 打开网页数据库验证
 npx prisma studio
 
