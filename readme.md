@@ -23,3 +23,6 @@ npx prisma db seed
 
 ### 打开网页数据库验证
 npx prisma studio
+
+# server 后端
+npm run dev
