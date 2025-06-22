@@ -21,13 +21,14 @@ server文件夹下
 ### Migrate DB (update schema)
 npx prisma migrate dev
 
-### 注入数据
-npx prisma db seed 
-
-### 另一个方式
+### 注入数据方式
 ts-node prisma/import-csv.ts 
 
+### 删除数据
 ts-node prisma/clear-database.ts
+
+### 完全初始化数据库并且run seed command
+npx prisma migrate reset
 
 ### 打开网页数据库验证
 npx prisma studio
