@@ -4,4 +4,22 @@
 music tracker
 使用kworb网站作为数据源头 https://kworb.net/
 
-SQLite + Prisma
+
+
+├── client/      # React + Vite 前端
+└── server/      # Node.js + Express + Prisma 后端
+
+
+# client前端
+npm install  
+
+npm run dev
+
+
+# prisma数据库端
+server文件夹下
+### 注入数据
+npx prisma db seed 
+
+### 打开网页数据库验证
+npx prisma studio

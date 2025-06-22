@@ -1,0 +1,38 @@
+// server/prisma/schema.prisma
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model Artist {
+  id        Int      @id @default(autoincrement())
+  name      String   @unique
+  kworb_url String?
+  songs     Song[]
+}
+
+model Song {
+  id              Int             @id @default(autoincrement())
+  title           String
+  artist          Artist          @relation(fields: [artistId], references: [id])
+  artistId        Int
+  is_liked        Boolean         @default(false)
+  live_event_date DateTime?
+  release_date    DateTime?
+  stream_records  StreamRecord[]
+
+  @@unique([artistId, title]) // 同一个歌手下的歌曲名不能重复
+}
+
+model StreamRecord {
+  id          Int      @id @default(autoincrement())
+  song        Song     @relation(fields: [songId], references: [id])
+  songId      Int
+  record_date DateTime 
+  streams     BigInt   // 使用 BigInt 存储大的播放量数字
+}
