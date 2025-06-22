@@ -23,6 +23,8 @@ model Song {
   artistId        Int
   is_liked        Boolean         @default(false)
   live_event_date DateTime?
+  live_event_venue String?
+  live_event_location String?
   release_date    DateTime?
   stream_records  StreamRecord[]
 

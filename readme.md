@@ -18,6 +18,9 @@ npm run dev
 
 # prisma数据库端
 server文件夹下
+### Migrate DB (update schema)
+npx prisma migrate dev
+
 ### 注入数据
 npx prisma db seed 
 

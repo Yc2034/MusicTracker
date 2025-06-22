@@ -1,18 +1,16 @@
 // server/prisma/clear-database.ts
 
 import { PrismaClient } from '@prisma/client';
+import * as dotenv from 'dotenv';
+
+// 它会加载项目根目录下的 .env 文件
+dotenv.config(); 
 
 const prisma = new PrismaClient();
 
 async function main() {
   console.log('Starting to clear the database...');
 
-  // We must delete records in a specific order to avoid violating foreign key constraints.
-  // The general rule is to delete from the "many" side of a relation before the "one" side.
-  // StreamRecord -> Song -> Artist
-
-  // 1. Delete all StreamRecord entries.
-  // These records depend on Songs, so they must be deleted first.
   const deletedStreamRecords = await prisma.streamRecord.deleteMany({});
   console.log(`- Deleted ${deletedStreamRecords.count} stream records.`);
 
