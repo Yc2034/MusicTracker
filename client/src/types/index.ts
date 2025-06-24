@@ -34,7 +34,6 @@ export interface ProcessedSong extends Song {
 export interface ArtistMetrics {
   totalStreams: number;
   chartPosition: number;
-  peakPosition: number;
 }
 
 export type RankChangeType = 'up' | 'down' | 'same';

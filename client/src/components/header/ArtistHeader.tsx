@@ -25,8 +25,6 @@ export const ArtistHeader: React.FC<ArtistHeaderProps> = ({
 
         <div className="chart-positions">
           <span className="chart-position">No.{metrics.chartPosition} in kworb</span>
-          <span className="peak-position">Personal Rank: {metrics.peakPosition}</span>
-
         </div>
       </div>
       

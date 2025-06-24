@@ -36,8 +36,7 @@ export const calculateMetrics = (songs: Song[]): ArtistMetrics => {
   
   return {
     totalStreams,
-    chartPosition: 1,
-    peakPosition: 2
+    chartPosition: 1
   };
 };
 
