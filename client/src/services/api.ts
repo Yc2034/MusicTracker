@@ -60,7 +60,7 @@ export const calculateMetrics = (
 /**
  * Process songs data with mock analytics
  */
-export const processSongsData = (songs: Song[]): ProcessedSong[] => {
+export const processSongsData = (songs: Song[], artistName: string): ProcessedSong[] => {
   return songs.map((song, index) => {
     const currentStreams = song.stream_records[0] ? parseInt(song.stream_records[0].streams) : 0;
     
@@ -68,7 +68,8 @@ export const processSongsData = (songs: Song[]): ProcessedSong[] => {
       ...song,
       rank: index + 1,
       currentStreams,
-      rankChange: Math.random() > 0.5 ? 'up' : Math.random() > 0.5 ? 'down' : 'same'
+      rankChange: Math.random() > 0.5 ? 'up' : Math.random() > 0.5 ? 'down' : 'same',
+      artistName,
     };
   });
 };

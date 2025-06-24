@@ -5,6 +5,7 @@
 @import './styles/components/Common.css';
 @import './styles/components/ArtistHeader.css';
 @import './styles/components/SongsList.css';
+@import './styles/components/PersonalSongsDashboard.css';
 @import './styles/utilities/responsive.css';
 
 /* Main Dashboard Layout */
@@ -13,4 +14,39 @@
   max-width: var(--max-width);
   margin: 0 auto;
   color: white;
+}
+
+.dashboard-toggle {
+  display: flex;
+  justify-content: center;
+  margin-bottom: var(--spacing-xl);
+}
+
+.dashboard-toggle button {
+  font-size: 1rem;
+  padding: 0.8rem 1.5rem;
+  background-color: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.dashboard-toggle button:first-child {
+  border-top-left-radius: var(--radius-lg);
+  border-bottom-left-radius: var(--radius-lg);
+}
+
+.dashboard-toggle button:last-child {
+  border-top-right-radius: var(--radius-lg);
+  border-bottom-right-radius: var(--radius-lg);
+  border-left: none;
+}
+
+.dashboard-toggle button.active {
+  background-color: var(--primary-purple);
+}
+
+.dashboard-toggle button:not(.active):hover {
+    background-color: rgba(255, 255, 255, 0.2);
 }

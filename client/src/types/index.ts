@@ -29,6 +29,7 @@ export interface ProcessedSong extends Song {
   rank: number;
   currentStreams: number;
   rankChange: 'up' | 'down' | 'same';
+  artistName: string;
 }
 
 export interface ArtistMetrics {

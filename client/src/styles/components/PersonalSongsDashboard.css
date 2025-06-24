@@ -1,0 +1,51 @@
+/* src/styles/components/PersonalSongsDashboard.css */
+
+.personal-songs-dashboard {
+  background: var(--background-card);
+  border-radius: var(--radius-2xl);
+  padding: var(--spacing-xl);
+  backdrop-filter: blur(10px);
+}
+
+.personal-songs-title {
+  font-size: var(--font-size-3xl);
+  font-weight: bold;
+  margin-bottom: var(--spacing-lg);
+  text-align: center;
+}
+
+.song-list-item {
+  display: grid;
+  grid-template-columns: 50px 1fr auto;
+  gap: var(--spacing-lg);
+  align-items: center;
+  padding: var(--spacing-md);
+  border-radius: var(--radius-lg);
+  transition: background-color var(--transition-fast);
+}
+
+.song-list-item:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.song-list-rank {
+  font-size: var(--font-size-lg);
+  font-weight: bold;
+  color: var(--text-secondary);
+  text-align: center;
+}
+
+.song-list-title {
+  font-size: var(--font-size-md);
+  font-weight: 600;
+}
+
+.song-list-artist {
+  font-size: var(--font-size-sm);
+  color: var(--text-secondary);
+}
+
+.song-list-streams {
+  font-size: var(--font-size-lg);
+  font-weight: bold;
+}

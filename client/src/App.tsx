@@ -11,8 +11,11 @@ import { calculateMetrics, processSongsData, fetchArtistData } from './services/
 // Components
 import { ArtistHeader } from './components/header/ArtistHeader';
 import { SongsList } from './components/songs/SongsList';
+import { PersonalSongsDashboard } from './components/dashboard/PersonalSongsDashboard';
 import { AVAILABLE_ARTISTS } from './components/common/Constants';
-import type { ArtistData, ArtistMetrics } from './types';
+import type { ArtistData } from './types';
+
+type DashboardView = 'artist' | 'personal';
 
 function App() {
   const [selectedArtist, setSelectedArtist] = useState(AVAILABLE_ARTISTS[0]);
@@ -21,6 +24,8 @@ function App() {
   const [allArtistsData, setAllArtistsData] = useState<ArtistData[]>([]);
   const [allArtistsLoading, setAllArtistsLoading] = useState(true);
   const [allArtistsError, setAllArtistsError] = useState<string | null>(null);
+
+  const [dashboardView, setDashboardView] = useState<DashboardView>('artist');
 
   useEffect(() => {
     const fetchAllData = async () => {
@@ -45,37 +50,59 @@ function App() {
     setSelectedArtist(artist);
   };
 
+  const renderArtistDashboard = () => {
+    if (artistLoading) return <div className="loading">Loading artist data...</div>;
+    if (artistError) return <div className="error">{artistError}</div>;
+    if (!artistData) return <div className="no-data">No data available for {selectedArtist}</div>;
+    
+    const metrics = calculateMetrics(artistData.name, allArtistsData);
+    const processedSongs = processSongsData(artistData.songs, artistData.name);
+
+    return (
+      <>
+        <ArtistHeader
+          artistName={artistData.name}
+          metrics={metrics}
+          selectedArtist={selectedArtist}
+          availableArtists={AVAILABLE_ARTISTS}
+          onArtistChange={handleArtistChange}
+        />
+        <SongsList songs={processedSongs} maxSongs={20} />
+      </>
+    );
+  }
+
   // Combined loading and error states
-  if (artistLoading || allArtistsLoading) {
+  if (allArtistsLoading) {
     return <div className="loading">Loading...</div>;
   }
-
-  const error = artistError || allArtistsError;
-  if (error) {
-    return <div className="error">{error}</div>;
+  
+  if (allArtistsError) {
+    return <div className="error">{allArtistsError}</div>;
   }
-
-  if (!artistData) {
-    return <div className="no-data">No data available for {selectedArtist}</div>;
-  }
-
-  // Calculate metrics and process songs data
-  const metrics = calculateMetrics(artistData.name, allArtistsData);
-  const processedSongs = processSongsData(artistData.songs);
 
   return (
     <div className="dashboard">
-      {/* Artist Header */}
-      <ArtistHeader
-        artistName={artistData.name}
-        metrics={metrics}
-        selectedArtist={selectedArtist}
-        availableArtists={AVAILABLE_ARTISTS}
-        onArtistChange={handleArtistChange}
-      />
-
-      {/* Songs List */}
-      <SongsList songs={processedSongs} maxSongs={20} />
+      <div className="dashboard-toggle">
+        <button 
+          className={dashboardView === 'artist' ? 'active' : ''}
+          onClick={() => setDashboardView('artist')}
+        >
+          Artist Dashboard
+        </button>
+        <button 
+          className={dashboardView === 'personal' ? 'active' : ''}
+          onClick={() => setDashboardView('personal')}
+        >
+          Personal Most Listened
+        </button>
+      </div>
+      
+      {dashboardView === 'artist' ? (
+        renderArtistDashboard()
+      ) : (
+        <PersonalSongsDashboard allArtistsData={allArtistsData} />
+      )}
     </div>
   );
 }
