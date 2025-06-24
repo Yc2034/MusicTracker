@@ -1,6 +1,8 @@
 // src/types/index.ts
 
 export interface StreamRecord {
+  id: number;
+  songId: number;
   streams: string;
   record_date: string;
 }
@@ -8,17 +10,24 @@ export interface StreamRecord {
 export interface Song {
   id: number;
   title: string;
+  artistId: number;
+  is_liked: boolean;
+  live_event_date: string | null;
+  live_event_location: string | null;
+  release_date: string | null;
   stream_records: StreamRecord[];
 }
 
 export interface ArtistData {
+  id: number;
   name: string;
+  kword_url: string | null;
   songs: Song[];
 }
 
 export interface ProcessedSong extends Song {
   rank: number;
-  currentStreams: number;
+  currentStreams: bigint;
   rankChange: 'up' | 'down' | 'same';
 }
 

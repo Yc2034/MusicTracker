@@ -11,7 +11,7 @@ import { calculateMetrics, processSongsData } from './services/api';
 // Components
 import { ArtistHeader } from './components/header/ArtistHeader';
 import { SongsList } from './components/songs/SongsList';
-import { AVAILABLE_ARTISTS } from './Constants';
+import { AVAILABLE_ARTISTS } from './components/common/Constants';
 
 
 function App() {
