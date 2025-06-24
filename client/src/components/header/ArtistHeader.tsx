@@ -2,6 +2,7 @@
 import React from 'react';
 import type { ArtistMetrics } from '../../types';
 import { ArtistSelector } from './ArtistSelector';
+import { formatWithCommas } from '../../utils/formatters';
 
 interface ArtistHeaderProps {
   artistName: string;
@@ -24,7 +25,9 @@ export const ArtistHeader: React.FC<ArtistHeaderProps> = ({
         <h1 className="artist-name">{artistName.toUpperCase()}</h1>
 
         <div className="chart-positions">
-          <span className="chart-position">No.{metrics.chartPosition} in kworb</span>
+          <span className="chart-position">
+            No.{metrics.chartPosition} in kworb ({formatWithCommas(metrics.totalStreams)} streams)
+          </span>
         </div>
       </div>
       

@@ -25,20 +25,37 @@ export const fetchArtistData = async (artistName: string): Promise<ArtistData> =
 /**
  * Calculate metrics from songs data
  */
-export const calculateMetrics = (songs: Song[]): ArtistMetrics => {
-  const processedSongs = songs.map(song => {
-    const currentStreams = song.stream_records[0] ? parseInt(song.stream_records[0].streams) : 0;
-    return { ...song, currentStreams };
-  });
+export const calculateMetrics = (
+  selectedArtistName: string,
+  allArtistsData: ArtistData[]
+): ArtistMetrics => {
+  // Guard against undefined or non-array data
+  if (!Array.isArray(allArtistsData)) {
+    return { totalStreams: 0, chartPosition: 0 };
+  }
 
-  const totalStreams = processedSongs.reduce((sum, song) => sum + song.currentStreams, 0);
+  const artistStreams = allArtistsData
+    .filter(artist => artist && artist.songs) // Ensure artist and songs exist
+    .map(artist => {
+      const totalStreams = artist.songs.reduce((sum, song) => {
+        const currentStreams = song.stream_records && song.stream_records[0] ? parseInt(song.stream_records[0].streams, 10) : 0;
+        return sum + currentStreams;
+      }, 0);
+      return { artistName: artist.name, totalStreams };
+    });
 
-  
+  artistStreams.sort((a, b) => b.totalStreams - a.totalStreams);
+
+  const chartPosition = artistStreams.findIndex(artist => artist.artistName === selectedArtistName) + 1;
+
+  const selectedArtistMetrics = artistStreams.find(artist => artist.artistName === selectedArtistName);
+
   return {
-    totalStreams,
-    chartPosition: 1
+    totalStreams: selectedArtistMetrics ? selectedArtistMetrics.totalStreams : 0,
+    chartPosition: chartPosition || 0,
   };
 };
+
 
 /**
  * Process songs data with mock analytics
