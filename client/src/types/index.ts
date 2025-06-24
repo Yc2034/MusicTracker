@@ -28,17 +28,8 @@ export interface ProcessedSong extends Song {
 
 export interface ArtistMetrics {
   totalStreams: number;
-  dailyStreams: number;
-  dailyChange: number;
-  weeklyChange: number;
-  monthlyListeners: string;
   chartPosition: number;
   peakPosition: number;
-  songsAbove1M: number;
-  songsAbove500K: number;
-  songsAbove300K: number;
-  songsAbove100K: number;
-  totalSongsTop10: number;
 }
 
 export type RankChangeType = 'up' | 'down' | 'same';

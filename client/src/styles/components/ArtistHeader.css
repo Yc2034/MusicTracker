@@ -36,13 +36,6 @@
   text-shadow: var(--shadow-text);
 }
 
-.artist-stats {
-  display: flex;
-  gap: var(--spacing-xl);
-  margin-bottom: var(--spacing-lg);
-  font-size: var(--font-size-md);
-}
-
 .chart-positions {
   display: flex;
   gap: var(--spacing-lg);
@@ -58,13 +51,6 @@
 
 .peak-position {
   background: rgba(249, 115, 22, 0.8);
-  padding: var(--spacing-md) 16px;
-  border-radius: var(--radius-2xl);
-  font-weight: bold;
-}
-
-.total-listeners {
-  background: rgba(139, 92, 246, 0.8);
   padding: var(--spacing-md) 16px;
   border-radius: var(--radius-2xl);
   font-weight: bold;

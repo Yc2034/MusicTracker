@@ -4,7 +4,6 @@
 @import './styles/globals.css';
 @import './styles/components/Common.css';
 @import './styles/components/ArtistHeader.css';
-@import './styles/components/MainMetrics.css';
 @import './styles/components/SongsList.css';
 @import './styles/utilities/responsive.css';
 

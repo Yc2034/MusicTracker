@@ -22,18 +22,11 @@ export const ArtistHeader: React.FC<ArtistHeaderProps> = ({
     <div className="artist-header">
       <div className="artist-info">
         <h1 className="artist-name">{artistName.toUpperCase()}</h1>
-        <div className="artist-stats">
-          <span className="monthly-listeners">
-            {metrics.monthlyListeners}(+465,993) Monthly Listeners
-          </span>
-          <span className="chart-date">Chart Dated Jun12, 2025 (Thursday)</span>
-        </div>
+
         <div className="chart-positions">
-          <span className="chart-position">No.{metrics.chartPosition}</span>
-          <span className="peak-position">{metrics.peakPosition}</span>
-          <span className="total-listeners">
-            {(metrics.totalStreams / 1000000).toFixed(3)}
-          </span>
+          <span className="chart-position">No.{metrics.chartPosition} in kworb</span>
+          <span className="peak-position">Personal Rank: {metrics.peakPosition}</span>
+
         </div>
       </div>
       

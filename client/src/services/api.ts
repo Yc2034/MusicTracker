@@ -32,21 +32,15 @@ export const calculateMetrics = (songs: Song[]): ArtistMetrics => {
   });
 
   const totalStreams = processedSongs.reduce((sum, song) => sum + song.currentStreams, 0);
-  const dailyStreams = Math.floor(totalStreams * 0.1); // Mock daily streams
+
   
   return {
     totalStreams,
-    dailyStreams,
     dailyChange: Math.floor(Math.random() * 1000000), // Mock data
     weeklyChange: Math.floor(Math.random() * 10000000), // Mock data
     monthlyListeners: '67,207,721',
     chartPosition: 24,
-    peakPosition: 4,
-    songsAbove1M: processedSongs.filter(s => s.currentStreams > 1000000).length,
-    songsAbove500K: processedSongs.filter(s => s.currentStreams > 500000).length,
-    songsAbove300K: processedSongs.filter(s => s.currentStreams > 300000).length,
-    songsAbove100K: processedSongs.filter(s => s.currentStreams > 100000).length,
-    totalSongsTop10: Math.min(processedSongs.length, 10)
+    peakPosition: 4
   };
 };
 

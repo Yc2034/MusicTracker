@@ -13,10 +13,7 @@ export const SongsList: React.FC<SongsListProps> = ({ songs, maxSongs = 20 }) =>
 
   return (
     <div className="songs-section">
-      <h2 className="songs-title">TOP DAILY STREAMING SONGS</h2>
-      <div className="songs-disclaimer">
-        Data are retrieved from iworld. Glitches might exist when encountering new releases due to delayed update of data of new songs. We apologise for any inconvenience brought.
-      </div>
+      <h2 className="songs-title">TOP STREAMING SONGS</h2>
       
       <div className="songs-grid">
         {displaySongs.map((song) => (

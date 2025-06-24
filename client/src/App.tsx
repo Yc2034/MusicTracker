@@ -10,7 +10,6 @@ import { calculateMetrics, processSongsData } from './services/api';
 
 // Components
 import { ArtistHeader } from './components/header/ArtistHeader';
-import { MainMetrics } from './components/metrics/MainMetrics';
 import { SongsList } from './components/songs/SongsList';
 import { AVAILABLE_ARTISTS } from './Constants';
 
@@ -52,9 +51,6 @@ function App() {
         availableArtists={AVAILABLE_ARTISTS}
         onArtistChange={handleArtistChange}
       />
-
-      {/* Main Metrics */}
-      <MainMetrics metrics={metrics} />
 
       {/* Songs List */}
       <SongsList songs={processedSongs} maxSongs={20} />
