@@ -19,10 +19,6 @@ export interface ArtistData {
 export interface ProcessedSong extends Song {
   rank: number;
   currentStreams: number;
-  dailyChange: number;
-  weeklyChange: number;
-  dailyPercentage: number;
-  weeklyPercentage: number;
   rankChange: 'up' | 'down' | 'same';
 }
 
