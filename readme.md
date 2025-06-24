@@ -42,5 +42,12 @@ npm run dev
 
 TODO
 
-1.添加更多数据
-2.梳理一下数据关系清理一下前端的mock data
+1. 数据库填鸭
+
+新功能
+1. 展示一下是否已喜欢这个
+2. 展示一下date相关数据
+
+
+Create a New API Endpoint: The "source of truth" for the artist list should be your database. Create a new, lightweight endpoint on your backend, for example /api/artists, that returns just a list of all available artist names and their IDs.
+react-three-fiber
