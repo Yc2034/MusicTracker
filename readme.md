@@ -43,11 +43,14 @@ npm run dev
 #### 2025-06-25 最基本的功能思路都实现了
 TODO
 学一下 react-three-fiber
-先从最简单的做起吧，做一个磨砂材质效果的header
+普信ai css一拖
 
+接下来三大部分
 1. 数据库填鸭 -- continue work
 
 新功能TO DO
 1. 展示一下是否已喜欢这个 - threejs
+
+根据学的threejs一点点改进现有的component
 
 
