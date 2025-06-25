@@ -34,3 +34,11 @@ export const calculatePercentageChange = (current: number, previous: number): nu
   if (previous === 0) return 0;
   return ((current - previous) / previous) * 100;
 };
+
+/**
+ * Format date to YYYY-MM-DD
+ */
+export const formatDate = (dateString: string | null): string | null => {
+  if (!dateString) return null;
+  return dateString.split('T')[0];
+};
