@@ -26,7 +26,7 @@ export const ArtistHeader: React.FC<ArtistHeaderProps> = ({
 
         <div className="chart-positions">
           <span className="chart-position">
-            No.{metrics.chartPosition} in kworb ({formatWithCommas(metrics.totalStreams)} streams)
+            No.{metrics.chartPosition} in personal live ({formatWithCommas(metrics.totalStreams)} streams)
           </span>
         </div>
       </div>

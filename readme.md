@@ -40,14 +40,14 @@ npm run dev
 
 
 
+#### 2025-06-25 最基本的功能思路都实现了
 TODO
+学一下 react-three-fiber
+先从最简单的做起吧，做一个磨砂材质效果的header
 
-1. 数据库填鸭
+1. 数据库填鸭 -- continue work
 
-新功能
-1. 展示一下是否已喜欢这个
-2. 展示一下date相关数据
+新功能TO DO
+1. 展示一下是否已喜欢这个 - threejs
 
 
-Create a New API Endpoint: The "source of truth" for the artist list should be your database. Create a new, lightweight endpoint on your backend, for example /api/artists, that returns just a list of all available artist names and their IDs.
-react-three-fiber
