@@ -2,6 +2,7 @@
 export const AVAILABLE_ARTISTS = [
     'Post Malone',
     'The Weeknd', 
+    'Sabrina Carpenter',
     'Olivia Rodrigo', 
     'Carly Rae Jepsen',
     'Conan Gray',
