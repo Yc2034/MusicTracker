@@ -36,6 +36,11 @@
   background: var(--background-card-hover);
 }
 
+.song-item.no-live-event {
+  background: black;
+  color: white;
+}
+
 .song-rank {
   display: flex;
   align-items: center;

@@ -9,8 +9,9 @@ interface SongListItemProps {
 }
 
 export const SongListItem: React.FC<SongListItemProps> = ({ song, rank }) => {
+  const songItemClasses = `song-list-item ${!song.live_event_date ? 'no-live-event' : ''}`;
   return (
-    <div className="song-list-item">
+    <div className={songItemClasses}>
       <div className="song-list-rank">{rank}</div>
       <div className="song-list-details">
         <div className="song-list-title">{song.title}</div>

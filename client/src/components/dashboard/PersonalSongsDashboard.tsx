@@ -20,7 +20,7 @@ export const PersonalSongsDashboard: React.FC<PersonalSongsDashboardProps> = ({ 
 
   return (
     <div className="personal-songs-dashboard">
-      <h1 className="personal-songs-title">Personal Most Listened Songs</h1>
+      <h1 className="personal-songs-title">Top Streamed Songs I've Seen Live</h1>
       <div className="songs-list">
         {top50Songs.map((song, index) => (
           <SongListItem key={`${song.id}-${song.artistName}`} song={song} rank={index + 1} />
