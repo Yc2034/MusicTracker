@@ -2,8 +2,11 @@
 1. The Weeknd, two songs haven't been found, 
 some popular songs call out my name doesn't get count
 
-2. Olivia
+2. Olivia Rodrigo
 good 4 u 听了只是那个时候已经人离场了
 
 3. Post Malone
 算是非常喜欢的小众歌曲了wrapped around your finger
+
+4. Sabrina Carpenter
+算是抄底成功了，只录了五首，其实当时应该多录制一点的，taste也听了现场

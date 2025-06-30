@@ -43,3 +43,8 @@ export interface ArtistSongCount {
   artistName: string;
   songCount: number;
 }
+
+export interface ArtistStreamCount {
+  artistName: string;
+  totalStreams: number;
+}

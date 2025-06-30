@@ -1,6 +1,6 @@
 // src/services/api.ts
 import axios from 'axios';
-import type { ArtistData, ArtistMetrics, ProcessedSong, Song, ArtistSongCount } from '../types';
+import type { ArtistData, ArtistMetrics, ProcessedSong, Song, ArtistSongCount, ArtistStreamCount } from '../types';
 
 const API_BASE_URL = 'http://localhost:3001/api';
 
@@ -92,4 +92,22 @@ export const getTopArtistsBySongCount = (allArtistsData: ArtistData[]): ArtistSo
   }));
 
   return artistSongCounts.sort((a, b) => b.songCount - a.songCount).slice(0, 3);
+};
+
+/**
+ * Calculate top artists by stream count.
+ */
+export const getTopArtistsByStreamCount = (allArtistsData: ArtistData[]): ArtistStreamCount[] => {
+  const artistStreamCounts: ArtistStreamCount[] = allArtistsData.map(artist => {
+    const totalStreams = artist.songs.reduce((sum, song) => {
+      const currentStreams = song.stream_records && song.stream_records[0] ? parseInt(song.stream_records[0].streams, 10) : 0;
+      return sum + currentStreams;
+    }, 0);
+    return {
+      artistName: artist.name,
+      totalStreams,
+    };
+  });
+
+  return artistStreamCounts.sort((a, b) => b.totalStreams - a.totalStreams).slice(0, 10);
 };
