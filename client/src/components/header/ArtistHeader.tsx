@@ -6,6 +6,7 @@ import { formatWithCommas } from '../../utils/formatters';
 
 interface ArtistHeaderProps {
   artistName: string;
+  artistImage?: string;
   metrics: ArtistMetrics;
   selectedArtist: string;
   availableArtists: string[];
@@ -14,6 +15,7 @@ interface ArtistHeaderProps {
 
 export const ArtistHeader: React.FC<ArtistHeaderProps> = ({
   artistName,
+  artistImage,
   metrics,
   selectedArtist,
   availableArtists,
@@ -21,9 +23,14 @@ export const ArtistHeader: React.FC<ArtistHeaderProps> = ({
 }) => {
   const [isSelectorOpen, setIsSelectorOpen] = useState(false);
 
+  // Define the style for the header, applying the background image if it exists
+  const headerStyle = artistImage ? {
+    backgroundImage: `linear-gradient(rgba(29, 35, 42, 0.7), rgba(29, 35, 42, 0.7)), url(${artistImage})`,
+  } : {};
+
   return (
     <>
-      <div className="artist-header">
+      <div className="artist-header" style={headerStyle}>
         <div className="artist-info">
           <h1 className="artist-name">{artistName.toUpperCase()}</h1>
 

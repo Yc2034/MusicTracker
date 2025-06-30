@@ -2,11 +2,15 @@
 
 .artist-header {
   position: relative;
-  /* Glassmorphism effect */
+  /* Glassmorphism effect for when there is NO background image */
   background: rgba(255, 255, 255, 0.2);
   border: 1px solid rgba(255, 255, 255, 0.3);
   backdrop-filter: blur(10px);
   
+  /* Add properties for background image */
+  background-size: cover;
+  background-position: center;
+
   border-radius: var(--radius-2xl);
   padding: var(--spacing-2xl);
   margin-bottom: var(--spacing-xl);

@@ -7,6 +7,7 @@ import { useArtistData } from './hooks/useArtistData';
 
 // Services
 import { calculateMetrics, processSongsData, fetchArtistData } from './services/api';
+import { getArtistImage } from './services/imageService'; // Import the new service
 
 // Components
 import { ArtistHeader } from './components/header/ArtistHeader';
@@ -63,11 +64,13 @@ function App() {
     
     const metrics = calculateMetrics(artistData.name, allArtistsData);
     const processedSongs = processSongsData(artistData.songs, artistData.name);
+    const artistImage = getArtistImage(artistData.name);
 
     return (
       <>
         <ArtistHeader
           artistName={artistData.name}
+          artistImage={artistImage}
           metrics={metrics}
           selectedArtist={selectedArtist}
           availableArtists={AVAILABLE_ARTISTS}
