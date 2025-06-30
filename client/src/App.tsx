@@ -12,10 +12,11 @@ import { calculateMetrics, processSongsData, fetchArtistData } from './services/
 import { ArtistHeader } from './components/header/ArtistHeader';
 import { SongsList } from './components/songs/SongsList';
 import { PersonalSongsDashboard } from './components/dashboard/PersonalSongsDashboard';
+import { PersonalRankingDashboard } from './components/dashboard/PersonalRankingDashboard'; // Import the new component
 import { AVAILABLE_ARTISTS } from './components/common/Constants';
 import type { ArtistData } from './types';
 
-type DashboardView = 'artist' | 'personal';
+type DashboardView = 'artist' | 'personal' | 'personal-ranking'; // Add 'personal-ranking'
 
 function App() {
   const [selectedArtist, setSelectedArtist] = useState(AVAILABLE_ARTISTS[0]);
@@ -72,6 +73,19 @@ function App() {
     );
   }
 
+  const renderDashboardContent = () => {
+    switch (dashboardView) {
+      case 'artist':
+        return renderArtistDashboard();
+      case 'personal':
+        return <PersonalSongsDashboard allArtistsData={allArtistsData} />;
+      case 'personal-ranking':
+        return <PersonalRankingDashboard />;
+      default:
+        return renderArtistDashboard();
+    }
+  }
+
   // Combined loading and error states
   if (allArtistsLoading) {
     return <div className="loading">Loading...</div>;
@@ -96,13 +110,15 @@ function App() {
         >
           Personal Most Listened
         </button>
+        <button 
+          className={dashboardView === 'personal-ranking' ? 'active' : ''}
+          onClick={() => setDashboardView('personal-ranking')}
+        >
+          Personal Ranking
+        </button>
       </div>
       
-      {dashboardView === 'artist' ? (
-        renderArtistDashboard()
-      ) : (
-        <PersonalSongsDashboard allArtistsData={allArtistsData} />
-      )}
+      {renderDashboardContent()}
     </div>
   );
 }

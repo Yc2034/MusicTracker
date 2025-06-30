@@ -6,6 +6,7 @@
 @import './styles/components/ArtistHeader.css';
 @import './styles/components/SongsList.css';
 @import './styles/components/PersonalSongsDashboard.css';
+@import './styles/components/PersonalRankingDashboard.css'; /* Import new CSS */
 @import './styles/utilities/responsive.css';
 
 /* Main Dashboard Layout */
@@ -30,17 +31,18 @@
   color: white;
   cursor: pointer;
   transition: background-color 0.3s;
+  border-left: none;
 }
 
 .dashboard-toggle button:first-child {
   border-top-left-radius: var(--radius-lg);
   border-bottom-left-radius: var(--radius-lg);
+  border-left: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 .dashboard-toggle button:last-child {
   border-top-right-radius: var(--radius-lg);
   border-bottom-right-radius: var(--radius-lg);
-  border-left: none;
 }
 
 .dashboard-toggle button.active {
