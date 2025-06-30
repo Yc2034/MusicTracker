@@ -53,4 +53,12 @@ TODO
 
 根据学的threejs一点点改进现有的component
 
+目前发现最大的问题就是不平衡
+比如 韩语歌
+中文歌
+在spotify之前出现的歌曲
+需要一个多维度的评价来中和ranking
+
+后面的feature可以偏向专辑specific
+
 
