@@ -10,26 +10,9 @@
   border-radius: var(--radius-2xl);
   padding: var(--spacing-2xl);
   margin-bottom: var(--spacing-xl);
-}
-
-.artist-selector {
-  position: absolute;
-  top: var(--spacing-lg);
-  right: var(--spacing-lg);
-}
-
-.artist-selector select {
-  background: rgba(255, 255, 255, 0.2);
-  color: white;
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  border-radius: var(--radius-md);
-  padding: var(--spacing-md) 16px;
-  font-size: 14px;
-}
-
-.artist-selector select option {
-  background: #1a1a1a;
-  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .artist-name {
@@ -57,4 +40,19 @@
   padding: var(--spacing-md) 16px;
   border-radius: var(--radius-2xl);
   font-weight: bold;
+}
+
+.change-artist-btn {
+  background: var(--primary-orange);
+  color: white;
+  border: none;
+  padding: var(--spacing-md) var(--spacing-lg);
+  border-radius: var(--radius-lg);
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color var(--transition-fast);
+}
+
+.change-artist-btn:hover {
+  background: #e66a15;
 }

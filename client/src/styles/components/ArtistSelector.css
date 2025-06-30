@@ -1,0 +1,55 @@
+/* src/styles/components/ArtistSelector.css */
+
+.artist-selector-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  backdrop-filter: blur(10px);
+}
+
+.artist-selector-content {
+  background: var(--background-card);
+  padding: var(--spacing-xl);
+  border-radius: var(--radius-2xl);
+  width: 90%;
+  max-width: 600px;
+  text-align: center;
+}
+
+.artist-selector-title {
+  font-size: var(--font-size-2xl);
+  font-weight: bold;
+  margin-bottom: var(--spacing-lg);
+}
+
+.artist-selector-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--spacing-md);
+}
+
+.artist-card {
+  background: rgba(255, 255, 255, 0.1);
+  padding: var(--spacing-lg);
+  border-radius: var(--radius-lg);
+  cursor: pointer;
+  transition: background-color var(--transition-fast);
+  font-size: var(--font-size-md);
+  font-weight: 500;
+}
+
+.artist-card:hover {
+  background: var(--primary-purple);
+}
+
+.artist-card.selected {
+  background: var(--primary-orange);
+  font-weight: bold;
+}

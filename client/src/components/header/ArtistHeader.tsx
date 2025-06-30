@@ -1,5 +1,5 @@
 // src/components/header/ArtistHeader.tsx
-import React from 'react';
+import React, { useState } from 'react';
 import type { ArtistMetrics } from '../../types';
 import { ArtistSelector } from './ArtistSelector';
 import { formatWithCommas } from '../../utils/formatters';
@@ -19,23 +19,34 @@ export const ArtistHeader: React.FC<ArtistHeaderProps> = ({
   availableArtists,
   onArtistChange
 }) => {
-  return (
-    <div className="artist-header">
-      <div className="artist-info">
-        <h1 className="artist-name">{artistName.toUpperCase()}</h1>
+  const [isSelectorOpen, setIsSelectorOpen] = useState(false);
 
-        <div className="chart-positions">
-          <span className="chart-position">
-            No.{metrics.chartPosition} in personal live ({formatWithCommas(metrics.totalStreams)} streams)
-          </span>
+  return (
+    <>
+      <div className="artist-header">
+        <div className="artist-info">
+          <h1 className="artist-name">{artistName.toUpperCase()}</h1>
+
+          <div className="chart-positions">
+            <span className="chart-position">
+              No.{metrics.chartPosition} in personal live ({formatWithCommas(metrics.totalStreams)} streams)
+            </span>
+          </div>
         </div>
+        
+        <button className="change-artist-btn" onClick={() => setIsSelectorOpen(true)}>
+          Change Artist
+        </button>
       </div>
-      
-      <ArtistSelector
-        selectedArtist={selectedArtist}
-        availableArtists={availableArtists}
-        onArtistChange={onArtistChange}
-      />
-    </div>
+
+      {isSelectorOpen && (
+        <ArtistSelector
+          selectedArtist={selectedArtist}
+          availableArtists={availableArtists}
+          onArtistChange={onArtistChange}
+          onClose={() => setIsSelectorOpen(false)}
+        />
+      )}
+    </>
   );
 };
