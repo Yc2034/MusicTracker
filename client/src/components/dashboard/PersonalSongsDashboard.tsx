@@ -14,7 +14,9 @@ export const PersonalSongsDashboard: React.FC<PersonalSongsDashboardProps> = ({ 
     processSongsData(artist.songs, artist.name)
   );
 
-  const sortedSongs = allSongs.sort((a, b) => b.currentStreams - a.currentStreams);
+  const songsSeenLive = allSongs.filter(song => song.live_event_date);
+
+  const sortedSongs = songsSeenLive.sort((a, b) => b.currentStreams - a.currentStreams);
 
   const top50Songs = sortedSongs.slice(0, 50);
 
