@@ -41,24 +41,13 @@ npm run dev
 
 
 #### 2025-06-25 最基本的功能思路都实现了
-TODO
-学一下 react-three-fiber
-普信ai css一拖
+#### 2025-06-30 功能完毕，剩下数据填鸭
 
-接下来三大部分
-1. 数据库填鸭 -- continue work
-
-新功能TO DO
-1. 展示一下是否已喜欢这个 - threejs
-
-根据学的threejs一点点改进现有的component
 
 目前发现最大的问题就是不平衡
 比如 韩语歌
 中文歌
 在spotify之前出现的歌曲
 需要一个多维度的评价来中和ranking
-
-后面的feature可以偏向专辑specific
 
 

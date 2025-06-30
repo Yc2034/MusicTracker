@@ -30,10 +30,13 @@
   padding: var(--spacing-lg);
   margin-bottom: var(--spacing-md);
   transition: background-color var(--transition-fast);
+  cursor: pointer; /* Add cursor pointer */
 }
 
-.ranking-list-item:hover {
+.ranking-list-item:hover,
+.ranking-list-item:focus {
   background: rgba(255, 255, 255, 0.1);
+  outline: none;
 }
 
 .ranking-number {

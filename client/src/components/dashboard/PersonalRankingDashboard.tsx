@@ -3,13 +3,23 @@ import React from 'react';
 import { PERSONAL_RANKING } from '../common/Constants';
 import '../../styles/components/PersonalRankingDashboard.css';
 
-export const PersonalRankingDashboard: React.FC = () => {
+interface PersonalRankingDashboardProps {
+  onArtistSelect: (artistName: string) => void;
+}
+
+export const PersonalRankingDashboard: React.FC<PersonalRankingDashboardProps> = ({ onArtistSelect }) => {
   return (
     <div className="personal-ranking-dashboard">
       <h1 className="personal-ranking-title">My Personal Artist Ranking</h1>
       <ol className="personal-ranking-list">
         {PERSONAL_RANKING.map((artist, index) => (
-          <li key={index} className="ranking-list-item">
+          <li 
+            key={index} 
+            className="ranking-list-item"
+            onClick={() => onArtistSelect(artist)}
+            tabIndex={0}
+            onKeyPress={(e) => e.key === 'Enter' && onArtistSelect(artist)}
+          >
             <span className="ranking-number">{index + 1}</span>
             <span className="ranking-artist-name">{artist}</span>
           </li>

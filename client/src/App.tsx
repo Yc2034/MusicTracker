@@ -12,11 +12,11 @@ import { calculateMetrics, processSongsData, fetchArtistData } from './services/
 import { ArtistHeader } from './components/header/ArtistHeader';
 import { SongsList } from './components/songs/SongsList';
 import { PersonalSongsDashboard } from './components/dashboard/PersonalSongsDashboard';
-import { PersonalRankingDashboard } from './components/dashboard/PersonalRankingDashboard'; // Import the new component
+import { PersonalRankingDashboard } from './components/dashboard/PersonalRankingDashboard';
 import { AVAILABLE_ARTISTS } from './components/common/Constants';
 import type { ArtistData } from './types';
 
-type DashboardView = 'artist' | 'personal' | 'personal-ranking'; // Add 'personal-ranking'
+type DashboardView = 'artist' | 'personal' | 'personal-ranking';
 
 function App() {
   const [selectedArtist, setSelectedArtist] = useState(AVAILABLE_ARTISTS[0]);
@@ -51,6 +51,11 @@ function App() {
     setSelectedArtist(artist);
   };
 
+  const handleSelectArtistFromRanking = (artistName: string) => {
+    setSelectedArtist(artistName);
+    setDashboardView('artist');
+  };
+
   const renderArtistDashboard = () => {
     if (artistLoading) return <div className="loading">Loading artist data...</div>;
     if (artistError) return <div className="error">{artistError}</div>;
@@ -80,7 +85,7 @@ function App() {
       case 'personal':
         return <PersonalSongsDashboard allArtistsData={allArtistsData} />;
       case 'personal-ranking':
-        return <PersonalRankingDashboard />;
+        return <PersonalRankingDashboard onArtistSelect={handleSelectArtistFromRanking} />;
       default:
         return renderArtistDashboard();
     }
