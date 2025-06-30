@@ -61,15 +61,23 @@ export const calculateMetrics = (
  * Process songs data with mock analytics
  */
 export const processSongsData = (songs: Song[], artistName: string): ProcessedSong[] => {
-  return songs.map((song, index) => {
-    const currentStreams = song.stream_records[0] ? parseInt(song.stream_records[0].streams) : 0;
-    
-    return {
-      ...song,
-      rank: index + 1,
-      currentStreams,
-      rankChange: Math.random() > 0.5 ? 'up' : Math.random() > 0.5 ? 'down' : 'same',
-      artistName,
-    };
-  });
+  const sortedSongs = songs
+    .map(song => {
+      const currentStreams = song.stream_records[0] ? parseInt(song.stream_records[0].streams) : 0;
+      return {
+        ...song,
+        currentStreams,
+        artistName,
+        // Default rank and rankChange, will be updated after sorting
+        rank: 0,
+        rankChange: 'same' as const,
+      };
+    })
+    .sort((a, b) => b.currentStreams - a.currentStreams);
+
+  return sortedSongs.map((song, index) => ({
+    ...song,
+    rank: index + 1,
+    rankChange: Math.random() > 0.5 ? 'up' : Math.random() > 0.5 ? 'down' : 'same',
+  }));
 };
