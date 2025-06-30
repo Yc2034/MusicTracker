@@ -8,6 +8,7 @@
 @import './styles/components/PersonalSongsDashboard.css';
 @import './styles/components/PersonalRankingDashboard.css'; /* Import new CSS */
 @import './styles/components/ArtistSelector.css'; 
+@import './styles/components/PersonalRankingDashboard.css'; 
 @import './styles/utilities/responsive.css';
 
 /* Main Dashboard Layout */

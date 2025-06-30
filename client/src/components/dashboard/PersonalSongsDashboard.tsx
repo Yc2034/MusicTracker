@@ -1,8 +1,9 @@
 // src/components/dashboard/PersonalSongsDashboard.tsx
 import React from 'react';
 import type { ArtistData, ProcessedSong } from '../../types';
-import { processSongsData } from '../../services/api';
+import { processSongsData, getTopArtistsBySongCount } from '../../services/api';
 import { SongListItem } from '../songs/SongListItem';
+import { TopArtists } from './TopArtists';
 import '../../styles/components/PersonalSongsDashboard.css';
 
 interface PersonalSongsDashboardProps {
@@ -10,7 +11,7 @@ interface PersonalSongsDashboardProps {
 }
 
 export const PersonalSongsDashboard: React.FC<PersonalSongsDashboardProps> = ({ allArtistsData }) => {
-  const allSongs: ProcessedSong[] = allArtistsData.flatMap(artist => 
+  const allSongs: ProcessedSong[] = allArtistsData.flatMap(artist =>
     processSongsData(artist.songs, artist.name)
   );
 
@@ -20,8 +21,11 @@ export const PersonalSongsDashboard: React.FC<PersonalSongsDashboardProps> = ({ 
 
   const top50Songs = sortedSongs.slice(0, 50);
 
+  const topArtists = getTopArtistsBySongCount(allArtistsData);
+
   return (
     <div className="personal-songs-dashboard">
+      <TopArtists topArtists={topArtists} />
       <h1 className="personal-songs-title">Top Streamed Songs I've Seen Live</h1>
       <div className="songs-list">
         {top50Songs.map((song, index) => (

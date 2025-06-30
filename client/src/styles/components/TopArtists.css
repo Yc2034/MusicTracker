@@ -1,0 +1,53 @@
+/* src/styles/components/TopArtists.css */
+
+.top-artists-container {
+  background: var(--background-card);
+  border-radius: var(--radius-2xl);
+  padding: var(--spacing-xl);
+  margin-bottom: var(--spacing-xl);
+  backdrop-filter: blur(10px);
+}
+
+.top-artists-title {
+  font-size: var(--font-size-2xl);
+  font-weight: bold;
+  margin-bottom: var(--spacing-lg);
+  text-align: center;
+}
+
+.top-artists-list {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--spacing-md);
+}
+
+.top-artist-item {
+  display: grid;
+  grid-template-columns: 50px 1fr;
+  gap: var(--spacing-lg);
+  align-items: center;
+  padding: var(--spacing-md);
+  border-radius: var(--radius-lg);
+  transition: background-color var(--transition-fast);
+}
+
+.top-artist-item:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.top-artist-rank {
+  font-size: var(--font-size-lg);
+  font-weight: bold;
+  color: var(--text-secondary);
+  text-align: center;
+}
+
+.top-artist-name {
+  font-size: var(--font-size-md);
+  font-weight: 600;
+}
+
+.top-artist-song-count {
+  font-size: var(--font-size-sm);
+  color: var(--text-secondary);
+}

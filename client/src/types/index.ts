@@ -38,3 +38,8 @@ export interface ArtistMetrics {
 }
 
 export type RankChangeType = 'up' | 'down' | 'same';
+
+export interface ArtistSongCount {
+  artistName: string;
+  songCount: number;
+}
