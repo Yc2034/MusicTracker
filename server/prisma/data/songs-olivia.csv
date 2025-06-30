@@ -1,3 +1,9 @@
 artist_name,song_title,streams,record_date,is_liked,release_date,live_event_date,live_event_location
 Olivia Rodrigo,drivers license,2527807470,2025-06-20,true,2021-01-08,2025-06-07,"Govball 2025, New York"
-Olivia Rodrigo,good 4 u,2450123456,2025-06-20,true,2021-05-14,2025-06-07,"Govball 2025, New York"
+Olivia Rodrigo,good 4 u,2450123456,2025-06-20,true,2021-05-14,,
+Olivia Rodrigo,deja vu,1969453380,2025-06-30,true,2021-05-14,2025-06-07,"Govball 2025, New York"
+Olivia Rodrigo,traitor,1972521617,2025-06-30,true,2021-05-21,2025-06-07,"Govball 2025, New York"
+Olivia Rodrigo,happier,1417713278,2025-06-30,true,2021-05-21,2025-06-07,"Govball 2025, New York"
+Olivia Rodrigo,vampire,1385086528,2025-06-30,true,2023-09-08,2025-06-07,"Govball 2025, New York"
+Olivia Rodrigo,obsessed,286841695,2025-06-30,false,2024-03-22,2025-06-07,"Govball 2025, New York"
+Olivia Rodrigo,pretty isn't pretty,185785835,2025-06-30,false,2023-09-08,2025-06-07,"Govball 2025, New York"

@@ -4,6 +4,7 @@ export const AVAILABLE_ARTISTS = [
     'The Weeknd', 
     'Olivia Rodrigo', 
     'Carly Rae Jepsen',
+    'Conan Gray',
     'Stephen Sanchez',
 ];
 
