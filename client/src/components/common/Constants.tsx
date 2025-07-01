@@ -7,6 +7,8 @@ export const AVAILABLE_ARTISTS = [
     'Carly Rae Jepsen',
     'Conan Gray',
     'Stephen Sanchez',
+    'Dominic Fike',
+    'FLO',
 ];
 
 

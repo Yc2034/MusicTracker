@@ -10,3 +10,6 @@ good 4 u 听了只是那个时候已经人离场了
 
 4. Sabrina Carpenter
 算是抄底成功了，只录了五首，其实当时应该多录制一点的，taste也听了现场
+
+5. Carly Rae Jepsen
+就是历史太久了，吃了没spotify的亏，早年成名曲比如this kiss播放量已经很低了
