@@ -14,7 +14,7 @@ export const SongItem: React.FC<SongItemProps> = ({ song }) => {
     <div className={songItemClasses}>
       <div className="song-rank">
         <span className="rank-number">{song.rank}</span>
-        <RankIndicator change={song.rankChange} />
+        <RankIndicator is_liked={song.is_liked} />
         <div className="song-title-container">
             <span className="song-title">{song.title}</span>
             <div className="song-meta">

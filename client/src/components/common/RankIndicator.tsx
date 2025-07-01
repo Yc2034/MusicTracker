@@ -1,23 +1,19 @@
 // src/components/common/RankIndicator.tsx
 import React from 'react';
-import type { RankChangeType } from '../../types';
 
 interface RankIndicatorProps {
-  change: RankChangeType;
+  is_liked: boolean;
 }
 
-export const RankIndicator: React.FC<RankIndicatorProps> = ({ change }) => {
+export const RankIndicator: React.FC<RankIndicatorProps> = ({ is_liked }) => {
   const getSymbol = () => {
-    switch (change) {
-      case 'up': return '▲';
-      case 'down': return '▼';
-      case 'same': return '=';
-      default: return '=';
-    }
+    return is_liked ? '❤️' : '🎶';
   };
 
+  const likeStatusClass = is_liked ? 'liked' : 'not-liked';
+
   return (
-    <span className={`rank-indicator ${change}`}>
+    <span className={`rank-indicator ${likeStatusClass}`}>
       {getSymbol()}
     </span>
   );

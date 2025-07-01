@@ -20,19 +20,15 @@
 
 /* Rank Indicators */
 .rank-indicator {
-  font-size: 0.8rem;
+  font-size: 1rem; /* Increased size for better visibility */
 }
 
-.rank-indicator.up {
-  color: var(--success-green);
+.rank-indicator.liked {
+  color: var(--error-red); /* Red color for the heart */
 }
 
-.rank-indicator.down {
-  color: var(--error-red);
-}
-
-.rank-indicator.same {
-  color: #6b7280;
+.rank-indicator.not-liked {
+  color: var(--text-secondary); /* A neutral color for the music note */
 }
 
 /* Metric Cards */
