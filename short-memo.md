@@ -13,3 +13,10 @@ good 4 u 听了只是那个时候已经人离场了
 
 5. Carly Rae Jepsen
 就是历史太久了，吃了没spotify的亏，早年成名曲比如this kiss播放量已经很低了
+
+
+发现我这个和chartmetric所做的事情没差太多，哈哈哈哈，免费做了个数据收集
+
+https://soridata.com/artists/IU.html
+
+这也是个好的平台
