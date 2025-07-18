@@ -47,7 +47,19 @@
   font-weight: 600;
 }
 
+
+.stream-grade-1 { color: #8B5CF6; }  /* Violet */
+.stream-grade-2 { color: #6366F1; }  /* Indigo */
+.stream-grade-3 { color: #3B82F6; }  /* Blue */
+.stream-grade-4 { color: #22C55E; }  /* Green */
+.stream-grade-5 { color: #EAB308; }  /* Yellow */
+.stream-grade-6 { color: #F97316; }  /* Orange */
+.stream-grade-7 { color: #EF4444; }  /* Red */
+
 .top-artist-song-count {
-  font-size: var(--font-size-sm);
-  color: var(--text-secondary);
+  font-weight: 600;
+  font-family: 'Roboto Mono', monospace;
+  text-shadow: 0 0 2px rgba(0, 0, 0, 0.15);
+  min-width: 130px;
+  text-align: right;
 }

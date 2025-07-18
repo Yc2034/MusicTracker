@@ -8,6 +8,17 @@ interface TopStreamsByArtistProps {
   topArtists: ArtistStreamCount[];
 }
 
+const getStreamColorClass = (streams: number) => {
+  if (streams > 20_000_000_000) return 'stream-grade-7';
+  if (streams > 10_000_000_000) return 'stream-grade-6';
+  if (streams > 500_000_000) return 'stream-grade-5';
+  if (streams > 200_000_000) return 'stream-grade-4';
+  if (streams > 100_000_000) return 'stream-grade-3';
+  if (streams > 50_000_000) return 'stream-grade-2';
+  return 'stream-grade-1';
+};
+
+
 export const TopStreamsByArtist: React.FC<TopStreamsByArtistProps> = ({ topArtists }) => {
   return (
     <div className="top-artists-container">
@@ -18,7 +29,9 @@ export const TopStreamsByArtist: React.FC<TopStreamsByArtistProps> = ({ topArtis
             <div className="top-artist-rank">{index + 1}</div>
             <div className="top-artist-details">
               <div className="top-artist-name">{artist.artistName}</div>
-              <div className="top-artist-song-count">{formatWithCommas(artist.totalStreams)} streams</div>
+              <div className={`top-artist-song-count ${getStreamColorClass(artist.totalStreams)}`}>
+                {formatWithCommas(artist.totalStreams)} streams
+              </div>
             </div>
           </div>
         ))}
