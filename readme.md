@@ -45,3 +45,19 @@ npm run dev
 #### 2025-07-01 挺好玩的搞了个vibe coding，但是核心矛盾解决不了，spotify不是ground truth，中日韩无法与英语流行同场竞技
 #### 历时两周的vibe coding项目就此宣告解散 最大的好处就是把之前的一个单独列表扩展成了一个带一定交互的网站
 
+
+#### 2025-07-17
+How to do 2D threejs
+Creating Complex Shapes with SVG 🎨
+Manually typing coordinates for curves is very difficult. The best way to create custom shapes is to draw them in a vector graphics editor and then convert them to Three.js code. The standard format for this is SVG (Scalable Vector Graphics).
+
+Here’s a common workflow:
+
+Draw Your Shape: Use a free vector editor like Figma (web-based) or Inkscape (desktop) to draw your desired shape with the pen tool.
+
+Export as SVG: Save or export your drawing as an .svg file.
+
+Use SVGLoader: Three.js has a built-in SVGLoader that can read your SVG file directly and create the shapes for you. This is the most powerful and recommended method.
+
+SVGLoader as shown previously, it only extracts the shape data (the geometry) from the SVG file. Any fill or stroke colors defined within the SVG file itself are ignored by this process.
+

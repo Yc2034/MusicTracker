@@ -1,0 +1,28 @@
+<svg width="200" height="200" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+  <!-- Soft rounded star shape -->
+  <path d="M100,15 
+           C105,40 120,50 145,45 
+           C140,60 150,75 170,80 
+           C150,90 140,110 155,135 
+           C130,125 115,130 100,155 
+           C85,130 70,125 45,135 
+           C60,110 50,90 30,80 
+           C50,75 60,60 55,45 
+           C80,50 95,40 100,15 Z" fill="#FFE066" stroke="#E6B800" stroke-width="3"></path>
+
+  <!-- Eyes (anime style) -->
+  <ellipse cx="75" cy="100" rx="8" ry="12" fill="#333"></ellipse>
+  <circle cx="72" cy="95" r="3" fill="white"></circle>
+  <circle cx="76" cy="100" r="1.5" fill="white"></circle>
+
+  <ellipse cx="125" cy="100" rx="8" ry="12" fill="#333"></ellipse>
+  <circle cx="122" cy="95" r="3" fill="white"></circle>
+  <circle cx="126" cy="100" r="1.5" fill="white"></circle>
+
+  <!-- Cute smile -->
+  <path d="M80 125 Q100 140 120 125" stroke="#333" stroke-width="3" fill="none" stroke-linecap="round"></path>
+
+  <!-- Blush -->
+  <ellipse cx="60" cy="115" rx="6" ry="4" fill="#FFB6C1"></ellipse>
+  <ellipse cx="140" cy="115" rx="6" ry="4" fill="#FFB6C1"></ellipse>
+</svg>
