@@ -14,7 +14,7 @@ const getStreamColorClass = (streams: number) => {
   if (streams > 5_000_000_000) return 'stream-grade-5';
   if (streams > 2_000_000_000) return 'stream-grade-4';
   if (streams > 1_000_000_000) return 'stream-grade-3';
-  if (streams > 500_000_000) return 'stream-grade-2';
+  if (streams > 100_000_000) return 'stream-grade-2';
   return 'stream-grade-1';
 };
 

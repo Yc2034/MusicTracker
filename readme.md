@@ -3,7 +3,7 @@
 
 music tracker
 使用kworb网站作为数据源头 https://kworb.net/
-
+setfm 作为现场查询
 
 
 ├── client/      # React + Vite 前端

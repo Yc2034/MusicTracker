@@ -48,11 +48,11 @@
 }
 
 
-.stream-grade-1 { color: #8B5CF6; }  /* Violet */
-.stream-grade-2 { color: #6366F1; }  /* Indigo */
+.stream-grade-1 { color: #22C55E; }  /* Green */ 
+.stream-grade-2 { color: #EAB308; }  /* Yellow */
 .stream-grade-3 { color: #3B82F6; }  /* Blue */
-.stream-grade-4 { color: #22C55E; }  /* Green */
-.stream-grade-5 { color: #EAB308; }  /* Yellow */
+.stream-grade-4 { color: #8B5CF6; }  /* Violet */
+.stream-grade-5 { color: #6366F1; }  /* Indigo */
 .stream-grade-6 { color: #F97316; }  /* Orange */
 .stream-grade-7 { color: #EF4444; }  /* Red */
 

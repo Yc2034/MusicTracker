@@ -31,7 +31,6 @@ IU
 G.E.M JJ Lin Zhou Shen
 
 music fest
-tyla
 benson boone
 
 concert
