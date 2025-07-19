@@ -109,5 +109,6 @@ export const getTopArtistsByStreamCount = (allArtistsData: ArtistData[]): Artist
     };
   });
 
-  return artistStreamCounts.sort((a, b) => b.totalStreams - a.totalStreams).slice(0, 10);
+  //top 15 artists
+  return artistStreamCounts.sort((a, b) => b.totalStreams - a.totalStreams).slice(0, 15);
 };
