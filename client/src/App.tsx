@@ -86,7 +86,7 @@ function App() {
       case 'artist':
         return renderArtistDashboard();
       case 'personal':
-        return <PersonalSongsDashboard allArtistsData={allArtistsData} />;
+        return <PersonalSongsDashboard allArtistsData={allArtistsData} onArtistSelect={handleSelectArtistFromRanking} />;
       case 'personal-ranking':
         return <PersonalRankingDashboard onArtistSelect={handleSelectArtistFromRanking} />;
       default:
