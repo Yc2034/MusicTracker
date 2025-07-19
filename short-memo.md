@@ -20,3 +20,20 @@ good 4 u 听了只是那个时候已经人离场了
 https://soridata.com/artists/IU.html
 
 这也是个好的平台
+
+// TODO. need redesign
+Kpop/Jpop
+kissoflife yoasobi aespa everglow
+wheein ive g-idle itzy 
+IU
+
+中文
+G.E.M JJ Lin Zhou Shen
+
+music fest
+tyla
+benson boone
+
+concert
+billie eilish 
+taylor swift

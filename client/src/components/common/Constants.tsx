@@ -6,6 +6,7 @@ export const AVAILABLE_ARTISTS = [
     'Olivia Rodrigo', 
     'Carly Rae Jepsen',
     'Glass Animals',
+    'Gracie Abrams',
     'SZA',
     'Conan Gray',
     'Raye',
