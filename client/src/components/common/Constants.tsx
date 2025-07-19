@@ -5,6 +5,7 @@ export const AVAILABLE_ARTISTS = [
     'Sabrina Carpenter',
     'Olivia Rodrigo', 
     'Carly Rae Jepsen',
+    'Glass Animals',
     'SZA',
     'Conan Gray',
     'Stephen Sanchez',
