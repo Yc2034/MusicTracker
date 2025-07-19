@@ -1,6 +1,7 @@
 // Constants
 export const AVAILABLE_ARTISTS = [
     'Post Malone',
+    'Benson Boone',
     'The Weeknd', 
     'Sabrina Carpenter',
     'Olivia Rodrigo', 

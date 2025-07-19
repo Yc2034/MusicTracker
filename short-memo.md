@@ -30,9 +30,6 @@ IU
 中文
 G.E.M JJ Lin Zhou Shen
 
-music fest
-benson boone
-
 concert
 billie eilish 
 taylor swift
