@@ -22,6 +22,8 @@ export const PersonalRankingDashboard: React.FC<PersonalRankingDashboardProps> =
             <motion.li
               key={index}
               className="ranking-list-item"
+              // Add this style to pass the index to CSS
+              style={{ '--i': index } as React.CSSProperties}
               onClick={() => onArtistSelect(artist)}
               tabIndex={0}
               onKeyPress={(e) => e.key === 'Enter' && onArtistSelect(artist)}

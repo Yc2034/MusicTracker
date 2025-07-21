@@ -39,29 +39,48 @@
   padding-left: 0;
   max-width: 600px;
   margin: 0 auto;
+  --base-hue: 260; /* A deeper violet to start */
 }
 
 .ranking-list-item {
   display: flex;
   align-items: center;
-  background: rgba(255, 255, 255, 0.05);
   border-radius: var(--radius-lg);
   padding: var(--spacing-lg);
   margin-bottom: var(--spacing-md);
-  transition: background-color var(--transition-fast);
+  transition: background-color var(--transition-fast), transform 0.2s ease;
   cursor: pointer;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: white;
+
+  /* --- NEW Fading Gradient Color Style --- */
+  background: hsl(
+    /* Hue: Still shifts gradually for color variety */
+    calc(var(--base-hue) + var(--i) * 4),
+    /* Saturation: Starts at 55% and fades by 1% for each item */
+    calc(75% - var(--i) * 1%),
+    /* Lightness: Starts at 35% and gets slightly lighter for each item */
+    calc(35% + var(--i) * 0.5%)
+  );
 }
 
 .ranking-list-item:hover,
 .ranking-list-item:focus {
-  background: rgba(255, 255, 255, 0.1);
+  /* On hover, slightly increase lightness and saturation for a nice glow */
+  background: hsl(
+    calc(var(--base-hue) + var(--i) * 4),
+    calc(65% - var(--i) * 1%),
+    calc(45% + var(--i) * 0.5%)
+  );
+  transform: scale(1.02);
   outline: none;
 }
 
 .ranking-number {
   font-size: var(--font-size-2xl);
   font-weight: bold;
-  color: var(--primary-purple);
+  color: rgba(255, 255, 255, 0.8);
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
   margin-right: var(--spacing-lg);
   min-width: 40px;
   text-align: center;
