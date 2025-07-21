@@ -1,5 +1,6 @@
 // src/components/dashboard/PersonalRankingDashboard.tsx
 import React from 'react';
+import { motion } from 'framer-motion';
 import { PERSONAL_RANKING } from '../common/Constants';
 import { Stars } from '../common/Stars';
 import '../../styles/components/PersonalRankingDashboard.css';
@@ -18,16 +19,19 @@ export const PersonalRankingDashboard: React.FC<PersonalRankingDashboardProps> =
         <h1 className="personal-ranking-title">My Personal Artist Ranking</h1>
         <ol className="personal-ranking-list">
           {PERSONAL_RANKING.map((artist, index) => (
-            <li
+            <motion.li
               key={index}
               className="ranking-list-item"
               onClick={() => onArtistSelect(artist)}
               tabIndex={0}
               onKeyPress={(e) => e.key === 'Enter' && onArtistSelect(artist)}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              transition={{ type: 'spring', stiffness: 400, damping: 17 }}
             >
               <span className="ranking-number">{index + 1}</span>
               <span className="ranking-artist-name">{artist}</span>
-            </li>
+            </motion.li>
           ))}
         </ol>
       </div>

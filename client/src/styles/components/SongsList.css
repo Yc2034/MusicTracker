@@ -25,7 +25,7 @@
   border-radius: var(--radius-lg);
   padding: var(--spacing-md);
   display: grid;
-  grid-template-columns: 2fr 1fr 1.5fr;
+  grid-template-columns: 2fr 1fr; /* Simplified grid */
   gap: var(--spacing-md);
   align-items: center;
   transition: transform var(--transition-fast);
@@ -53,10 +53,26 @@
   min-width: 30px;
 }
 
+/* --- NEW & IMPROVED STYLES --- */
+.song-title-container {
+  display: flex;
+  flex-direction: column;
+}
+
 .song-title {
   font-weight: 600;
-  flex: 1;
 }
+
+.song-meta {
+  font-size: 0.8rem;
+  opacity: 0.7;
+  display: flex;
+  flex-direction: column; /* Stacks meta items vertically */
+  gap: 4px; /* Adds a small space between items */
+  margin-top: 5px;
+}
+/* --- END OF NEW STYLES --- */
+
 
 .song-streams {
   text-align: right;
