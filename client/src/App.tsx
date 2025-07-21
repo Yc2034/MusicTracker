@@ -7,7 +7,7 @@ import { useArtistData } from './hooks/useArtistData';
 
 // Services
 import { calculateMetrics, processSongsData, fetchArtistData } from './services/api';
-import { getArtistImage } from './services/imageService'; // Import the new service
+import { getArtistImage } from './services/imageService';
 
 // Components
 import { ArtistHeader } from './components/header/ArtistHeader';
@@ -28,6 +28,7 @@ function App() {
   const [allArtistsError, setAllArtistsError] = useState<string | null>(null);
 
   const [dashboardView, setDashboardView] = useState<DashboardView>('artist');
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   useEffect(() => {
     const fetchAllData = async () => {
@@ -40,7 +41,6 @@ function App() {
         setAllArtistsData(data);
       } catch (err: any) {
         setAllArtistsError(err.message);
-        console.error("Failed to fetch all artists data", err);
       } finally {
         setAllArtistsLoading(false);
       }
@@ -55,6 +55,11 @@ function App() {
   const handleSelectArtistFromRanking = (artistName: string) => {
     setSelectedArtist(artistName);
     setDashboardView('artist');
+  };
+  
+  const handleNavClick = (view: DashboardView) => {
+    setDashboardView(view);
+    // setIsMenuOpen(false); // <-- This line is now removed
   };
 
   const renderArtistDashboard = () => {
@@ -94,7 +99,6 @@ function App() {
     }
   }
 
-  // Combined loading and error states
   if (allArtistsLoading) {
     return <div className="loading">Loading...</div>;
   }
@@ -105,24 +109,29 @@ function App() {
 
   return (
     <div className="dashboard">
-      <div className="dashboard-toggle">
-        <button 
-          className={dashboardView === 'artist' ? 'active' : ''}
-          onClick={() => setDashboardView('artist')}
-        >
-          Artist Dashboard
-        </button>
-        <button 
-          className={dashboardView === 'personal' ? 'active' : ''}
-          onClick={() => setDashboardView('personal')}
-        >
-          Personal Most Listened
-        </button>
-        <button 
-          className={dashboardView === 'personal-ranking' ? 'active' : ''}
-          onClick={() => setDashboardView('personal-ranking')}
-        >
-          Personal Ranking
+      <div className="nav-container">
+        <div className={`nav-menu ${isMenuOpen ? 'open' : ''}`}>
+          <button 
+            className={dashboardView === 'artist' ? 'active' : ''}
+            onClick={() => handleNavClick('artist')}
+          >
+            Artist Dashboard
+          </button>
+          <button 
+            className={dashboardView === 'personal' ? 'active' : ''}
+            onClick={() => handleNavClick('personal')}
+          >
+            Personal Most Listened
+          </button>
+          <button 
+            className={dashboardView === 'personal-ranking' ? 'active' : ''}
+            onClick={() => handleNavClick('personal-ranking')}
+          >
+            Personal Ranking
+          </button>
+        </div>
+        <button className="hamburger-menu" onClick={() => setIsMenuOpen(!isMenuOpen)}>
+          ☰
         </button>
       </div>
       

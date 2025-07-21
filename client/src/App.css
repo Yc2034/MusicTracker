@@ -6,9 +6,8 @@
 @import './styles/components/ArtistHeader.css';
 @import './styles/components/SongsList.css';
 @import './styles/components/PersonalSongsDashboard.css';
-@import './styles/components/PersonalRankingDashboard.css'; /* Import new CSS */
-@import './styles/components/ArtistSelector.css';
 @import './styles/components/PersonalRankingDashboard.css';
+@import './styles/components/ArtistSelector.css';
 @import './styles/components/TopStreamsByArtist.css';
 @import './styles/utilities/responsive.css';
 
@@ -20,38 +19,67 @@
   color: white;
 }
 
-.dashboard-toggle {
+/* --- NEW Hamburger Navigation Styles (Right-to-Left) --- */
+.nav-container {
   display: flex;
-  justify-content: center;
+  justify-content: flex-end; /* Align items to the right */
+  align-items: center;
   margin-bottom: var(--spacing-xl);
 }
 
-.dashboard-toggle button {
+.hamburger-menu {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: white;
+  font-size: 1.5rem;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  z-index: 10;
+  border-radius: var(--radius-lg);
+}
+
+.nav-menu {
+  display: flex;
+  flex-direction: row;
+  overflow: hidden;
+  max-width: 0;
+  transition: max-width 0.5s ease-in-out;
+}
+
+.nav-menu.open {
+  max-width: 600px; /* Adjust as needed */
+}
+
+/* Connect hamburger to the menu when open */
+.nav-menu.open + .hamburger-menu {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+.nav-menu button {
   font-size: 1rem;
   padding: 0.8rem 1.5rem;
-  background-color: rgba(255, 255, 255, 0.1);
+  background-color: transparent;
   border: 1px solid rgba(255, 255, 255, 0.2);
   color: white;
   cursor: pointer;
   transition: background-color 0.3s;
-  border-left: none;
+  white-space: nowrap;
+  border-radius: 0;
+  border-right: none;
 }
 
-.dashboard-toggle button:first-child {
+/* Round the left corners of the first button */
+.nav-menu button:first-child {
   border-top-left-radius: var(--radius-lg);
   border-bottom-left-radius: var(--radius-lg);
-  border-left: 1px solid rgba(255, 255, 255, 0.2);
 }
 
-.dashboard-toggle button:last-child {
-  border-top-right-radius: var(--radius-lg);
-  border-bottom-right-radius: var(--radius-lg);
-}
-
-.dashboard-toggle button.active {
+.nav-menu button.active {
   background-color: var(--primary-purple);
 }
 
-.dashboard-toggle button:not(.active):hover {
+.nav-menu button:not(.active):hover {
     background-color: rgba(255, 255, 255, 0.2);
 }
+/* --- END of Hamburger Navigation Styles --- */
