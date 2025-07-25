@@ -6,10 +6,12 @@
   border: 1px solid rgba(255, 255, 255, 0.12);
   backdrop-filter: blur(10px);
   
-  /* Background image properties */
-  background-size: cover;
+  /* Background image properties - this controls how image layout */
+  background-size: contain;
   background-position: center;
+  background-repeat: repeat;
   background-blend-mode: overlay;
+  min-height: 200px;
 
   border-radius: var(--radius-2xl);
   padding: var(--spacing-2xl);
