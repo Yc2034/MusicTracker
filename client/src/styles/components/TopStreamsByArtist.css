@@ -1,15 +1,15 @@
 /* src/styles/components/TopStreamsByArtist.css */
 
 .top-artists-container {
+  position: relative;
   background: var(--background-card);
   border-radius: var(--radius-2xl);
   padding: var(--spacing-xl);
   margin-bottom: var(--spacing-xl);
-  backdrop-filter: blur(10px);
+  overflow: hidden;
   max-width: 1200px;
   margin-left: auto;
   margin-right: auto;
-  margin-bottom: var(--spacing-xl);
 }
 
 .top-artists-title {
@@ -24,6 +24,76 @@
   text-shadow: none;
   padding: var(--spacing-md) 0;
 }
+
+/* --- Podium Styles (Merged) --- */
+.podium-container {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  gap: 10px;
+  min-height: 320px; /* Adjusted height */
+  padding: 20px 0;
+  margin-bottom: var(--spacing-xl);
+}
+
+.podium-spot {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 20px;
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
+  color: white;
+  width: 220px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.podium-spot:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+}
+
+.podium-rank-label {
+  font-size: 3rem;
+  line-height: 1;
+  margin-bottom: 15px;
+}
+
+.podium-artist-name {
+  font-size: 1.3rem;
+  font-weight: 700;
+  margin: 0 0 5px 0;
+  text-align: center;
+}
+
+.podium-artist-streams {
+  font-size: 0.9rem;
+  font-weight: 500;
+  opacity: 0.9;
+  margin: 0;
+}
+
+.gold {
+  background: linear-gradient(45deg, #FFD700, #FFA500);
+  height: 280px;
+  order: 2;
+}
+
+.silver {
+  background: linear-gradient(45deg, #C0C0C0, #A9A9A9);
+  height: 240px;
+  order: 1;
+}
+
+.bronze {
+  background: linear-gradient(45deg, #CD7F32, #A0522D);
+  height: 200px;
+  order: 3;
+}
+/* --- End of Podium Styles --- */
+
 
 .top-artists-list {
   display: grid;
@@ -52,22 +122,6 @@
   height: 100%;
 }
 
-.top-artist-item::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.05) 100%);
-  opacity: 0;
-  transition: opacity 0.3s ease;
-}
-
-.top-artist-item:hover::before {
-  opacity: 1;
-}
-
 .top-artist-item:hover {
   background: rgba(255, 255, 255, 0.15);
   transform: translateY(-2px);
@@ -83,10 +137,6 @@
   background: rgba(255, 255, 255, 0.1);
   border-radius: var(--radius-lg);
   padding: var(--spacing-sm) var(--spacing-md);
-  backdrop-filter: blur(5px);
-  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
-  position: relative;
-  z-index: 1;
 }
 
 .top-artist-details {
@@ -98,49 +148,40 @@
   font-size: var(--font-size-lg);
   font-weight: 600;
   color: rgba(255, 255, 255, 0.95);
-  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
   margin-bottom: var(--spacing-xs);
 }
 
-.stream-grade-1 { color: #22C55E; }  /* Green */ 
-.stream-grade-2 { color: #EAB308; }  /* Yellow */
-.stream-grade-3 { color: #3B82F6; }  /* Blue */
-.stream-grade-4 { color: #8B5CF6; }  /* Violet */
-.stream-grade-5 { color: #6366F1; }  /* Indigo */
-.stream-grade-6 { color: #F97316; }  /* Orange */
-.stream-grade-7 { color: #EF4444; }  /* Red */
+.stream-grade-1 { color: #22C55E; }
+.stream-grade-2 { color: #EAB308; }
+.stream-grade-3 { color: #3B82F6; }
+.stream-grade-4 { color: #8B5CF6; }
+.stream-grade-5 { color: #6366F1; }
+.stream-grade-6 { color: #F97316; }
+.stream-grade-7 { color: #EF4444; }
 
 .top-artist-song-count {
   font-weight: 600;
   font-family: 'Roboto Mono', monospace;
-  text-shadow: 0 0 8px rgba(0, 0, 0, 0.3);
   font-size: var(--font-size-md);
 }
 
 @media (max-width: 768px) {
-  .top-artists-container {
-    padding: var(--spacing-lg) var(--spacing-md);
-  }
-  
-  .top-artists-title {
-    font-size: var(--font-size-2xl);
-  }
-  
   .top-artists-list {
     grid-template-columns: 1fr;
-    gap: var(--spacing-md);
   }
-  
-  .top-artist-item {
-    padding: var(--spacing-md) var(--spacing-lg);
-    gap: var(--spacing-md);
-  }
-  
-  .top-artist-rank {
-    font-size: var(--font-size-lg);
-  }
-  
-  .top-artist-name {
-    font-size: var(--font-size-md);
-  }
+}
+
+.podium-spot {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 20px;
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
+  color: white;
+  width: 220px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer; /* Added this line for visual feedback */
 }
