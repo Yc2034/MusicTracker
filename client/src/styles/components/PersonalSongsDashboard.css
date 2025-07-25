@@ -5,66 +5,164 @@
   border-radius: var(--radius-2xl);
   padding: var(--spacing-xl);
   backdrop-filter: blur(10px);
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
 .personal-songs-title {
   font-size: var(--font-size-3xl);
   font-weight: bold;
-  margin-bottom: var(--spacing-lg);
+  margin-bottom: var(--spacing-xl);
   text-align: center;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: none;
+  padding: var(--spacing-md) 0;
+}
+
+.songs-list {
+  display: grid;
+  gap: var(--spacing-sm);
+  max-width: 900px;
+  margin: 0 auto;
 }
 
 .song-list-item {
   display: grid;
-  grid-template-columns: 50px 1fr auto;
+  grid-template-columns: 60px 1fr auto;
   gap: var(--spacing-lg);
   align-items: center;
-  padding: var(--spacing-md);
-  border-radius: var(--radius-lg);
-  transition: background-color var(--transition-fast);
+  padding: var(--spacing-lg) var(--spacing-xl);
+  border-radius: var(--radius-xl);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(5px);
+  position: relative;
+  overflow: hidden;
+}
+
+.song-list-item::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.05) 100%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.song-list-item:hover::before {
+  opacity: 1;
 }
 
 .song-list-item:hover {
-  background: rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.15);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  border-color: rgba(255, 255, 255, 0.2);
 }
 
 .song-list-item.no-live-event {
-  background: rgba(255, 255, 255, 0.05);
+  background: rgba(255, 255, 255, 0.04);
+  opacity: 0.7;
 }
 
 .song-list-rank {
-  font-size: var(--font-size-lg);
+  font-size: var(--font-size-xl);
   font-weight: bold;
-  color: var(--text-secondary);
+  color: rgba(255, 255, 255, 0.9);
   text-align: center;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-sm) var(--spacing-md);
+  backdrop-filter: blur(5px);
+  min-width: 45px;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+  position: relative;
+  z-index: 1;
+}
+
+.song-list-info {
+  position: relative;
+  z-index: 1;
 }
 
 .song-list-title {
-  font-size: var(--font-size-md);
+  font-size: var(--font-size-lg);
   font-weight: 600;
+  margin-bottom: var(--spacing-xs);
+  color: rgba(255, 255, 255, 0.95);
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
 }
 
 .song-list-artist {
-  font-size: var(--font-size-sm);
-  color: var(--text-secondary);
+  font-size: var(--font-size-md);
+  color: rgba(255, 255, 255, 0.7);
+  margin-bottom: var(--spacing-xs);
+  font-weight: 500;
 }
 
 .song-list-streams {
-  font-size: var(--font-size-lg);
+  font-size: var(--font-size-xl);
   font-weight: bold;
   min-width: 150px;
   text-align: right;
+  color: rgba(255, 255, 255, 0.9);
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+  position: relative;
+  z-index: 1;
 }
 
 .song-list-meta {
-  font-size: 0.8rem;
-  opacity: 0.7;
+  font-size: var(--font-size-sm);
+  opacity: 0.8;
   display: flex;
-  gap: 10px;
-  margin-top: 5px;
+  gap: var(--spacing-md);
+  margin-top: var(--spacing-xs);
+  color: rgba(255, 255, 255, 0.6);
 }
 
 .liked {
-  color: var(--success-green);
+  color: #10b981;
   font-weight: bold;
+  text-shadow: 0 0 8px rgba(16, 185, 129, 0.3);
+}
+
+@media (max-width: 768px) {
+  .personal-songs-dashboard {
+    padding: var(--spacing-lg) var(--spacing-md);
+  }
+  
+  .personal-songs-title {
+    font-size: var(--font-size-2xl);
+  }
+  
+  .song-list-item {
+    grid-template-columns: 50px 1fr auto;
+    padding: var(--spacing-md) var(--spacing-lg);
+    gap: var(--spacing-md);
+  }
+  
+  .song-list-rank {
+    min-width: 35px;
+    font-size: var(--font-size-lg);
+  }
+  
+  .song-list-title {
+    font-size: var(--font-size-md);
+  }
+  
+  .song-list-artist {
+    font-size: var(--font-size-sm);
+  }
+  
+  .song-list-streams {
+    font-size: var(--font-size-lg);
+    min-width: 120px;
+  }
 }
