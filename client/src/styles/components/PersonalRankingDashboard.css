@@ -8,6 +8,7 @@
   padding: var(--spacing-xl);
   backdrop-filter: blur(10px);
   color: var(--text-primary);
+  min-height: 100vh;
 }
 
 .stars-canvas-container {
@@ -22,71 +23,130 @@
 .personal-ranking-content {
   position: relative;
   z-index: 2;
-  padding: var(--spacing-xl);
+  padding: var(--spacing-xl) var(--spacing-lg);
   border-radius: var(--radius-2xl);
   backdrop-filter: blur(5px);
+  max-width: 800px;
+  margin: 0 auto;
 }
 
 .personal-ranking-title {
   font-size: var(--font-size-3xl);
   font-weight: bold;
-  margin-bottom: var(--spacing-lg);
+  margin-bottom: var(--spacing-xl);
   text-align: center;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: none;
+  padding: var(--spacing-md) 0;
 }
 
 .personal-ranking-list {
   list-style: none;
   padding-left: 0;
-  max-width: 600px;
+  max-width: 700px;
   margin: 0 auto;
-  --base-hue: 260; /* A deeper violet to start */
+  --base-hue: 260;
+  display: grid;
+  gap: var(--spacing-md);
 }
 
 .ranking-list-item {
   display: flex;
   align-items: center;
-  border-radius: var(--radius-lg);
-  padding: var(--spacing-lg);
-  margin-bottom: var(--spacing-md);
-  transition: background-color var(--transition-fast), transform 0.2s ease;
+  border-radius: var(--radius-xl);
+  padding: var(--spacing-lg) var(--spacing-xl);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   cursor: pointer;
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.15);
   color: white;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
 
-  /* --- NEW Fading Gradient Color Style --- */
   background: hsl(
-    /* Hue: Still shifts gradually for color variety */
     calc(var(--base-hue) + var(--i) * 4),
-    /* Saturation: Starts at 55% and fades by 1% for each item */
     calc(75% - var(--i) * 1%),
-    /* Lightness: Starts at 35% and gets slightly lighter for each item */
     calc(35% + var(--i) * 0.5%)
   );
 }
 
+.ranking-list-item::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.05) 100%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.ranking-list-item:hover::before {
+  opacity: 1;
+}
+
 .ranking-list-item:hover,
 .ranking-list-item:focus {
-  /* On hover, slightly increase lightness and saturation for a nice glow */
   background: hsl(
     calc(var(--base-hue) + var(--i) * 4),
-    calc(65% - var(--i) * 1%),
+    calc(80% - var(--i) * 1%),
     calc(45% + var(--i) * 0.5%)
   );
-  transform: scale(1.02);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
   outline: none;
+  border-color: rgba(255, 255, 255, 0.25);
 }
 
 .ranking-number {
   font-size: var(--font-size-2xl);
   font-weight: bold;
-  color: rgba(255, 255, 255, 0.8);
-  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
-  margin-right: var(--spacing-lg);
-  min-width: 40px;
+  color: rgba(255, 255, 255, 0.9);
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+  margin-right: var(--spacing-xl);
+  min-width: 45px;
   text-align: center;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-sm) var(--spacing-md);
+  backdrop-filter: blur(5px);
+  position: relative;
+  z-index: 1;
 }
 
 .ranking-artist-name {
   font-size: var(--font-size-xl);
-  font-weight: 500;
+  font-weight: 600;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+  position: relative;
+  z-index: 1;
+  letter-spacing: 0.5px;
+}
+
+@media (max-width: 768px) {
+  .personal-ranking-content {
+    padding: var(--spacing-lg) var(--spacing-md);
+  }
+  
+  .personal-ranking-title {
+    font-size: var(--font-size-2xl);
+  }
+  
+  .ranking-list-item {
+    padding: var(--spacing-md) var(--spacing-lg);
+  }
+  
+  .ranking-number {
+    min-width: 35px;
+    font-size: var(--font-size-lg);
+    margin-right: var(--spacing-lg);
+  }
+  
+  .ranking-artist-name {
+    font-size: var(--font-size-lg);
+  }
 }
