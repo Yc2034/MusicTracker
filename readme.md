@@ -62,15 +62,19 @@ SVGLoader as shown previously, it only extracts the shape data (the geometry) fr
 
 
 未来的方向
-第一个数据源补齐
-针对 中日韩三国市场
+1.
+数据源补齐
+针对 中日韩三国市场 min + max 混合参数 
 需要新的数据 ui
+2.加入音频播放功能
 
-补齐数据
-
-做一个超级适配的color palette
-
+3.
 可以做一个大的three js 播放器 每日随机 webgl方向
 
-研究如何更好的兼容歌手图片 更好一点的主页design
 
+4.
+做一个超级适配的color palette ui redesign
+
+
+5.
+研究如何更好的兼容歌手图片  imagegen comfyui 只做top 
