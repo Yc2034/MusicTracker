@@ -45,7 +45,7 @@ npm run dev
 #### 2025-07-01 挺好玩的搞了个vibe coding的mvp
 #### 2025-07-20 加了react motion tilt 加了音乐节数据 提升了基础ui 做了最简单的threejs
 
-
+#### 2025-07-24 加了podium，稍微提升了ui layout
 How to do 2D threejs
 Creating Complex Shapes with SVG 🎨
 Manually typing coordinates for curves is very difficult. The best way to create custom shapes is to draw them in a vector graphics editor and then convert them to Three.js code. The standard format for this is SVG (Scalable Vector Graphics).
@@ -68,7 +68,9 @@ SVGLoader as shown previously, it only extracts the shape data (the geometry) fr
 
 补齐数据
 
-可以做一个大的three js 播放器 每日随机
+做一个超级适配的color palette
+
+可以做一个大的three js 播放器 每日随机 webgl方向
 
 研究如何更好的兼容歌手图片 更好一点的主页design
 
