@@ -60,6 +60,7 @@ Use SVGLoader: Three.js has a built-in SVGLoader that can read your SVG file dir
 
 SVGLoader as shown previously, it only extracts the shape data (the geometry) from the SVG file. Any fill or stroke colors defined within the SVG file itself are ignored by this process.
 
+feature request 1. 更新svg
 
 未来的方向
 1.

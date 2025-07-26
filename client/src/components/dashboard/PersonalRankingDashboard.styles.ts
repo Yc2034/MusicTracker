@@ -1,6 +1,7 @@
-/* src/styles/components/PersonalRankingDashboard.css */
+import styled from 'styled-components';
+import { motion } from 'framer-motion';
 
-.personal-ranking-dashboard {
+export const PersonalRankingContainer = styled.div`
   position: relative;
   overflow: hidden;
   background: var(--background-card);
@@ -9,18 +10,18 @@
   backdrop-filter: blur(10px);
   color: var(--text-primary);
   min-height: 100vh;
-}
+`;
 
-.stars-canvas-container {
+export const StarsCanvasContainer = styled.div`
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
   z-index: 1;
-}
+`;
 
-.personal-ranking-content {
+export const PersonalRankingContent = styled.div`
   position: relative;
   z-index: 2;
   padding: var(--spacing-xl) var(--spacing-lg);
@@ -28,9 +29,13 @@
   backdrop-filter: blur(5px);
   max-width: 800px;
   margin: 0 auto;
-}
 
-.personal-ranking-title {
+  @media (max-width: 768px) {
+    padding: var(--spacing-lg) var(--spacing-md);
+  }
+`;
+
+export const PersonalRankingTitle = styled.h1`
   font-size: var(--font-size-3xl);
   font-weight: bold;
   margin-bottom: var(--spacing-xl);
@@ -41,9 +46,13 @@
   -webkit-text-fill-color: transparent;
   text-shadow: none;
   padding: var(--spacing-md) 0;
-}
 
-.personal-ranking-list {
+  @media (max-width: 768px) {
+    font-size: var(--font-size-2xl);
+  }
+`;
+
+export const PersonalRankingList = styled.ol`
   list-style: none;
   padding-left: 0;
   max-width: 700px;
@@ -51,9 +60,9 @@
   --base-hue: 260;
   display: grid;
   gap: var(--spacing-md);
-}
+`;
 
-.ranking-list-item {
+export const RankingListItem = styled(motion.li)<{ $index: number }>`
   display: flex;
   align-items: center;
   border-radius: var(--radius-xl);
@@ -65,44 +74,47 @@
   position: relative;
   overflow: hidden;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-
   background: hsl(
-    calc(var(--base-hue) + var(--i) * 4),
-    calc(75% - var(--i) * 1%),
-    calc(35% + var(--i) * 0.5%)
+    calc(var(--base-hue) + ${props => props.$index} * 4),
+    calc(75% - ${props => props.$index} * 1%),
+    calc(35% + ${props => props.$index} * 0.5%)
   );
-}
 
-.ranking-list-item::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.05) 100%);
-  opacity: 0;
-  transition: opacity 0.3s ease;
-}
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.05) 100%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
 
-.ranking-list-item:hover::before {
-  opacity: 1;
-}
+  &:hover::before {
+    opacity: 1;
+  }
 
-.ranking-list-item:hover,
-.ranking-list-item:focus {
-  background: hsl(
-    calc(var(--base-hue) + var(--i) * 4),
-    calc(80% - var(--i) * 1%),
-    calc(45% + var(--i) * 0.5%)
-  );
-  transform: translateY(-2px);
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
-  outline: none;
-  border-color: rgba(255, 255, 255, 0.25);
-}
+  &:hover,
+  &:focus {
+    background: hsl(
+      calc(var(--base-hue) + ${props => props.$index} * 4),
+      calc(80% - ${props => props.$index} * 1%),
+      calc(45% + ${props => props.$index} * 0.5%)
+    );
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+    outline: none;
+    border-color: rgba(255, 255, 255, 0.25);
+  }
 
-.ranking-number {
+  @media (max-width: 768px) {
+    padding: var(--spacing-md) var(--spacing-lg);
+  }
+`;
+
+export const RankingNumber = styled.span`
   font-size: var(--font-size-2xl);
   font-weight: bold;
   color: rgba(255, 255, 255, 0.9);
@@ -116,37 +128,23 @@
   backdrop-filter: blur(5px);
   position: relative;
   z-index: 1;
-}
 
-.ranking-artist-name {
+  @media (max-width: 768px) {
+    min-width: 35px;
+    font-size: var(--font-size-lg);
+    margin-right: var(--spacing-lg);
+  }
+`;
+
+export const RankingArtistName = styled.span`
   font-size: var(--font-size-xl);
   font-weight: 600;
   text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
   position: relative;
   z-index: 1;
   letter-spacing: 0.5px;
-}
 
-@media (max-width: 768px) {
-  .personal-ranking-content {
-    padding: var(--spacing-lg) var(--spacing-md);
-  }
-  
-  .personal-ranking-title {
-    font-size: var(--font-size-2xl);
-  }
-  
-  .ranking-list-item {
-    padding: var(--spacing-md) var(--spacing-lg);
-  }
-  
-  .ranking-number {
-    min-width: 35px;
-    font-size: var(--font-size-lg);
-    margin-right: var(--spacing-lg);
-  }
-  
-  .ranking-artist-name {
+  @media (max-width: 768px) {
     font-size: var(--font-size-lg);
   }
-}
+`;
