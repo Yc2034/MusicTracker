@@ -1,8 +1,11 @@
-import React, { useRef, useMemo } from 'react';
+import React, { useRef, useMemo, useEffect, useState } from 'react';
 import { Canvas, useFrame } from '@react-three/fiber';
 import * as THREE from 'three';
+import { SVGLoader } from 'three/examples/jsm/loaders/SVGLoader.js';
+// Corrected import statement 👇
+import * as BufferGeometryUtils from 'three/examples/jsm/utils/BufferGeometryUtils.js';
 
-// A custom 2D star shape geometry ⭐
+// A custom 2D star shape geometry ⭐ (Unchanged)
 const StarGeometry = () => {
   const starShape = useMemo(() => {
     const shape = new THREE.Shape();
@@ -24,45 +27,58 @@ const StarGeometry = () => {
   return <shapeGeometry args={[starShape]} />;
 };
 
-// A custom 2D cloud shape geometry ☁️
-const CloudGeometry = () => {
-    const cloudShape = useMemo(() => {
-        const shape = new THREE.Shape();
-        shape.moveTo(-0.5, -0.1);
-        shape.bezierCurveTo(-0.7, 0.3, -0.3, 0.4, 0, 0.3);
-        shape.bezierCurveTo(0.4, 0.5, 0.7, 0.3, 0.5, 0.0);
-        shape.bezierCurveTo(0.8, -0.3, 0.4, -0.2, 0.1, -0.2);
-        shape.bezierCurveTo(-0.2, -0.4, -0.4, -0.3, -0.5, -0.1);
-        shape.closePath();
-        return shape;
-    }, []);
 
-    return <shapeGeometry args={[cloudShape]} />;
+// 🎵 A custom hook to load, process, and cache the quaver geometry
+let cachedQuaverGeometry: THREE.BufferGeometry | null = null;
+
+const useQuaverGeometry = () => {
+  const [geometry, setGeometry] = useState<THREE.BufferGeometry | null>(cachedQuaverGeometry);
+
+  useEffect(() => {
+    if (cachedQuaverGeometry) {
+      setGeometry(cachedQuaverGeometry);
+      return;
+    }
+    
+    new SVGLoader().load('/quaver.svg', (data) => {
+      const geometries: THREE.BufferGeometry[] = [];
+      
+      data.paths.forEach((path) => {
+        const shapes = SVGLoader.createShapes(path);
+        shapes.forEach((shape) => {
+          geometries.push(new THREE.ShapeGeometry(shape));
+        });
+      });
+
+      if (geometries.length === 0) return;
+
+      const mergedGeometry = BufferGeometryUtils.mergeGeometries(geometries);
+
+      mergedGeometry.center();
+      
+      mergedGeometry.computeBoundingBox();
+      const box = mergedGeometry.boundingBox!;
+      const size = new THREE.Vector3();
+      box.getSize(size);
+      const scale = 1.0 / Math.max(size.x, size.y, size.z);
+      mergedGeometry.scale(scale, scale, scale);
+
+      cachedQuaverGeometry = mergedGeometry;
+      setGeometry(mergedGeometry);
+    });
+  }, []);
+
+  return geometry;
 };
 
-// A custom 2D raindrop shape geometry 💧
-const RainGeometry = () => {
-    const rainShape = useMemo(() => {
-        const shape = new THREE.Shape();
-        shape.moveTo(0, -0.5);
-        shape.quadraticCurveTo(0.4, 0, 0, 0.5);
-        shape.quadraticCurveTo(-0.4, 0, 0, -0.5);
-        shape.closePath();
-        return shape;
-    }, []);
 
-    return <shapeGeometry args={[rainShape]} />;
-};
-
-
-// This component will randomly render a star, cloud, or rain drop
+// This component will randomly render a star or quaver
 const FloatingShape: React.FC = () => {
   const mesh = useRef<THREE.Mesh>(null!);
+  const quaverGeometry = useQuaverGeometry();
 
-  // Randomly select a shape type, respecting the 3:1:1 ratio
   const shapeType = useMemo(() => {
-    // Weighted array: 3 stars, 1 cloud, 1 rain
-    const weightedShapes = ['star', 'star', 'star', 'cloud', 'rain'];
+    const weightedShapes = ['star', 'star', 'star', 'quaver'];
     return weightedShapes[Math.floor(Math.random() * weightedShapes.length)];
   }, []);
 
@@ -74,13 +90,9 @@ const FloatingShape: React.FC = () => {
     );
     
     let shapeColor;
-    // Assign specific colors to shapes
     switch (shapeType) {
-        case 'cloud':
-            shapeColor = new THREE.Color('#F0F8FF'); // AliceBlue
-            break;
-        case 'rain':
-            shapeColor = new THREE.Color('#87CEEB'); // SkyBlue
+        case 'quaver':
+            shapeColor = new THREE.Color('#FFB6C1'); // LightPink
             break;
         default: // 'star'
             shapeColor = new THREE.Color().setHSL(Math.random(), 0.8, 0.7); // Random pastel
@@ -93,25 +105,27 @@ const FloatingShape: React.FC = () => {
   }, [shapeType]);
 
   useFrame((state, delta) => {
-    // Gentle floating animation
     mesh.current.position.y += delta * 0.05;
     if (mesh.current.position.y > 10) {
         mesh.current.position.y = -10;
     }
   });
+  
+  if (shapeType === 'quaver' && !quaverGeometry) {
+      return null;
+  }
 
   return (
     <mesh ref={mesh} position={position} scale={scale} rotation={rotation}>
-        {/* Conditionally render the correct geometry based on shapeType */}
         {shapeType === 'star' && <StarGeometry />}
-        {shapeType === 'cloud' && <CloudGeometry />}
-        {shapeType === 'rain' && <RainGeometry />}
+        {shapeType === 'quaver' && quaverGeometry && <primitive object={quaverGeometry} attach="geometry" />}
         <meshBasicMaterial color={color} side={THREE.DoubleSide} transparent opacity={0.8} />
     </mesh>
   );
 };
 
-// The main export component, rendering a mix of shapes based on the specified ratio
+
+// The main export component
 export const Stars: React.FC = () => {
   const shapes = useMemo(() => Array.from({ length: 150 }).map((_, i) => <FloatingShape key={i} />), []);
   return (

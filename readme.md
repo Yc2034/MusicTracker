@@ -65,17 +65,18 @@ feature request 1. 更新svg
 未来的方向
 1.
 数据源补齐
-针对 中日韩三国市场 min + max 混合参数 
+针对 中日韩三国市场特定top artist min + max 混合参数 
 需要新的数据 ui
+
 2.加入音频播放功能
 
 3.
-可以做一个大的three js 播放器 每日随机 webgl方向
-
+做一个超级适配的color palette ui redesign
+migrate current ui design pattern to Styled component
 
 4.
-做一个超级适配的color palette ui redesign
-
+研究如何更好的兼容歌手图片  imagegen comfyui 只做top artist
 
 5.
-研究如何更好的兼容歌手图片  imagegen comfyui 只做top 
+可以做一个大的three js 播放器 每日随机 webgl方向
+
