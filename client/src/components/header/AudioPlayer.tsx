@@ -6,67 +6,63 @@ interface AudioPlayerProps {
 }
 
 export const AudioPlayer: React.FC<AudioPlayerProps> = ({ artistName }) => {
+  const [isAudioAvailable, setIsAudioAvailable] = useState<boolean | null>(null);
   const [isPlaying, setIsPlaying] = useState(false);
   const [currentTime, setCurrentTime] = useState(0);
   const [duration, setDuration] = useState(0);
   const [volume, setVolume] = useState(0.7);
-  const [isLoading, setIsLoading] = useState(false);
-  const [hasError, setHasError] = useState(false);
   const audioRef = useRef<HTMLAudioElement>(null);
 
   const musicSrc = `/music/${artistName.toLowerCase().replace(/\s/g, '-')}.m4a`;
 
+  // Effect 1: Check for audio availability without rendering the element
   useEffect(() => {
-    if (audioRef.current) {
-      if (isPlaying) {
-        setIsLoading(true);
-        audioRef.current.play().catch(error => {
-          console.error("Audio play failed:", error);
-          setIsPlaying(false);
-          setHasError(true);
-          setIsLoading(false);
-        });
-      } else {
-        audioRef.current.pause();
-      }
-    }
-  }, [isPlaying]);
+    setIsAudioAvailable(null); // Reset on artist change
+    const audio = new Audio(musicSrc);
 
-  useEffect(() => {
-    setIsPlaying(false);
-    setHasError(false);
-    if (audioRef.current) {
-      audioRef.current.src = musicSrc;
-      audioRef.current.volume = volume;
-      audioRef.current.load();
-    }
-  }, [musicSrc, volume]);
-
-  useEffect(() => {
-    const audio = audioRef.current;
-    if (!audio) return;
-
-    const updateTime = () => setCurrentTime(audio.currentTime);
-    const updateDuration = () => setDuration(audio.duration);
-    const handleCanPlay = () => setIsLoading(false);
-    const handleError = () => {
-      setHasError(true);
-      setIsLoading(false);
-      setIsPlaying(false);
+    const handleCanPlay = () => {
+      setDuration(audio.duration);
+      setIsAudioAvailable(true);
     };
 
-    audio.addEventListener('timeupdate', updateTime);
-    audio.addEventListener('loadedmetadata', updateDuration);
-    audio.addEventListener('canplay', handleCanPlay);
+    const handleError = () => {
+      setIsAudioAvailable(false);
+    };
+    
+    audio.addEventListener('canplaythrough', handleCanPlay);
     audio.addEventListener('error', handleError);
 
+    // Cleanup listeners
     return () => {
-      audio.removeEventListener('timeupdate', updateTime);
-      audio.removeEventListener('loadedmetadata', updateDuration);
-      audio.removeEventListener('canplay', handleCanPlay);
+      audio.removeEventListener('canplaythrough', handleCanPlay);
       audio.removeEventListener('error', handleError);
     };
-  }, []);
+  }, [musicSrc]);
+
+  // Effect 2: Control playback (play/pause) once the component is rendered
+  useEffect(() => {
+    const audioElement = audioRef.current;
+    if (audioElement) {
+      if (isPlaying) {
+        audioElement.play().catch(() => setIsPlaying(false));
+      } else {
+        audioElement.pause();
+      }
+    }
+  }, [isPlaying, isAudioAvailable]);
+  
+  // Effect 3: Update current time display
+  useEffect(() => {
+    const audioElement = audioRef.current;
+    if (audioElement) {
+      const handleTimeUpdate = () => setCurrentTime(audioElement.currentTime);
+      audioElement.addEventListener('timeupdate', handleTimeUpdate);
+      
+      return () => {
+        audioElement.removeEventListener('timeupdate', handleTimeUpdate);
+      };
+    }
+  }, [isAudioAvailable]);
 
   const togglePlay = () => {
     setIsPlaying(!isPlaying);
@@ -77,7 +73,6 @@ export const AudioPlayer: React.FC<AudioPlayerProps> = ({ artistName }) => {
     if (audio) {
       const newTime = (parseFloat(e.target.value) / 100) * duration;
       audio.currentTime = newTime;
-      setCurrentTime(newTime);
     }
   };
 
@@ -96,27 +91,19 @@ export const AudioPlayer: React.FC<AudioPlayerProps> = ({ artistName }) => {
     return `${minutes}:${seconds.toString().padStart(2, '0')}`;
   };
 
+  if (isAudioAvailable !== true) {
+    return null;
+  }
+
   const progressPercentage = duration > 0 ? (currentTime / duration) * 100 : 0;
 
   return (
     <div className="audio-player">
-      <audio ref={audioRef} src={musicSrc} loop />
+      <audio ref={audioRef} src={musicSrc} loop preload="auto" />
       
       <div className="player-controls">
-        <button 
-          onClick={togglePlay} 
-          className={`control-button ${isLoading ? 'loading' : ''}`}
-          disabled={hasError || isLoading}
-        >
-          {isLoading ? (
-            <span className="loading-spinner">⟳</span>
-          ) : hasError ? (
-            '✕'
-          ) : isPlaying ? (
-            <span className="pause-icon">❚❚</span>
-          ) : (
-            <span className="play-icon">▶</span>
-          )}
+        <button onClick={togglePlay} className="control-button">
+          {isPlaying ? <span className="pause-icon">❚❚</span> : <span className="play-icon">▶</span>}
         </button>
 
         <div className="progress-section">
@@ -129,7 +116,6 @@ export const AudioPlayer: React.FC<AudioPlayerProps> = ({ artistName }) => {
               value={progressPercentage}
               onChange={handleProgressChange}
               className="progress-bar"
-              disabled={hasError}
             />
             <div 
               className="progress-fill" 
@@ -151,12 +137,6 @@ export const AudioPlayer: React.FC<AudioPlayerProps> = ({ artistName }) => {
           />
         </div>
       </div>
-
-      {hasError && (
-        <div className="error-message">
-          Audio unavailable
-        </div>
-      )}
     </div>
   );
 };
