@@ -47,6 +47,7 @@ npm run dev
 
 #### 2025-07-24 加了podium，稍微提升了ui layout
 #### 2025-07-25 Add custom svg, kudos to gemini
+#### 2025-08-02 加入了音频播放功能
 
 未来的方向
 1.

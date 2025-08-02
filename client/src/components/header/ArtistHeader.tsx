@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 import type { ArtistMetrics } from '../../types';
 import { ArtistSelector } from './ArtistSelector';
+import { AudioPlayer } from './AudioPlayer'; // Import the new component
 import { formatWithCommas } from '../../utils/formatters';
 
 interface ArtistHeaderProps {
@@ -41,9 +42,12 @@ export const ArtistHeader: React.FC<ArtistHeaderProps> = ({
           </div>
         </div>
         
-        <button className="change-artist-btn" onClick={() => setIsSelectorOpen(true)}>
-          Change Artist
-        </button>
+        <div className="header-controls">
+            <AudioPlayer artistName={artistName} />
+            <button className="change-artist-btn" onClick={() => setIsSelectorOpen(true)}>
+              Change Artist
+            </button>
+        </div>
       </div>
 
       {isSelectorOpen && (
