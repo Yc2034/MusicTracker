@@ -21,16 +21,3 @@ https://soridata.com/artists/IU.html
 
 这也是个好的平台
 
-// TODO. need redesign
-Kpop/Jpop
-kissoflife yoasobi aespa everglow
-wheein ive g-idle itzy 
-IU blackpink
-
-中文
-G.E.M JJ Lin Zhou Shen
-
-concert
-billie eilish 
-taylor swift
-tyler the creator

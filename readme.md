@@ -52,8 +52,18 @@ npm run dev
 未来的方向
 1.
 数据源补齐
-针对 中日韩三国市场特定top artist min + max 混合参数 
-需要新的数据 ui
+kissoflife yoasobi aespa
+wheein ive g-idle itzy 
+ blackpink
+
+concert
+billie eilish 
+taylor swift
+tyler the creator
+
+2. 中韩特定数据补齐
+邓紫棋 周深 林俊杰
+IU
 
 3.
 做一个超级适配的color palette ui redesign
