@@ -1,0 +1,11 @@
+<svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="64" height="64" rx="12" fill="#1E1E2F"/>
+  <!-- Music note -->
+  <path d="M40 14V36.5C40 39.5376 37.5376 42 34.5 42C31.4624 42 29 39.5376 29 36.5C29 33.4624 31.4624 31 34.5 31C35.8014 31 37.0034 31.4783 38 32.2811V22H26V40.5C26 43.5376 23.5376 46 20.5 46C17.4624 46 15 43.5376 15 40.5C15 37.4624 17.4624 35 20.5 35C21.8014 35 23.0034 35.4783 24 36.2811V14H40Z" fill="#FFD700"/>
+  
+  <!-- Sound waves -->
+  <path d="M48 24C50 26.6667 50 37.3333 48 40" stroke="#FFD700" stroke-width="2" stroke-linecap="round"/>
+  <path d="M52 20C55.3333 24.6667 55.3333 39.3333 52 44" stroke="#FFD700" stroke-width="2" stroke-linecap="round"/>
+  <path d="M12 24C10 26.6667 10 37.3333 12 40" stroke="#FFD700" stroke-width="2" stroke-linecap="round"/>
+  <path d="M8 20C4.66667 24.6667 4.66667 39.3333 8 44" stroke="#FFD700" stroke-width="2" stroke-linecap="round"/>
+</svg>
