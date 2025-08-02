@@ -62,6 +62,6 @@ migrate current ui design pattern to Styled component
 4.
 研究如何更好的兼容歌手图片  imagegen comfyui 只做top artist
 
-5.
-可以做一个大的three js 播放器 每日随机 webgl方向
+5. 
+可以做一个大的three js 播放器 每日随机 webgl方向 前后端
 
