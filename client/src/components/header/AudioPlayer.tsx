@@ -11,13 +11,13 @@ export const AudioPlayer: React.FC<AudioPlayerProps> = ({ artistName }) => {
   const [currentTime, setCurrentTime] = useState(0);
   const [duration, setDuration] = useState(0);
   const [volume, setVolume] = useState(0.7);
+  const [isVolumeOpen, setIsVolumeOpen] = useState(false);
   const audioRef = useRef<HTMLAudioElement>(null);
 
   const musicSrc = `/music/${artistName.toLowerCase().replace(/\s/g, '-')}.m4a`;
 
-  // Effect 1: Check for audio availability without rendering the element
   useEffect(() => {
-    setIsAudioAvailable(null); // Reset on artist change
+    setIsAudioAvailable(null);
     const audio = new Audio(musicSrc);
 
     const handleCanPlay = () => {
@@ -32,14 +32,12 @@ export const AudioPlayer: React.FC<AudioPlayerProps> = ({ artistName }) => {
     audio.addEventListener('canplaythrough', handleCanPlay);
     audio.addEventListener('error', handleError);
 
-    // Cleanup listeners
     return () => {
       audio.removeEventListener('canplaythrough', handleCanPlay);
       audio.removeEventListener('error', handleError);
     };
   }, [musicSrc]);
 
-  // Effect 2: Control playback (play/pause) once the component is rendered
   useEffect(() => {
     const audioElement = audioRef.current;
     if (audioElement) {
@@ -51,7 +49,6 @@ export const AudioPlayer: React.FC<AudioPlayerProps> = ({ artistName }) => {
     }
   }, [isPlaying, isAudioAvailable]);
   
-  // Effect 3: Update current time display
   useEffect(() => {
     const audioElement = audioRef.current;
     if (audioElement) {
@@ -90,7 +87,7 @@ export const AudioPlayer: React.FC<AudioPlayerProps> = ({ artistName }) => {
     const seconds = Math.floor(time % 60);
     return `${minutes}:${seconds.toString().padStart(2, '0')}`;
   };
-
+  
   if (isAudioAvailable !== true) {
     return null;
   }
@@ -126,15 +123,21 @@ export const AudioPlayer: React.FC<AudioPlayerProps> = ({ artistName }) => {
         </div>
 
         <div className="volume-section">
-          <span className="volume-icon">🔊</span>
-          <input
-            type="range"
-            min="0"
-            max="100"
-            value={volume * 100}
-            onChange={handleVolumeChange}
-            className="volume-slider"
-          />
+            <button className="volume-icon" onClick={() => setIsVolumeOpen(!isVolumeOpen)}>
+                🔊
+            </button>
+            {isVolumeOpen && (
+                <div className="volume-popup">
+                    <input
+                      type="range"
+                      min="0"
+                      max="100"
+                      value={volume * 100}
+                      onChange={handleVolumeChange}
+                      className="volume-slider"
+                    />
+                </div>
+            )}
         </div>
       </div>
     </div>

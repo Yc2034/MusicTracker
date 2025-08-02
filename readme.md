@@ -45,7 +45,7 @@ npm run dev
 #### 2025-07-01 挺好玩的搞了个vibe coding的mvp
 #### 2025-07-20 加了react motion tilt 加了音乐节数据 提升了基础ui 做了最简单的threejs
 
-#### 2025-07-24 加了podium，稍微提升了ui layout
+#### 2025-07-24 加了podium颁奖台，稍微提升了ui layout
 #### 2025-07-25 Add custom svg, kudos to gemini
 #### 2025-08-02 加入了音频播放功能
 
