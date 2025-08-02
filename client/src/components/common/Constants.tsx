@@ -9,6 +9,7 @@ export const AVAILABLE_ARTISTS = [
     'Glass Animals',
     'Gracie Abrams',
     'Tyla',
+    'Everglow',
     'SZA',
     'Conan Gray',
     'Raye',
