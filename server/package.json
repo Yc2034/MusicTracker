@@ -3,8 +3,7 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "dev": "ts-node src/index.ts",
-    "db:delete-song": "ts-node server/prisma/delete-song.ts"
+    "dev": "ts-node src/index.ts"
   },
   "prisma": {
     "seed": "ts-node prisma/seed.ts"
