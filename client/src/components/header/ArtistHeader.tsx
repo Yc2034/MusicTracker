@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import type { ArtistMetrics } from '../../types';
 import { ArtistSelector } from './ArtistSelector';
-import { AudioPlayer } from './AudioPlayer'; // Import the new component
+import { AudioPlayer } from './AudioPlayer';
 import { formatWithCommas } from '../../utils/formatters';
 
 interface ArtistHeaderProps {
@@ -24,7 +24,6 @@ export const ArtistHeader: React.FC<ArtistHeaderProps> = ({
 }) => {
   const [isSelectorOpen, setIsSelectorOpen] = useState(false);
 
-  // Define the style for the header, applying the background image if it exists
   const headerStyle = artistImage ? {
     backgroundImage: `linear-gradient(rgba(29, 35, 42, 0.7), rgba(29, 35, 42, 0.7)), url(${artistImage})`,
   } : {};
