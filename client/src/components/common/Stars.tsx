@@ -1,11 +1,11 @@
+// src/components/common/Stars.tsx
 import React, { useRef, useMemo, useEffect, useState } from 'react';
 import { Canvas, useFrame } from '@react-three/fiber';
 import * as THREE from 'three';
 import { SVGLoader } from 'three/examples/jsm/loaders/SVGLoader.js';
-// Corrected import statement 👇
 import * as BufferGeometryUtils from 'three/examples/jsm/utils/BufferGeometryUtils.js';
 
-// A custom 2D star shape geometry ⭐ (Unchanged)
+// A custom 2D star shape geometry (Unchanged)
 const StarGeometry = () => {
   const starShape = useMemo(() => {
     const shape = new THREE.Shape();
@@ -27,93 +27,68 @@ const StarGeometry = () => {
   return <shapeGeometry args={[starShape]} />;
 };
 
-
-// ☀️ A custom hook to load, process, and cache the sun geometry
+// Hooks for SVG geometries (Unchanged)
 let cachedSunGeometry: THREE.BufferGeometry | null = null;
-
 const useSunGeometry = () => {
   const [geometry, setGeometry] = useState<THREE.BufferGeometry | null>(cachedSunGeometry);
-
   useEffect(() => {
-    // If the geometry is already cached, use it immediately.
     if (cachedSunGeometry) {
       setGeometry(cachedSunGeometry);
       return;
     }
-    
-    // Load the new sun.svg file
     new SVGLoader().load('/star.svg', (data) => {
       const geometries: THREE.BufferGeometry[] = [];
-      
       data.paths.forEach((path) => {
         const shapes = SVGLoader.createShapes(path);
         shapes.forEach((shape) => {
           geometries.push(new THREE.ShapeGeometry(shape));
         });
       });
-
       if (geometries.length === 0) return;
-
       const mergedGeometry = BufferGeometryUtils.mergeGeometries(geometries);
-
       mergedGeometry.center();
-      
       mergedGeometry.computeBoundingBox();
       const box = mergedGeometry.boundingBox!;
       const size = new THREE.Vector3();
       box.getSize(size);
       const scale = 1.0 / Math.max(size.x, size.y, size.z);
       mergedGeometry.scale(scale, scale, scale);
-
-      // Cache the processed sun geometry and update the state
       cachedSunGeometry = mergedGeometry;
       setGeometry(mergedGeometry);
     });
   }, []);
-
   return geometry;
 };
 
-// 🎵 A custom hook to load, process, and cache the quaver geometry
 let cachedQuaverGeometry: THREE.BufferGeometry | null = null;
-
 const useQuaverGeometry = () => {
   const [geometry, setGeometry] = useState<THREE.BufferGeometry | null>(cachedQuaverGeometry);
-
   useEffect(() => {
     if (cachedQuaverGeometry) {
       setGeometry(cachedQuaverGeometry);
       return;
     }
-    
     new SVGLoader().load('/quaver.svg', (data) => {
       const geometries: THREE.BufferGeometry[] = [];
-      
       data.paths.forEach((path) => {
         const shapes = SVGLoader.createShapes(path);
         shapes.forEach((shape) => {
           geometries.push(new THREE.ShapeGeometry(shape));
         });
       });
-
       if (geometries.length === 0) return;
-
       const mergedGeometry = BufferGeometryUtils.mergeGeometries(geometries);
-
       mergedGeometry.center();
-      
       mergedGeometry.computeBoundingBox();
       const box = mergedGeometry.boundingBox!;
       const size = new THREE.Vector3();
       box.getSize(size);
       const scale = 1.0 / Math.max(size.x, size.y, size.z);
       mergedGeometry.scale(scale, scale, scale);
-
       cachedQuaverGeometry = mergedGeometry;
       setGeometry(mergedGeometry);
     });
   }, []);
-
   return geometry;
 };
 
@@ -122,11 +97,9 @@ const useQuaverGeometry = () => {
 const FloatingShape: React.FC = () => {
   const mesh = useRef<THREE.Mesh>(null!);
   
-  // Call both hooks to get the geometries
   const quaverGeometry = useQuaverGeometry();
   const sunGeometry = useSunGeometry();
 
-  // Add 'sun' to the weighted array of shapes
   const shapeType = useMemo(() => {
     const weightedShapes = ['star',  'star', 'quaver', 'sun'];
     return weightedShapes[Math.floor(Math.random() * weightedShapes.length)];
@@ -140,16 +113,16 @@ const FloatingShape: React.FC = () => {
     );
     
     let shapeColor;
-    // Add a color case for the sun
+    // Updated color logic for a more cohesive and subtle theme
     switch (shapeType) {
         case 'quaver':
-            shapeColor = new THREE.Color('#FFB6C1'); // LightPink
-            break;
         case 'sun':
-            shapeColor = new THREE.Color('#34ebdfff'); 
+            // Quavers and suns will use the golden accent color with varying lightness
+            shapeColor = new THREE.Color('#D4A056').multiplyScalar(Math.random() * 0.5 + 0.5);
             break;
         default: // 'star'
-            shapeColor = new THREE.Color().setHSL(Math.random(), 0.8, 0.7); // Random pastel
+            // Stars will be a subtle, shimmering off-white
+            shapeColor = new THREE.Color('#FFFFFF').multiplyScalar(Math.random() * 0.4 + 0.4);
             break;
     }
 
@@ -165,18 +138,16 @@ const FloatingShape: React.FC = () => {
     }
   });
   
-  // Update the loading check to handle both asynchronous geometries
   if ((shapeType === 'quaver' && !quaverGeometry) || (shapeType === 'sun' && !sunGeometry)) {
       return null;
   }
 
   return (
     <mesh ref={mesh} position={position} scale={scale} rotation={rotation}>
-        {/* Conditionally attach the correct geometry */}
         {shapeType === 'star' && <StarGeometry />}
         {shapeType === 'quaver' && quaverGeometry && <primitive object={quaverGeometry} attach="geometry" />}
         {shapeType === 'sun' && sunGeometry && <primitive object={sunGeometry} attach="geometry" />}
-        <meshBasicMaterial color={color} side={THREE.DoubleSide} transparent opacity={0.8} />
+        <meshBasicMaterial color={color} side={THREE.DoubleSide} transparent opacity={0.6} />
     </mesh>
   );
 };

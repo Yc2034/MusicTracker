@@ -1,79 +1,62 @@
 /* src/styles/components/Podium.css */
-
-.podium-wrapper {
-  font-family: var(--font-family);
-  text-align: center;
-  padding: var(--spacing-xl);
-  margin-bottom: var(--spacing-xl);
-  max-width: 1200px;
+.podium-container {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  gap: 10px;
+  margin: 60px 0;
+  width: 100%;
+  max-width: 800px;
   margin-left: auto;
   margin-right: auto;
 }
 
-.podium-container {
-  display: flex;
-  align-items: flex-end;
-  justify-content: center;
-  gap: 10px;
-  min-height: 350px;
-  padding: 20px;
-}
-
 .podium-spot {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-start;
-  padding: 20px;
-  border-top-left-radius: 12px;
-  border-top-right-radius: 12px;
-  color: white;
-  width: 220px;
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  flex: 1;
+  padding: 30px 20px;
+  text-align: center;
+  border: 1px solid #333;
+  transition: all 0.3s ease;
+  background-color: #1A1D22; /* Dark card background */
 }
 
 .podium-spot:hover {
+  border-color: #D4A056;
   transform: translateY(-10px);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+}
+
+.podium-spot.gold {
+  order: 2;
+  min-height: 250px;
+  background-color: #2a251d; /* Slightly warmer for gold */
+  border-color: #D4A056;
+}
+
+.podium-spot.silver {
+  order: 1;
+  min-height: 200px;
+}
+
+.podium-spot.bronze {
+  order: 3;
+  min-height: 150px;
 }
 
 .podium-rank-label {
-  font-size: 3.5rem;
-  line-height: 1;
-  margin-bottom: 15px;
+  font-size: 28px;
+  margin-bottom: 12px;
+  color: #D4A056; /* Accent color for the rank */
 }
 
 .podium-artist-name {
-  font-size: 1.4rem;
-  font-weight: 700;
-  margin: 0 0 5px 0;
-}
-
-.podium-artist-streams {
-  font-size: 1rem;
+  font-size: 22px;
   font-weight: 500;
-  opacity: 0.9;
+  color: #F0F0F0; /* Off-white text */
   margin: 0;
 }
 
-/* Gold - 1st Place */
-.gold {
-  background: linear-gradient(45deg, #FFD700, #FFA500);
-  height: 300px;
-  order: 2; /* Center */
-}
-
-/* Silver - 2nd Place */
-.silver {
-  background: linear-gradient(45deg, #C0C0C0, #A9A9A9);
-  height: 260px;
-  order: 1; /* Left */
-}
-
-/* Bronze - 3rd Place */
-.bronze {
-  background: linear-gradient(45deg, #CD7F32, #A0522D);
-  height: 220px;
-  order: 3; /* Right */
+.podium-artist-streams {
+  font-size: 16px;
+  color: #aaa; /* Lighter grey for secondary info */
+  margin-top: 8px;
 }
