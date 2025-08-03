@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 
 export const PersonalRankingContainer = styled.div`
   min-height: 100vh;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: var(--background-dark);
   padding: 0;
   position: relative;
   overflow-x: hidden;
@@ -38,7 +38,7 @@ export const PersonalRankingContent = styled.div`
 export const PersonalRankingTitle = styled.h1`
   font-size: clamp(48px, 8vw, 120px);
   font-weight: 300;
-  color: #ffffff;
+  color: var(--text-inverse);
   margin: 0 0 120px 0;
   line-height: 0.9;
   letter-spacing: -0.02em;
@@ -52,7 +52,7 @@ export const PersonalRankingTitle = styled.h1`
     left: 0;
     width: 60px;
     height: 2px;
-    background: rgba(255, 255, 255, 0.8);
+    background: var(--accent-cedar);
   }
 
   @media (max-width: 768px) {
@@ -108,8 +108,8 @@ export const RankingListItem = styled(motion.li)<{ $index: number }>`
 `;
 
 export const RankingCard = styled(motion.div)<{ $index: number }>`
-  background: rgba(255, 255, 255, 0.1);
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: var(--background-card-dark);
+  border: 1px solid rgba(248, 246, 240, 0.2);
   border-radius: 0;
   padding: 40px 32px;
   transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
@@ -128,7 +128,7 @@ export const RankingCard = styled(motion.div)<{ $index: number }>`
     left: 0;
     right: 0;
     bottom: 0;
-    background: rgba(255, 255, 255, 0.15);
+    background: rgba(248, 246, 240, 0.15);
     transform: translateY(100%);
     transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
     z-index: 1;
@@ -139,10 +139,10 @@ export const RankingCard = styled(motion.div)<{ $index: number }>`
   }
 
   &:hover {
-    border-color: rgba(255, 255, 255, 0.4);
+    border-color: var(--accent-cedar);
     transform: translateY(-8px);
-    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
-    background: rgba(255, 255, 255, 0.2);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+    background: rgba(248, 246, 240, 0.2);
   }
 
   @media (max-width: 768px) {
@@ -154,7 +154,7 @@ export const RankingCard = styled(motion.div)<{ $index: number }>`
 export const RankingNumber = styled.span`
   font-size: 14px;
   font-weight: 500;
-  color: rgba(255, 255, 255, 0.8);
+  color: var(--text-inverse-secondary);
   letter-spacing: 0.1em;
   text-transform: uppercase;
   position: relative;
@@ -162,14 +162,14 @@ export const RankingNumber = styled.span`
   transition: color 0.3s ease;
 
   ${RankingCard}:hover & {
-    color: #ffffff;
+    color: var(--text-inverse);
   }
 `;
 
 export const RankingArtistName = styled.span`
   font-size: clamp(24px, 3vw, 32px);
   font-weight: 400;
-  color: #ffffff;
+  color: var(--text-inverse);
   line-height: 1.2;
   letter-spacing: -0.01em;
   position: relative;
@@ -179,7 +179,7 @@ export const RankingArtistName = styled.span`
   text-shadow: 0 1px 10px rgba(0, 0, 0, 0.2);
 
   ${RankingCard}:hover & {
-    color: #ffffff;
+    color: var(--text-inverse);
     font-weight: 500;
   }
 
@@ -195,7 +195,14 @@ export const RankingAccent = styled.div<{ $index: number }>`
   width: 4px;
   height: 100%;
   background: ${props => {
-    const colors = ['#FF6B6B', '#4ECDC4', '#45B7D1', '#96CEB4', '#FFEAA7', '#DDA0DD'];
+    const colors = [
+      'var(--accent-cedar)',      /* Warm cedar */
+      'var(--accent-ocean)',      /* Muted ocean blue-green */
+      'var(--primary-sage)',      /* Muted sage green */
+      'var(--accent-plum)',       /* Dusty plum */
+      'var(--primary-clay)',      /* Soft clay brown */
+      'var(--warning-amber)'      /* Warm amber */
+    ];
     return colors[props.$index % colors.length];
   }};
   transform: scaleY(0);

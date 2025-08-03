@@ -1,17 +1,79 @@
 /* src/styles/utilities/variables.css */
 
 :root {
-  /* Colors */
-  --primary-purple: #8B5CF6;
-  --primary-orange: #F97316;
-  --success-green: #22c55e;
-  --error-red: #ef4444;
-  --text-primary: rgba(255, 255, 255, 0.87);
-  --text-secondary: rgba(255, 255, 255, 0.7);
-  --background-primary: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  --background-card: rgba(255, 255, 255, 0.1);
-  --background-card-hover: rgba(255, 255, 255, 0.15);
-  --background-header: linear-gradient(135deg, rgba(139, 92, 246, 0.8), rgba(249, 115, 22, 0.8));
+  /* Japanese-Inspired Minimal Color Palette - 2025 */
+  
+  /* Primary Colors - Warm, Natural Tones */
+  --primary-sage: #8B9A8B;          /* Muted sage green - calm, natural */
+  --primary-stone: #D4C4A8;         /* Warm stone beige - earthy, grounding */
+  --primary-clay: #A67B5B;          /* Soft clay brown - organic, warm */
+  --primary-ink: #2C2B28;           /* Charcoal ink - sophisticated dark */
+  
+  /* Accent Colors */
+  --accent-cedar: #B87333;          /* Warm cedar - natural wood tone */
+  --accent-mist: #E5E1DB;           /* Light mist - soft neutral */
+  --accent-ocean: #7BA098;          /* Muted ocean blue-green */
+  --accent-plum: #8B7B8B;           /* Dusty plum - subtle sophistication */
+  
+  /* System Colors */
+  --success-green: #7BA098;         /* Soft ocean green for success */
+  --error-red: #B87060;             /* Muted terracotta for errors */
+  --warning-amber: #D4A574;         /* Warm amber for warnings */
+  
+  /* Text Colors */
+  --text-primary: #2C2B28;          /* Deep charcoal for primary text */
+  --text-secondary: rgba(44, 43, 40, 0.7);  /* Semi-transparent primary */
+  --text-tertiary: rgba(44, 43, 40, 0.5);   /* Lighter for subtle text */
+  --text-inverse: #F8F6F0;          /* Light cream for dark backgrounds */
+  --text-inverse-secondary: rgba(248, 246, 240, 0.8);
+  
+  /* Background Colors */
+  --background-primary: linear-gradient(135deg, #F8F6F0 0%, #E5E1DB 100%);
+  --background-secondary: #F8F6F0;  /* Pure light cream */
+  --background-tertiary: #E5E1DB;   /* Light mist */
+  --background-dark: linear-gradient(135deg, #2C2B28 0%, #3D3B36 100%);
+  --background-card: rgba(248, 246, 240, 0.9);
+  --background-card-hover: rgba(248, 246, 240, 0.95);
+  --background-card-dark: rgba(44, 43, 40, 0.1);
+  --background-header: linear-gradient(135deg, rgba(139, 154, 139, 0.8), rgba(212, 196, 168, 0.8));
+  
+  /* Coastal theme - Sun, Beach, Sea inspired */
+  --background-coastal-primary: linear-gradient(135deg, #1e3a5f 0%, #2c5282 100%); /* Deep ocean */
+  --background-coastal-card: rgba(56, 178, 172, 0.1); /* Teal sea */
+  --background-coastal-card-hover: rgba(56, 178, 172, 0.2);
+  
+  /* Sun and Ocean theme for Top Artists components */
+  --background-sun-ocean: linear-gradient(135deg, #1e3a5f 0%, #f6ad55 100%); /* Ocean to sunset */
+  --background-orange-card: rgba(246, 173, 85, 0.1); /* Warm sand */
+  --background-orange-card-hover: rgba(246, 173, 85, 0.2);
+  --accent-sun-ocean: linear-gradient(45deg, #38b2ac, #f6ad55); /* Sea to sun */
+  
+  /* Cozy Winter theme backgrounds */
+  --background-winter-primary: linear-gradient(135deg, #2d1b2e 0%, #4a2c4a 100%); /* Deep winter night */
+  --background-winter-card: rgba(212, 118, 26, 0.1); /* Warm fireplace glow */
+  --background-winter-card-hover: rgba(212, 118, 26, 0.2);
+  --accent-winter-warmth: linear-gradient(45deg, #d4761a, #e67e22); /* Fireplace to ember */
+  
+  /* Coastal color palette - Sun, Beach, Sea */
+  --ocean-deep: #1e3a5f;            /* Deep ocean blue */
+  --ocean-medium: #2c5282;          /* Medium ocean blue */
+  --sea-teal: #38b2ac;              /* Tropical sea teal */
+  --sea-light: #4fd1c7;             /* Light sea foam */
+  --sand-warm: #f6ad55;             /* Warm golden sand */
+  --sand-light: #fbd38d;            /* Light sandy beige */
+  --sunset-coral: #fc8181;          /* Coral sunset */
+  --sunset-pink: #f687b3;           /* Pink sunset */
+  
+  /* Cozy Winter color palette - Warm fireside feelings */
+  --winter-deep: #2d1b2e;           /* Deep winter night */
+  --winter-plum: #4a2c4a;           /* Rich winter plum */
+  --fireplace-glow: #d4761a;        /* Warm fireplace glow */
+  --ember-orange: #e67e22;          /* Glowing embers */
+  --hot-chocolate: #8b4513;         /* Rich hot chocolate */
+  --cream-latte: #f4e4c1;           /* Warm cream latte */
+  --wool-cream: #f8f5f0;            /* Soft wool cream */
+  --winter-rose: #d4506a;           /* Winter rose accent */
+  --cozy-gold: #f39c12;             /* Cozy golden light */
   
   /* Typography */
   --font-family: 'Poppins', sans-serif;

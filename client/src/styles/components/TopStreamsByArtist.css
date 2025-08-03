@@ -2,7 +2,8 @@
 
 .top-artists-container {
   position: relative;
-  background: var(--background-card);
+  background: var(--background-coastal-card);
+  border: 1px solid rgba(56, 178, 172, 0.3);
   border-radius: var(--radius-2xl);
   padding: var(--spacing-xl);
   margin-bottom: var(--spacing-xl);
@@ -10,6 +11,14 @@
   max-width: 1200px;
   margin-left: auto;
   margin-right: auto;
+  backdrop-filter: blur(10px);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.top-artists-container:hover {
+  border-color: var(--sea-teal);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(56, 178, 172, 0.2);
 }
 
 .top-artists-title {
@@ -17,7 +26,7 @@
   font-weight: bold;
   margin-bottom: var(--spacing-xl);
   text-align: center;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: var(--accent-sun-ocean);
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -76,19 +85,19 @@
 }
 
 .gold {
-  background: linear-gradient(45deg, #FFD700, #FFA500);
+  background: var(--accent-sun-ocean);
   height: 280px;
   order: 2;
 }
 
 .silver {
-  background: linear-gradient(45deg, #C0C0C0, #A9A9A9);
+  background: linear-gradient(45deg, var(--primary-sage), var(--accent-mist));
   height: 240px;
   order: 1;
 }
 
 .bronze {
-  background: linear-gradient(45deg, #CD7F32, #A0522D);
+  background: linear-gradient(45deg, var(--accent-cedar), var(--orange-burnt));
   height: 200px;
   order: 3;
 }
@@ -113,8 +122,8 @@
   border-radius: var(--radius-xl);
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   cursor: pointer;
-  background: rgba(255, 255, 255, 0.08);
-  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(56, 178, 172, 0.08);
+  border: 1px solid rgba(56, 178, 172, 0.12);
   backdrop-filter: blur(5px);
   position: relative;
   overflow: hidden;
@@ -122,21 +131,42 @@
   height: 100%;
 }
 
+.top-artist-item::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, rgba(56, 178, 172, 0.1) 0%, rgba(246, 173, 85, 0.05) 100%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.top-artist-item:hover::before {
+  opacity: 1;
+}
+
 .top-artist-item:hover {
-  background: rgba(255, 255, 255, 0.15);
+  background: rgba(56, 178, 172, 0.15);
   transform: translateY(-2px);
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
-  border-color: rgba(255, 255, 255, 0.2);
+  box-shadow: 0 8px 25px rgba(56, 178, 172, 0.15);
+  border-color: rgba(56, 178, 172, 0.2);
 }
 
 .top-artist-rank {
   font-size: var(--font-size-xl);
   font-weight: bold;
-  color: rgba(255, 255, 255, 0.9);
+  color: var(--text-inverse);
   text-align: center;
-  background: rgba(255, 255, 255, 0.1);
+  background: var(--background-coastal-card);
   border-radius: var(--radius-lg);
   padding: var(--spacing-sm) var(--spacing-md);
+  backdrop-filter: blur(5px);
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+  position: relative;
+  z-index: 1;
+  border: 1px solid rgba(56, 178, 172, 0.3);
 }
 
 .top-artist-details {
@@ -147,22 +177,30 @@
 .top-artist-name {
   font-size: var(--font-size-lg);
   font-weight: 600;
-  color: rgba(255, 255, 255, 0.95);
+  color: var(--text-inverse);
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
   margin-bottom: var(--spacing-xs);
+  word-break: break-word;
+  overflow-wrap: break-word;
 }
 
-.stream-grade-1 { color: #22C55E; }
-.stream-grade-2 { color: #EAB308; }
-.stream-grade-3 { color: #3B82F6; }
-.stream-grade-4 { color: #8B5CF6; }
-.stream-grade-5 { color: #6366F1; }
-.stream-grade-6 { color: #F97316; }
-.stream-grade-7 { color: #EF4444; }
+.stream-grade-1 { color: var(--sea-light); }
+.stream-grade-2 { color: var(--sea-teal); }
+.stream-grade-3 { color: var(--sand-light); }
+.stream-grade-4 { color: var(--sand-warm); }
+.stream-grade-5 { color: var(--sunset-coral); }
+.stream-grade-6 { color: var(--sunset-pink); }
+.stream-grade-7 { color: var(--ocean-deep); }
 
 .top-artist-song-count {
-  font-weight: 600;
-  font-family: 'Roboto Mono', monospace;
   font-size: var(--font-size-md);
+  color: var(--sea-teal);
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.top-artist-item:hover .top-artist-song-count {
+  color: var(--sand-warm);
 }
 
 @media (max-width: 768px) {

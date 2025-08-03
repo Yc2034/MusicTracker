@@ -16,7 +16,7 @@ export const SongItem: React.FC<SongItemProps> = ({ song }) => {
         <span className="rank-number">{song.rank}</span>
         <RankIndicator is_liked={song.is_liked} />
         <div className="song-title-container">
-            <span className="song-title">{song.title}</span>
+            <span className="song-title" title={song.title}>{song.title}</span>
             <div className="song-meta">
               {/* Display Release Date if it exists */}
               {song.release_date && (

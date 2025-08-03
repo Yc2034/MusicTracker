@@ -2,7 +2,8 @@
 
 .top-artists-container {
   position: relative;
-  background: var(--background-card);
+  background: var(--background-orange-card);
+  border: 1px solid rgba(184, 115, 51, 0.3);
   border-radius: var(--radius-2xl);
   padding: var(--spacing-xl);
   margin-bottom: var(--spacing-xl);
@@ -10,7 +11,14 @@
   max-width: 1200px;
   margin-left: auto;
   margin-right: auto;
-  margin-bottom: var(--spacing-xl);
+  backdrop-filter: blur(10px);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.top-artists-container:hover {
+  border-color: var(--sand-warm);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(184, 115, 51, 0.2);
 }
 
 .stars-canvas-container {
@@ -35,12 +43,13 @@
   font-weight: bold;
   margin-bottom: var(--spacing-xl);
   text-align: center;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: var(--accent-sun-ocean);
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
   text-shadow: none;
   padding: var(--spacing-md) 0;
+  position: relative;
 }
 
 .top-artists-list {
@@ -61,8 +70,8 @@
   border-radius: var(--radius-xl);
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   cursor: pointer;
-  background: rgba(255, 255, 255, 0.08);
-  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(184, 115, 51, 0.08);
+  border: 1px solid rgba(184, 115, 51, 0.12);
   backdrop-filter: blur(5px);
   position: relative;
   overflow: hidden;
@@ -77,7 +86,7 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.05) 100%);
+  background: linear-gradient(135deg, rgba(56, 178, 172, 0.1) 0%, rgba(246, 173, 85, 0.05) 100%);
   opacity: 0;
   transition: opacity 0.3s ease;
 }
@@ -87,24 +96,25 @@
 }
 
 .top-artist-item:hover {
-  background: rgba(255, 255, 255, 0.15);
+  background: rgba(184, 115, 51, 0.15);
   transform: translateY(-2px);
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
-  border-color: rgba(255, 255, 255, 0.2);
+  box-shadow: 0 8px 25px rgba(184, 115, 51, 0.15);
+  border-color: rgba(184, 115, 51, 0.2);
 }
 
 .top-artist-rank {
   font-size: var(--font-size-xl);
   font-weight: bold;
-  color: rgba(255, 255, 255, 0.9);
+  color: var(--text-inverse);
   text-align: center;
-  background: rgba(255, 255, 255, 0.1);
+  background: var(--background-orange-card);
   border-radius: var(--radius-lg);
   padding: var(--spacing-sm) var(--spacing-md);
   backdrop-filter: blur(5px);
   text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
   position: relative;
   z-index: 1;
+  border: 1px solid rgba(184, 115, 51, 0.3);
 }
 
 .top-artist-details {
@@ -115,15 +125,22 @@
 .top-artist-name {
   font-size: var(--font-size-lg);
   font-weight: 600;
-  color: rgba(255, 255, 255, 0.95);
+  color: var(--text-inverse);
   text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
   margin-bottom: var(--spacing-xs);
+  word-break: break-word;
+  overflow-wrap: break-word;
 }
 
 .top-artist-song-count {
   font-size: var(--font-size-md);
-  color: rgba(255, 255, 255, 0.7);
+  color: var(--sand-warm);
   font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.top-artist-item:hover .top-artist-song-count {
+  color: var(--sunset-coral);
 }
 
 @media (max-width: 768px) {

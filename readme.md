@@ -51,6 +51,7 @@ npm run dev
 #### 2025-07-24 加了podium颁奖台，稍微提升了ui layout
 #### 2025-07-25 Add custom svg, kudos to gemini
 #### 2025-08-02 加入了音频播放功能
+#### 2025-08-03 采用minialist风格重置了基础页面
 
 未来的方向
 1.
@@ -67,9 +68,7 @@ tyler the creator
 邓紫棋 周深 林俊杰
 IU
 
-3.
-做一个超级适配的color palette ui redesign
-migrate current ui design pattern to Styled component
+3. 做一个动效，在用户on hover的时候
 
 4.
 研究如何更好的兼容歌手图片  imagegen comfyui 只做top artist

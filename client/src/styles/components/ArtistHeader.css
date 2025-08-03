@@ -3,7 +3,7 @@
 .artist-header {
   position: relative;
   background: var(--background-card);
-  border: 1px solid rgba(255, 255, 255, 0.12);
+  border: 1px solid var(--primary-sage);
   backdrop-filter: blur(10px);
   
   /* Background image properties - this controls how image layout */
@@ -11,19 +11,20 @@
   background-position: center;
   background-repeat: repeat;
   background-blend-mode: overlay;
-  min-height: 200px;
+  min-height: 280px;
 
-  border-radius: var(--radius-2xl);
-  padding: var(--spacing-2xl);
-  margin-bottom: var(--spacing-xl);
+  border-radius: 0;
+  padding: 80px 60px;
+  margin-bottom: 60px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  max-width: 1200px;
+  max-width: 1400px;
   margin-left: auto;
   margin-right: auto;
-  margin-bottom: var(--spacing-xl);
+  margin-bottom: 60px;
   overflow: hidden;
+  transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .artist-header::before {
@@ -33,9 +34,20 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.05) 100%);
-  opacity: 0.5;
+  background: rgba(248, 246, 240, 0.05);
+  opacity: 1;
   pointer-events: none;
+  transition: opacity 0.6s ease;
+}
+
+.artist-header:hover::before {
+  opacity: 0.1;
+}
+
+.artist-header:hover {
+  border-color: var(--accent-cedar);
+  transform: translateY(-4px);
+  box-shadow: 0 20px 60px rgba(44, 43, 40, 0.1);
 }
 
 .artist-info {
@@ -44,15 +56,23 @@
 }
 
 .artist-name {
-  font-size: var(--font-size-4xl);
-  font-weight: bold;
-  margin-bottom: var(--spacing-lg);
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-  text-shadow: none;
-  letter-spacing: 2px;
+  font-size: clamp(36px, 6vw, 72px);
+  font-weight: 300;
+  margin-bottom: 40px;
+  color: var(--text-primary);
+  letter-spacing: -0.02em;
+  line-height: 0.9;
+  position: relative;
+}
+
+.artist-name::after {
+  content: '';
+  position: absolute;
+  bottom: -20px;
+  left: 0;
+  width: 40px;
+  height: 2px;
+  background: var(--accent-cedar);
 }
 
 .chart-positions {
@@ -62,27 +82,41 @@
 }
 
 .chart-position {
-  background: rgba(255, 255, 255, 0.15);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  padding: var(--spacing-md) var(--spacing-lg);
-  border-radius: var(--radius-xl);
-  font-weight: 600;
+  background: var(--background-card);
+  border: 1px solid var(--primary-sage);
+  padding: 16px 24px;
+  border-radius: 0;
+  font-weight: 500;
   backdrop-filter: blur(5px);
-  color: rgba(255, 255, 255, 0.95);
-  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
-  font-size: var(--font-size-md);
+  color: var(--text-primary);
+  font-size: 14px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  transition: all 0.3s ease;
+}
+
+.chart-position:hover {
+  border-color: var(--accent-cedar);
+  background: var(--background-card-hover);
 }
 
 .peak-position {
-  background: rgba(255, 255, 255, 0.15);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  padding: var(--spacing-md) var(--spacing-lg);
-  border-radius: var(--radius-xl);
-  font-weight: 600;
+  background: var(--background-card);
+  border: 1px solid var(--primary-sage);
+  padding: 16px 24px;
+  border-radius: 0;
+  font-weight: 500;
   backdrop-filter: blur(5px);
-  color: rgba(255, 255, 255, 0.95);
-  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
-  font-size: var(--font-size-md);
+  color: var(--text-primary);
+  font-size: 14px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  transition: all 0.3s ease;
+}
+
+.peak-position:hover {
+  border-color: var(--accent-cedar);
+  background: var(--background-card-hover);
 }
 
 .header-controls {
@@ -94,12 +128,18 @@
 .audio-player {
   position: relative;
   z-index: 2;
-  background: rgba(255, 255, 255, 0.1);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  border-radius: var(--radius-xl);
-  padding: var(--spacing-lg);
+  background: var(--background-card);
+  border: 1px solid var(--primary-sage);
+  border-radius: 0;
+  padding: 24px;
   backdrop-filter: blur(10px);
   min-width: 450px;
+  transition: all 0.3s ease;
+}
+
+.audio-player:hover {
+  border-color: var(--accent-cedar);
+  background: var(--background-card-hover);
 }
 
 .player-controls {
@@ -109,15 +149,15 @@
 }
 
 .control-button {
-  background: rgba(255, 255, 255, 0.15);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  color: white;
+  background: var(--background-card);
+  border: 1px solid var(--primary-sage);
+  color: var(--text-primary);
   width: 50px;
   height: 50px;
-  border-radius: 50%;
+  border-radius: 0;
   font-size: 1.2rem;
   cursor: pointer;
-  transition: all var(--transition-fast);
+  transition: all 0.3s ease;
   backdrop-filter: blur(5px);
   display: flex;
   align-items: center;
@@ -126,7 +166,9 @@
 }
 
 .control-button:hover:not(:disabled) {
-  background: rgba(255, 255, 255, 0.25);
+  background: var(--accent-cedar);
+  border-color: var(--accent-cedar);
+  color: var(--text-inverse);
   transform: scale(1.05);
 }
 
@@ -171,8 +213,8 @@
   position: relative;
   flex: 1;
   height: 6px;
-  background: rgba(255, 255, 255, 0.2);
-  border-radius: var(--radius-sm);
+  background: var(--accent-mist);
+  border-radius: 0;
   overflow: hidden;
 }
 
@@ -197,21 +239,21 @@
   appearance: none;
   width: 14px;
   height: 14px;
-  border-radius: 50%;
-  background: var(--primary-purple);
+  border-radius: 0;
+  background: var(--accent-cedar);
   cursor: pointer;
-  border: 2px solid white;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  border: 2px solid var(--text-inverse);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .progress-bar::-moz-range-thumb {
   width: 14px;
   height: 14px;
-  border-radius: 50%;
-  background: var(--primary-purple);
+  border-radius: 0;
+  background: var(--accent-cedar);
   cursor: pointer;
-  border: 2px solid white;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  border: 2px solid var(--text-inverse);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .progress-fill {
@@ -219,8 +261,8 @@
   top: 0;
   left: 0;
   height: 100%;
-  background: linear-gradient(90deg, var(--primary-purple), var(--primary-orange));
-  border-radius: var(--radius-sm);
+  background: linear-gradient(90deg, var(--accent-cedar), var(--primary-clay));
+  border-radius: 0;
   transition: width 0.1s ease;
   pointer-events: none;
 }
@@ -235,8 +277,14 @@
   cursor: pointer;
   background: transparent;
   border: none;
-  color: white;
+  color: var(--text-primary);
   padding: 5px;
+  transition: all 0.3s ease;
+}
+
+.volume-icon:hover {
+  opacity: 1;
+  color: var(--accent-cedar);
 }
 
 .volume-popup {
@@ -294,38 +342,47 @@
 
 
 .change-artist-btn {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  color: white;
-  border: none;
-  padding: var(--spacing-lg) var(--spacing-xl);
-  border-radius: var(--radius-xl);
-  font-weight: 600;
+  background: var(--primary-ink);
+  color: var(--text-inverse);
+  border: 1px solid var(--primary-ink);
+  padding: 16px 32px;
+  border-radius: 0;
+  font-weight: 500;
   cursor: pointer;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  font-size: var(--font-size-md);
+  transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  font-size: 14px;
   position: relative;
   z-index: 2;
   backdrop-filter: blur(5px);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
 }
 
 .change-artist-btn:hover {
-  background: linear-gradient(135deg, #5a67d8 0%, #6b46c1 100%);
+  background: var(--accent-cedar);
+  border-color: var(--accent-cedar);
   transform: translateY(-2px);
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 8px 25px rgba(44, 43, 40, 0.15);
 }
 
 @media (max-width: 768px) {
   .artist-header {
-    padding: var(--spacing-lg) var(--spacing-md);
+    padding: 40px 24px;
     flex-direction: column;
-    gap: var(--spacing-lg);
+    gap: 32px;
     text-align: center;
+    min-height: 240px;
   }
   
   .artist-name {
-    font-size: var(--font-size-3xl);
+    margin-bottom: 30px;
+  }
+  
+  .artist-name::after {
+    bottom: -16px;
+    width: 30px;
+    left: 50%;
+    transform: translateX(-50%);
   }
   
   .chart-positions {
@@ -334,7 +391,7 @@
   }
   
   .change-artist-btn {
-    padding: var(--spacing-md) var(--spacing-lg);
+    padding: 12px 24px;
   }
   
   .header-controls {

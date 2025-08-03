@@ -36,12 +36,13 @@ body {
 /* Links */
 a {
   font-weight: 500;
-  color: #646cff;
+  color: var(--accent-cedar);
   text-decoration: inherit;
+  transition: color var(--transition-medium);
 }
 
 a:hover {
-  color: #535bf2;
+  color: var(--primary-clay);
 }
 
 /* Buttons */
@@ -52,19 +53,21 @@ button {
   font-size: var(--font-size-sm);
   font-weight: 500;
   font-family: inherit;
-  background-color: #1a1a1a;
-  color: white;
+  background-color: var(--primary-ink);
+  color: var(--text-inverse);
   cursor: pointer;
-  transition: border-color var(--transition-medium);
+  transition: all var(--transition-medium);
 }
 
 button:hover {
-  border-color: #646cff;
+  border-color: var(--accent-cedar);
+  background-color: var(--accent-cedar);
 }
 
 button:focus,
 button:focus-visible {
-  outline: var(--shadow-focus);
+  outline: 2px solid var(--accent-cedar);
+  outline-offset: 2px;
 }
 
 /* Light mode overrides */
@@ -90,7 +93,7 @@ button:focus-visible {
   align-items: center;
   height: 100vh;
   font-size: var(--font-size-xl);
-  color: white;
+  color: var(--text-primary);
 }
 
 .error {
