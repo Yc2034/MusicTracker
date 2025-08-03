@@ -2,14 +2,11 @@ import styled from 'styled-components';
 import { motion } from 'framer-motion';
 
 export const PersonalRankingContainer = styled.div`
-  position: relative;
-  overflow: hidden;
-  background: var(--background-card);
-  border-radius: var(--radius-2xl);
-  padding: var(--spacing-xl);
-  backdrop-filter: blur(10px);
-  color: var(--text-primary);
   min-height: 100vh;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  padding: 0;
+  position: relative;
+  overflow-x: hidden;
 `;
 
 export const StarsCanvasContainer = styled.div`
@@ -19,66 +16,110 @@ export const StarsCanvasContainer = styled.div`
   width: 100%;
   height: 100%;
   z-index: 1;
+  opacity: 0.8;
 `;
 
 export const PersonalRankingContent = styled.div`
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 120px 80px 80px;
   position: relative;
   z-index: 2;
-  padding: var(--spacing-xl) var(--spacing-lg);
-  border-radius: var(--radius-2xl);
-  backdrop-filter: blur(5px);
-  max-width: 800px;
-  margin: 0 auto;
+
+  @media (max-width: 1024px) {
+    padding: 80px 40px 60px;
+  }
 
   @media (max-width: 768px) {
-    padding: var(--spacing-lg) var(--spacing-md);
+    padding: 60px 24px 40px;
   }
 `;
 
 export const PersonalRankingTitle = styled.h1`
-  font-size: var(--font-size-3xl);
-  font-weight: bold;
-  margin-bottom: var(--spacing-xl);
-  text-align: center;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-  text-shadow: none;
-  padding: var(--spacing-md) 0;
+  font-size: clamp(48px, 8vw, 120px);
+  font-weight: 300;
+  color: #ffffff;
+  margin: 0 0 120px 0;
+  line-height: 0.9;
+  letter-spacing: -0.02em;
+  position: relative;
+  text-shadow: 0 2px 20px rgba(0, 0, 0, 0.3);
+
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: -40px;
+    left: 0;
+    width: 60px;
+    height: 2px;
+    background: rgba(255, 255, 255, 0.8);
+  }
 
   @media (max-width: 768px) {
-    font-size: var(--font-size-2xl);
+    margin-bottom: 80px;
+    
+    &::after {
+      bottom: -24px;
+      width: 40px;
+    }
   }
 `;
 
 export const PersonalRankingList = styled.ol`
   list-style: none;
-  padding-left: 0;
-  max-width: 700px;
-  margin: 0 auto;
-  --base-hue: 260;
+  padding: 0;
+  margin: 0;
   display: grid;
-  gap: var(--spacing-md);
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 40px 60px;
+  max-width: none;
+
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
 `;
 
 export const RankingListItem = styled(motion.li)<{ $index: number }>`
-  display: flex;
-  align-items: center;
-  border-radius: var(--radius-xl);
-  padding: var(--spacing-lg) var(--spacing-xl);
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
   cursor: pointer;
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  color: white;
+  padding: 0;
+  margin: 0;
+  transform-origin: center;
+  
+  /* Asymmetrical positioning for visual interest */
+  ${props => props.$index % 3 === 1 && `
+    margin-top: 60px;
+    @media (max-width: 768px) {
+      margin-top: 0;
+    }
+  `}
+  
+  ${props => props.$index % 4 === 3 && `
+    margin-top: -40px;
+    @media (max-width: 768px) {
+      margin-top: 0;
+    }
+  `}
+
+  &:hover {
+    z-index: 10;
+  }
+`;
+
+export const RankingCard = styled(motion.div)<{ $index: number }>`
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 0;
+  padding: 40px 32px;
+  transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
   position: relative;
   overflow: hidden;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-  background: hsl(
-    calc(var(--base-hue) + ${props => props.$index} * 4),
-    calc(75% - ${props => props.$index} * 1%),
-    calc(35% + ${props => props.$index} * 0.5%)
-  );
+  height: 200px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  backdrop-filter: blur(10px);
 
   &::before {
     content: '';
@@ -87,64 +128,82 @@ export const RankingListItem = styled(motion.li)<{ $index: number }>`
     left: 0;
     right: 0;
     bottom: 0;
-    background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.05) 100%);
-    opacity: 0;
-    transition: opacity 0.3s ease;
+    background: rgba(255, 255, 255, 0.15);
+    transform: translateY(100%);
+    transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    z-index: 1;
   }
 
   &:hover::before {
-    opacity: 1;
+    transform: translateY(0);
   }
 
-  &:hover,
-  &:focus {
-    background: hsl(
-      calc(var(--base-hue) + ${props => props.$index} * 4),
-      calc(80% - ${props => props.$index} * 1%),
-      calc(45% + ${props => props.$index} * 0.5%)
-    );
-    transform: translateY(-2px);
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
-    outline: none;
-    border-color: rgba(255, 255, 255, 0.25);
+  &:hover {
+    border-color: rgba(255, 255, 255, 0.4);
+    transform: translateY(-8px);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    background: rgba(255, 255, 255, 0.2);
   }
 
   @media (max-width: 768px) {
-    padding: var(--spacing-md) var(--spacing-lg);
+    padding: 32px 24px;
+    height: 160px;
   }
 `;
 
 export const RankingNumber = styled.span`
-  font-size: var(--font-size-2xl);
-  font-weight: bold;
-  color: rgba(255, 255, 255, 0.9);
-  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
-  margin-right: var(--spacing-xl);
-  min-width: 45px;
-  text-align: center;
-  background: rgba(255, 255, 255, 0.1);
-  border-radius: var(--radius-lg);
-  padding: var(--spacing-sm) var(--spacing-md);
-  backdrop-filter: blur(5px);
+  font-size: 14px;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.8);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
   position: relative;
-  z-index: 1;
+  z-index: 2;
+  transition: color 0.3s ease;
 
-  @media (max-width: 768px) {
-    min-width: 35px;
-    font-size: var(--font-size-lg);
-    margin-right: var(--spacing-lg);
+  ${RankingCard}:hover & {
+    color: #ffffff;
   }
 `;
 
 export const RankingArtistName = styled.span`
-  font-size: var(--font-size-xl);
-  font-weight: 600;
-  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+  font-size: clamp(24px, 3vw, 32px);
+  font-weight: 400;
+  color: #ffffff;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
   position: relative;
-  z-index: 1;
-  letter-spacing: 0.5px;
+  z-index: 2;
+  margin-top: auto;
+  transition: all 0.3s ease;
+  text-shadow: 0 1px 10px rgba(0, 0, 0, 0.2);
+
+  ${RankingCard}:hover & {
+    color: #ffffff;
+    font-weight: 500;
+  }
 
   @media (max-width: 768px) {
-    font-size: var(--font-size-lg);
+    font-size: 24px;
+  }
+`;
+
+export const RankingAccent = styled.div<{ $index: number }>`
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 4px;
+  height: 100%;
+  background: ${props => {
+    const colors = ['#FF6B6B', '#4ECDC4', '#45B7D1', '#96CEB4', '#FFEAA7', '#DDA0DD'];
+    return colors[props.$index % colors.length];
+  }};
+  transform: scaleY(0);
+  transform-origin: bottom;
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  z-index: 3;
+
+  ${RankingCard}:hover & {
+    transform: scaleY(1);
   }
 `;
