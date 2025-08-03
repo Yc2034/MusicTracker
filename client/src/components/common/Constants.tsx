@@ -1,5 +1,6 @@
 // Constants
 export const AVAILABLE_ARTISTS = [
+    'Billie Eilish',
     'Post Malone',
     'Benson Boone',
     'The Weeknd', 
@@ -25,12 +26,12 @@ export const PERSONAL_RANKING = [
     'Taylor Swift',
     'IU',
     'Zhou Shen',
-    'JJ Lin',
+    'Billie Eilish',
     'Blackpink',
+    'JJ Lin',
     'Post Malone',
     'Benson Boone',
     'G.E.M',
-    'Billie Eilish',
     'The Weeknd',
     'Itzy',
     'Sabrina Carpenter',

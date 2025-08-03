@@ -29,6 +29,9 @@ ts-node prisma/import-csv.ts weeknd
 ### 删除数据
 ts-node prisma/clear-database.ts
 
+### 删除指定数据 在里面填歌曲信息
+打开网页数据库，先删除streamRecord 再删除对应的歌曲
+
 ### 完全初始化数据库并且run seed command
 npx prisma migrate reset
 
@@ -57,7 +60,6 @@ wheein ive g-idle itzy
  blackpink
 
 concert
-billie eilish 
 taylor swift
 tyler the creator
 
