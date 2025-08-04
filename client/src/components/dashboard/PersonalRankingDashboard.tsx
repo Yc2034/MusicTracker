@@ -86,14 +86,12 @@ export const PersonalRankingDashboard: React.FC<PersonalRankingDashboardProps> =
             <RankingListItem
               key={index}
               $index={index}
-              variants={itemVariants}
               onClick={() => onArtistSelect(artist)}
               tabIndex={0}
               onKeyPress={(e) => e.key === 'Enter' && onArtistSelect(artist)}
             >
               <RankingCard
                 $index={index}
-                variants={cardHoverVariants}
                 whileHover="hover"
                 whileTap="tap"
               >
