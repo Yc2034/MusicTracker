@@ -65,11 +65,11 @@ concert
 taylor swift
 tyler the creator
 
-2. 中韩特定数据补齐
+2. 中韩特定数据补齐 数据库redesign
 邓紫棋 周深 林俊杰
 IU
 
-
+3. 做一套新的svg 改一个新的threejs 模板
 
 4.
 研究如何更好的兼容歌手图片  imagegen comfyui 只做top artist

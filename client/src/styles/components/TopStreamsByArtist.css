@@ -1,110 +1,120 @@
 /* src/styles/components/TopStreamsByArtist.css */
 
-.top-artists-container {
-  position: relative;
-  background: var(--background-coastal-card);
-  border: 1px solid rgba(56, 178, 172, 0.3);
-  border-radius: var(--radius-2xl);
-  padding: var(--spacing-xl);
+.top-artists-container-v2 {
+  background: transparent;
+  padding: var(--spacing-xl) 0;
   margin-bottom: var(--spacing-xl);
-  overflow: hidden;
   max-width: 1200px;
   margin-left: auto;
   margin-right: auto;
-  backdrop-filter: blur(10px);
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.top-artists-container:hover {
-  border-color: var(--sea-teal);
-  transform: translateY(-2px);
-  box-shadow: 0 8px 25px rgba(56, 178, 172, 0.2);
+.top-artists-title-v2 {
+  font-size: 1rem;
+  font-weight: 500;
+  margin-bottom: 60px; /* More space */
+  text-align: left;
+  color: var(--text-inverse-secondary);
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
 }
 
-.top-artists-title {
-  font-size: var(--font-size-3xl);
-  font-weight: bold;
-  margin-bottom: var(--spacing-xl);
-  text-align: center;
-  background: var(--accent-sun-ocean);
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-  text-shadow: none;
-  padding: var(--spacing-md) 0;
-}
+/* --- START: V2 Podium Styles --- */
 
-/* --- Podium Styles (Merged) --- */
-.podium-container {
-  display: flex;
-  align-items: flex-end;
-  justify-content: center;
-  gap: 10px;
-  min-height: 320px; /* Adjusted height */
-  padding: 20px 0;
-  margin-bottom: var(--spacing-xl);
-}
-
-.podium-spot {
-  display: flex;
-  flex-direction: column;
+.podium-container-v2 {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr 1fr; /* Center column is wider */
+  gap: 20px;
   align-items: center;
-  justify-content: flex-start;
-  padding: 20px;
-  border-top-left-radius: 12px;
-  border-top-right-radius: 12px;
-  color: white;
-  width: 220px;
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  margin-bottom: 80px;
+  width: 100%;
 }
 
-.podium-spot:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
-}
-
-.podium-rank-label {
-  font-size: 3rem;
-  line-height: 1;
-  margin-bottom: 15px;
-}
-
-.podium-artist-name {
-  font-size: 1.3rem;
-  font-weight: 700;
-  margin: 0 0 5px 0;
+.podium-spot-v2 {
+  background: var(--background-card-dark);
+  border: 1px solid rgba(248, 246, 240, 0.2);
+  backdrop-filter: blur(10px);
+  padding: 40px;
   text-align: center;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
 }
 
-.podium-artist-streams {
+.podium-spot-v2::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(248, 246, 240, 0.05);
+  transform: translateY(100%);
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  z-index: 1;
+}
+
+.podium-spot-v2:hover::before {
+  transform: translateY(0);
+}
+
+.podium-spot-v2:hover {
+  transform: translateY(-8px);
+  background: rgba(44, 43, 40, 0.3);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+  border-color: var(--accent-cedar);
+}
+
+.podium-details-v2 {
+  position: relative;
+  z-index: 2;
+}
+
+.podium-rank-v2 {
   font-size: 0.9rem;
   font-weight: 500;
-  opacity: 0.9;
+  color: var(--text-inverse-secondary);
+  letter-spacing: 0.2em;
+  margin-bottom: 24px;
+}
+
+.podium-artist-name-v2 {
+  font-size: 2rem;
+  font-weight: 600;
+  color: var(--text-inverse);
+  margin: 0 0 8px 0;
+  line-height: 1.2;
+}
+
+.podium-artist-streams-v2 {
+  font-size: 1rem;
+  color: var(--text-inverse-secondary);
   margin: 0;
 }
 
-.gold {
-  background: var(--accent-sun-ocean);
-  height: 280px;
-  order: 2;
+/* Rank-specific styles for hierarchy */
+.podium-spot-v2.gold {
+  transform: scale(1.1); /* Make gold stand out */
+  z-index: 10;
+}
+.podium-spot-v2.gold .podium-artist-name-v2 {
+  font-size: 2.5rem; /* Larger font for gold */
 }
 
-.silver {
-  background: linear-gradient(45deg, var(--primary-sage), var(--accent-mist));
-  height: 240px;
-  order: 1;
+.podium-spot-v2.silver {
+  text-align: right;
+  align-items: flex-end;
+}
+.podium-spot-v2.bronze {
+  text-align: left;
+  align-items: flex-start;
 }
 
-.bronze {
-  background: linear-gradient(45deg, var(--accent-cedar), var(--orange-burnt));
-  height: 200px;
-  order: 3;
-}
-/* --- End of Podium Styles --- */
+/* --- END: V2 Podium Styles --- */
 
 
-.top-artists-list {
+.top-artists-list-v2 {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: var(--spacing-lg);
@@ -113,7 +123,7 @@
   grid-auto-rows: 1fr;
 }
 
-.top-artist-item {
+.top-artist-item-v2 {
   display: grid;
   grid-template-columns: 60px 1fr;
   gap: var(--spacing-lg);
@@ -131,30 +141,14 @@
   height: 100%;
 }
 
-.top-artist-item::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: linear-gradient(135deg, rgba(56, 178, 172, 0.1) 0%, rgba(246, 173, 85, 0.05) 100%);
-  opacity: 0;
-  transition: opacity 0.3s ease;
-}
-
-.top-artist-item:hover::before {
-  opacity: 1;
-}
-
-.top-artist-item:hover {
+.top-artist-item-v2:hover {
   background: rgba(56, 178, 172, 0.15);
   transform: translateY(-2px);
   box-shadow: 0 8px 25px rgba(56, 178, 172, 0.15);
   border-color: rgba(56, 178, 172, 0.2);
 }
 
-.top-artist-rank {
+.top-artist-rank-v2 {
   font-size: var(--font-size-xl);
   font-weight: bold;
   color: var(--text-inverse);
@@ -169,12 +163,7 @@
   border: 1px solid rgba(56, 178, 172, 0.3);
 }
 
-.top-artist-details {
-  position: relative;
-  z-index: 1;
-}
-
-.top-artist-name {
+.top-artist-details-v2, .top-artist-name-v2 {
   font-size: var(--font-size-lg);
   font-weight: 600;
   color: var(--text-inverse);
@@ -192,34 +181,35 @@
 .stream-grade-6 { color: var(--sunset-pink); }
 .stream-grade-7 { color: var(--ocean-deep); }
 
-.top-artist-song-count {
+.top-artist-song-count-v2 {
   font-size: var(--font-size-md);
   color: var(--sea-teal);
   font-weight: 500;
   transition: color 0.3s ease;
 }
 
-.top-artist-item:hover .top-artist-song-count {
+.top-artist-item-v2:hover .top-artist-song-count-v2 {
   color: var(--sand-warm);
 }
 
-@media (max-width: 768px) {
-  .top-artists-list {
+@media (max-width: 900px) {
+  .podium-container-v2 {
+    grid-template-columns: 1fr;
+    gap: 40px; /* Stack them with more space */
+  }
+
+  .podium-spot-v2.gold {
+    transform: scale(1.05); /* Slightly smaller scale on mobile */
+    order: 1; /* Gold first */
+  }
+  .podium-spot-v2.silver {
+    order: 2; /* Then silver */
+  }
+  .podium-spot-v2.bronze {
+    order: 3; /* Then bronze */
+  }
+  
+  .top-artists-list-v2 {
     grid-template-columns: 1fr;
   }
-}
-
-.podium-spot {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-start;
-  padding: 20px;
-  border-top-left-radius: 12px;
-  border-top-right-radius: 12px;
-  color: white;
-  width: 220px;
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  cursor: pointer; /* Added this line for visual feedback */
 }

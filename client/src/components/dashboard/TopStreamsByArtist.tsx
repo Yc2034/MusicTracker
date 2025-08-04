@@ -3,7 +3,7 @@ import React from 'react';
 import Tilt from 'react-parallax-tilt';
 import type { ArtistStreamCount } from '../../types';
 import { formatWithCommas } from '../../utils/formatters';
-import '../../styles/components/TopStreamsByArtist.css'; // Styles now include podium
+import '../../styles/components/TopStreamsByArtist.css';
 
 interface TopStreamsByArtistProps {
   topArtists: ArtistStreamCount[];
@@ -21,47 +21,43 @@ const getStreamColorClass = (streams: number) => {
   return 'stream-grade-1';
 };
 
-// Internal Podium component now accepts onArtistSelect
-const Podium: React.FC<{ artists: ArtistStreamCount[]; onArtistSelect: (artistName: string) => void; }> = ({ artists, onArtistSelect }) => {
-  const goldArtist = artists[0];
-  const silverArtist = artists[1];
-  const bronzeArtist = artists[2];
+// Internal V2 Podium component
+const PodiumV2: React.FC<{ artists: ArtistStreamCount[]; onArtistSelect: (artistName: string) => void; }> = ({ artists, onArtistSelect }) => {
+  const [gold, silver, bronze] = artists;
 
-  const renderPodiumSpot = (artist: ArtistStreamCount, medal: 'gold' | 'silver' | 'bronze') => {
-    const medalEmojis = { gold: '🥇', silver: '🥈', bronze: '🥉' };
+  const renderPodiumSpot = (artist: ArtistStreamCount, rank: 'gold' | 'silver' | 'bronze') => {
+    const rankText = { gold: '1ST', silver: '2ND', bronze: '3RD' };
     return (
-      // Added onClick handler here
-      <div className={`podium-spot ${medal}`} onClick={() => onArtistSelect(artist.artistName)}>
-        <div className="podium-rank-label">{medalEmojis[medal]}</div>
-        <h3 className="podium-artist-name">{artist.artistName}</h3>
-        <p className="podium-artist-streams">{formatWithCommas(artist.totalStreams)} streams</p>
+      <div className={`podium-spot-v2 ${rank}`} onClick={() => onArtistSelect(artist.artistName)}>
+        <div className="podium-details-v2">
+          <span className="podium-rank-v2">{rankText[rank]}</span>
+          <h3 className="podium-artist-name-v2">{artist.artistName}</h3>
+          <p className="podium-artist-streams-v2">{formatWithCommas(artist.totalStreams)} streams</p>
+        </div>
       </div>
     );
   };
 
   return (
-    <div className="podium-container">
-      {renderPodiumSpot(silverArtist, 'silver')}
-      {renderPodiumSpot(goldArtist, 'gold')}
-      {renderPodiumSpot(bronzeArtist, 'bronze')}
+    <div className="podium-container-v2">
+      {renderPodiumSpot(silver, 'silver')}
+      {renderPodiumSpot(gold, 'gold')}
+      {renderPodiumSpot(bronze, 'bronze')}
     </div>
   );
 };
 
 export const TopStreamsByArtist: React.FC<TopStreamsByArtistProps> = ({ topArtists, onArtistSelect }) => {
-  // Split artists for podium and list
   const podiumArtists = topArtists.slice(0, 3);
   const listArtists = topArtists.slice(3);
 
   return (
-    <div className="top-artists-container">
-      <h2 className="top-artists-title">Top Streams by Artist</h2>
+    <div className="top-artists-container-v2">
+      <h2 className="top-artists-title-v2">Top Streams by Artist</h2>
       
-      {/* Render Podium if we have enough artists and pass the handler */}
-      {podiumArtists.length === 3 && <Podium artists={podiumArtists} onArtistSelect={onArtistSelect} />}
+      {podiumArtists.length === 3 && <PodiumV2 artists={podiumArtists} onArtistSelect={onArtistSelect} />}
 
-      {/* Render the rest of the artists in a list */}
-      <div className="top-artists-list">
+      <div className="top-artists-list-v2">
         {listArtists.map((artist, index) => (
           <Tilt
             key={index}
@@ -71,11 +67,11 @@ export const TopStreamsByArtist: React.FC<TopStreamsByArtistProps> = ({ topArtis
             tiltMaxAngleX={25}
             tiltMaxAngleY={25}
           >
-            <div className="top-artist-item" onClick={() => onArtistSelect(artist.artistName)}>
-              <div className="top-artist-rank">{index + 4}</div> {/* Start rank from 4 */}
-              <div className="top-artist-details">
-                <div className="top-artist-name">{artist.artistName}</div>
-                <div className={`top-artist-song-count ${getStreamColorClass(artist.totalStreams)}`}>
+            <div className="top-artist-item-v2" onClick={() => onArtistSelect(artist.artistName)}>
+              <div className="top-artist-rank-v2">{index + 4}</div>
+              <div className="top-artist-details-v2">
+                <div className="top-artist-name-v2">{artist.artistName}</div>
+                <div className={`top-artist-song-count-v2 ${getStreamColorClass(artist.totalStreams)}`}>
                   {formatWithCommas(artist.totalStreams)} streams
                 </div>
               </div>
