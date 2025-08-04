@@ -69,7 +69,7 @@ tyler the creator
 邓紫棋 周深 林俊杰
 IU
 
-3. 做一套新的svg 改一个新的threejs 模板
+3. 做一套新的svg 改一个新的threejs 模板 做一个tab
 
 4.
 研究如何更好的兼容歌手图片  imagegen comfyui 只做top artist
@@ -80,3 +80,18 @@ IU
 Check web design:
 https://dribbble.com/
 https://www.awwwards.com/inspiration/music-page-clara-venice
+
+
+Suggested prompt for imageGen
+
+1.
+
+Cinematic atmospheric portrait of [Artist Name], moody and introspective, dramatic chiaroscuro lighting, shot on film, deep rich colors against a dark minimalist background, with significant negative space on the left, photorealistic, 8K --ar 16:9
+
+2.
+
+Ethereal half-lit portrait of [Artist Name] emerging from shadows, volumetric light beams cutting through a hazy, atmospheric scene, desaturated tones with a single accent of [A Key Color, e.g., neon green or electric blue], minimalist composition, hyper-detailed, feeling of quiet intensity --ar 16:9
+
+3.
+
+High-fashion editorial photograph of [Artist Name], striking a powerful pose, profile shot with sharp rim lighting, monochrome color palette, set in a vast, empty brutalist architectural space, ultra-detailed fabric textures, elegant and dominant composition --ar 16:9

@@ -1,22 +1,32 @@
 /* src/styles/components/SongsList.css */
 
+/* --- New container for the background image --- */
+.songs-list-background {
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  border: 1px solid rgba(248, 246, 240, 0.2);
+  border-top: none; /* Remove top border to blend with header */
+}
+
 /* --- START: V2 - Editorial Tracklist Design --- */
 
 .songs-section-v2 {
-  padding: 80px 0; /* Vertical padding, no horizontal */
+  padding: 80px 0;
   max-width: 1400px;
   margin: 0 auto;
+  background: transparent; /* Ensure this section is transparent */
 }
 
 .songs-title-v2 {
-  font-size: 1rem; /* Smaller, like a category label */
+  font-size: 1rem;
   font-weight: 500;
   margin-bottom: 40px;
   text-align: left;
   color: var(--text-inverse-secondary);
-  letter-spacing: 0.2em; /* Wide letter spacing */
+  letter-spacing: 0.2em;
   text-transform: uppercase;
-  padding-left: 20px; /* Align with list items */
+  padding-left: 20px;
   position: relative;
 }
 

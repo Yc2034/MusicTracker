@@ -15,7 +15,7 @@ import { SongsList } from './components/songs/SongsList';
 import { PersonalSongsDashboard } from './components/dashboard/PersonalSongsDashboard';
 import { PersonalRankingDashboard } from './components/dashboard/PersonalRankingDashboard';
 import { AVAILABLE_ARTISTS } from './components/common/Constants';
-import { Stars } from './components/common/Stars'; // Import the Stars component
+import { Stars } from './components/common/Stars';
 import type { ArtistData } from './types';
 
 type DashboardView = 'artist' | 'personal' | 'personal-ranking';
@@ -70,6 +70,10 @@ function App() {
     const metrics = calculateMetrics(artistData.name, allArtistsData);
     const processedSongs = processSongsData(artistData.songs, artistData.name);
     const artistImage = getArtistImage(artistData.name);
+    
+    const songListStyle = artistImage ? {
+        backgroundImage: `linear-gradient(rgba(10, 10, 10, 0.7), rgba(10, 10, 10, 0.9)), url(${artistImage})`,
+      } : {};
 
     return (
       <div className="artist-dashboard-content">
@@ -79,13 +83,14 @@ function App() {
         <div style={{ position: 'relative', zIndex: 2 }}>
             <ArtistHeader
               artistName={artistData.name}
-              artistImage={artistImage}
               metrics={metrics}
               selectedArtist={selectedArtist}
               availableArtists={AVAILABLE_ARTISTS}
               onArtistChange={handleArtistChange}
             />
-            <SongsList songs={processedSongs} maxSongs={20} />
+            <div className="songs-list-background" style={songListStyle}>
+              <SongsList songs={processedSongs} maxSongs={20} />
+            </div>
         </div>
       </div>
     );
