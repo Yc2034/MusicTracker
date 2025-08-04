@@ -70,9 +70,13 @@ IU
 
 3. 做一个动效，在用户on hover的时候
 
+4. 在artist主页加一个合适的背景
+
 4.
 研究如何更好的兼容歌手图片  imagegen comfyui 只做top artist
 
 5. 
 可以做一个大的three js 播放器 每日随机 webgl方向 前后端
 
+
+Good web ref: https://www.awwwards.com/inspiration/music-page-clara-venice

@@ -2,17 +2,11 @@
 
 .artist-header {
   position: relative;
-  background: var(--background-card);
-  border: 1px solid var(--primary-sage);
-  backdrop-filter: blur(10px);
-  
-  /* Background image properties - this controls how image layout */
-  background-size: contain;
+  background-size: cover;
   background-position: center;
-  background-repeat: repeat;
+  background-repeat: no-repeat;
   background-blend-mode: overlay;
   min-height: 280px;
-
   border-radius: 0;
   padding: 80px 60px;
   margin-bottom: 60px;
@@ -100,46 +94,31 @@
   background: var(--background-card-hover);
 }
 
-.peak-position {
-  background: var(--background-card);
-  border: 1px solid var(--primary-sage);
-  padding: 16px 24px;
-  border-radius: 0;
-  font-weight: 500;
-  backdrop-filter: blur(5px);
-  color: var(--text-primary);
-  font-size: 14px;
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
-  transition: all 0.3s ease;
-}
-
-.peak-position:hover {
-  border-color: var(--accent-cedar);
-  background: var(--background-card-hover);
-}
-
 .header-controls {
   display: flex;
   align-items: center;
   gap: var(--spacing-lg);
 }
 
+/* --- START: Revamped Audio Player Styles --- */
+
 .audio-player {
   position: relative;
   z-index: 2;
-  background: var(--background-card);
-  border: 1px solid var(--primary-sage);
-  border-radius: 0;
+  background: rgba(10, 10, 10, 0.5); /* Dark, semi-transparent background */
+  border: 1px solid rgba(255, 255, 255, 0.1); /* Subtle border for glass effect */
+  border-radius: var(--radius-xl); /* Softer corners */
   padding: 24px;
-  backdrop-filter: blur(10px);
+  backdrop-filter: blur(15px); /* Key for the glassmorphism effect */
+  -webkit-backdrop-filter: blur(15px);
   min-width: 450px;
   transition: all 0.3s ease;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
 }
 
 .audio-player:hover {
-  border-color: var(--accent-cedar);
-  background: var(--background-card-hover);
+  border-color: rgba(255, 255, 255, 0.2);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
 }
 
 .player-controls {
@@ -149,16 +128,15 @@
 }
 
 .control-button {
-  background: var(--background-card);
-  border: 1px solid var(--primary-sage);
-  color: var(--text-primary);
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: var(--text-inverse);
   width: 50px;
   height: 50px;
-  border-radius: 0;
+  border-radius: 50%; /* Circular buttons */
   font-size: 1.2rem;
   cursor: pointer;
   transition: all 0.3s ease;
-  backdrop-filter: blur(5px);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -166,56 +144,40 @@
 }
 
 .control-button:hover:not(:disabled) {
-  background: var(--accent-cedar);
-  border-color: var(--accent-cedar);
-  color: var(--text-inverse);
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.3);
   transform: scale(1.05);
 }
 
 .control-button:disabled {
-  opacity: 0.6;
+  opacity: 0.5;
   cursor: not-allowed;
-}
-
-.control-button.loading {
-  pointer-events: none;
-}
-
-.loading-spinner {
-  animation: spin 1s linear infinite;
-}
-
-@keyframes spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
-}
-
-.play-icon, .pause-icon {
-  transition: all var(--transition-fast);
+  filter: grayscale(1);
 }
 
 .progress-section {
   display: flex;
   align-items: center;
-  gap: var(--spacing-sm);
+  gap: var(--spacing-md); /* Increased gap */
   flex-grow: 1;
 }
 
 .time-display {
   font-size: var(--font-size-xs);
-  color: var(--text-secondary);
+  color: var(--text-inverse-secondary);
   font-weight: 500;
-  min-width: 35px;
+  min-width: 40px; /* More space for time */
   text-align: center;
+  letter-spacing: 0.05em;
 }
 
 .progress-container {
   position: relative;
   flex: 1;
   height: 6px;
-  background: var(--accent-mist);
-  border-radius: 0;
-  overflow: hidden;
+  background: rgba(255, 255, 255, 0.15); /* Lighter track */
+  border-radius: 3px;
+  overflow: visible; /* Allow thumb to overflow */
 }
 
 .progress-bar {
@@ -234,25 +196,33 @@
   appearance: none;
 }
 
+/* Custom Thumb for Webkit (Chrome, Safari) */
 .progress-bar::-webkit-slider-thumb {
   -webkit-appearance: none;
   appearance: none;
-  width: 14px;
-  height: 14px;
-  border-radius: 0;
-  background: var(--accent-cedar);
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: var(--text-inverse);
   cursor: pointer;
-  border: 2px solid var(--text-inverse);
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border: none;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  margin-top: -5px; /* Center the thumb on the track */
+  transition: transform 0.2s ease;
 }
 
+.progress-bar:hover::-webkit-slider-thumb {
+  transform: scale(1.1);
+}
+
+/* Custom Thumb for Firefox */
 .progress-bar::-moz-range-thumb {
-  width: 14px;
-  height: 14px;
-  border-radius: 0;
-  background: var(--accent-cedar);
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: var(--text-inverse);
   cursor: pointer;
-  border: 2px solid var(--text-inverse);
+  border: none;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
@@ -261,9 +231,9 @@
   top: 0;
   left: 0;
   height: 100%;
-  background: linear-gradient(90deg, var(--accent-cedar), var(--primary-clay));
-  border-radius: 0;
-  transition: width 0.1s ease;
+  background: var(--text-inverse); /* Clean white fill */
+  border-radius: 3px;
+  transition: width 0.1s linear;
   pointer-events: none;
 }
 
@@ -272,42 +242,41 @@
 }
 
 .volume-icon {
-  font-size: 1.2rem;
+  font-size: 1.5rem; /* Larger icon */
   opacity: 0.8;
   cursor: pointer;
   background: transparent;
   border: none;
-  color: var(--text-primary);
+  color: var(--text-inverse);
   padding: 5px;
   transition: all 0.3s ease;
 }
 
 .volume-icon:hover {
   opacity: 1;
-  color: var(--accent-cedar);
+  transform: scale(1.1);
 }
 
 .volume-popup {
   position: absolute;
-  bottom: calc(100% + 10px);
+  bottom: calc(100% + 15px);
   left: 50%;
   transform: translateX(-50%);
-  background: rgba(40, 40, 40, 0.9);
+  background: rgba(10, 10, 10, 0.7);
   border-radius: var(--radius-lg);
   padding: 15px 10px;
-  backdrop-filter: blur(5px);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
   box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-  transition: all 0.2s ease-in-out;
   z-index: 10;
+  border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .volume-slider {
   width: 100px;
-  height: 4px;
+  height: 5px;
   background: rgba(255, 255, 255, 0.2);
-  border-radius: var(--radius-sm);
-  border: none;
-  cursor: pointer;
+  border-radius: 2.5px;
   -webkit-appearance: none;
   appearance: none;
 }
@@ -315,31 +284,24 @@
 .volume-slider::-webkit-slider-thumb {
   -webkit-appearance: none;
   appearance: none;
-  width: 12px;
-  height: 12px;
+  width: 14px;
+  height: 14px;
   border-radius: 50%;
-  background: var(--primary-purple);
+  background: var(--text-inverse);
   cursor: pointer;
-  border: 1px solid white;
+  border: none;
 }
 
 .volume-slider::-moz-range-thumb {
-  width: 12px;
-  height: 12px;
+  width: 14px;
+  height: 14px;
   border-radius: 50%;
-  background: var(--primary-purple);
+  background: var(--text-inverse);
   cursor: pointer;
-  border: 1px solid white;
+  border: none;
 }
 
-.error-message {
-  margin-top: var(--spacing-sm);
-  font-size: var(--font-size-xs);
-  color: var(--error-red);
-  text-align: center;
-  opacity: 0.9;
-}
-
+/* --- END: Revamped Audio Player Styles --- */
 
 .change-artist-btn {
   background: var(--primary-ink);
