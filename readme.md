@@ -71,8 +71,10 @@ IU
 
 3. 做一套新的svg 改一个新的threejs 模板 做一个tab
 
-4.
-研究如何更好的兼容歌手图片  imagegen comfyui 只做top artist
+4. 补充top aritst的图源
+
+5. artistheader 现在看起来太空了 需要补一些图片或者效果
+
 
 5. 
 可以做一个大的three js 播放器 每日随机 webgl方向 前后端
