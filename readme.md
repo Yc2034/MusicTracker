@@ -52,7 +52,7 @@ npm run dev
 #### 2025-07-25 Add custom svg, kudos to gemini
 #### 2025-08-02 加入了音频播放功能
 #### 2025-08-03 采用minialist风格重置了基础页面
-#### 2025-08-04 SongList style update
+#### 2025-08-04 SongList style update Use design pattern: Glassmorphism is a UI design style that creates a "through the glass" look and feel. 
 
 未来的方向
 1.
@@ -77,5 +77,6 @@ IU
 5. 
 可以做一个大的three js 播放器 每日随机 webgl方向 前后端
 
-
-Good web ref: https://www.awwwards.com/inspiration/music-page-clara-venice
+Check web design:
+https://dribbble.com/
+https://www.awwwards.com/inspiration/music-page-clara-venice
