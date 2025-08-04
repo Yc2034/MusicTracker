@@ -15,6 +15,7 @@ import { SongsList } from './components/songs/SongsList';
 import { PersonalSongsDashboard } from './components/dashboard/PersonalSongsDashboard';
 import { PersonalRankingDashboard } from './components/dashboard/PersonalRankingDashboard';
 import { AVAILABLE_ARTISTS } from './components/common/Constants';
+import { Stars } from './components/common/Stars'; // Import the Stars component
 import type { ArtistData } from './types';
 
 type DashboardView = 'artist' | 'personal' | 'personal-ranking';
@@ -22,7 +23,7 @@ type DashboardView = 'artist' | 'personal' | 'personal-ranking';
 function App() {
   const [selectedArtist, setSelectedArtist] = useState(AVAILABLE_ARTISTS[0]);
   const { artistData, loading: artistLoading, error: artistError } = useArtistData(selectedArtist);
-  
+
   const [allArtistsData, setAllArtistsData] = useState<ArtistData[]>([]);
   const [allArtistsLoading, setAllArtistsLoading] = useState(true);
   const [allArtistsError, setAllArtistsError] = useState<string | null>(null);
@@ -56,33 +57,37 @@ function App() {
     setSelectedArtist(artistName);
     setDashboardView('artist');
   };
-  
+
   const handleNavClick = (view: DashboardView) => {
     setDashboardView(view);
-    // setIsMenuOpen(false); // <-- This line is now removed
   };
 
   const renderArtistDashboard = () => {
     if (artistLoading) return <div className="loading">Loading artist data...</div>;
     if (artistError) return <div className="error">{artistError}</div>;
     if (!artistData) return <div className="no-data">No data available for {selectedArtist}</div>;
-    
+
     const metrics = calculateMetrics(artistData.name, allArtistsData);
     const processedSongs = processSongsData(artistData.songs, artistData.name);
     const artistImage = getArtistImage(artistData.name);
 
     return (
-      <>
-        <ArtistHeader
-          artistName={artistData.name}
-          artistImage={artistImage}
-          metrics={metrics}
-          selectedArtist={selectedArtist}
-          availableArtists={AVAILABLE_ARTISTS}
-          onArtistChange={handleArtistChange}
-        />
-        <SongsList songs={processedSongs} maxSongs={20} />
-      </>
+      <div className="artist-dashboard-content">
+        <div className="stars-canvas-container">
+            <Stars />
+        </div>
+        <div style={{ position: 'relative', zIndex: 2 }}>
+            <ArtistHeader
+              artistName={artistData.name}
+              artistImage={artistImage}
+              metrics={metrics}
+              selectedArtist={selectedArtist}
+              availableArtists={AVAILABLE_ARTISTS}
+              onArtistChange={handleArtistChange}
+            />
+            <SongsList songs={processedSongs} maxSongs={20} />
+        </div>
+      </div>
     );
   }
 
@@ -102,28 +107,30 @@ function App() {
   if (allArtistsLoading) {
     return <div className="loading">Loading...</div>;
   }
-  
+
   if (allArtistsError) {
     return <div className="error">{allArtistsError}</div>;
   }
+  
+  const dashboardClasses = `dashboard ${dashboardView === 'artist' ? 'artist-view' : ''}`;
 
   return (
-    <div className="dashboard">
+    <div className={dashboardClasses}>
       <div className="nav-container">
         <div className={`nav-menu ${isMenuOpen ? 'open' : ''}`}>
-          <button 
+          <button
             className={dashboardView === 'artist' ? 'active' : ''}
             onClick={() => handleNavClick('artist')}
           >
             Artist Dashboard
           </button>
-          <button 
+          <button
             className={dashboardView === 'personal' ? 'active' : ''}
             onClick={() => handleNavClick('personal')}
           >
             Personal Most Listened
           </button>
-          <button 
+          <button
             className={dashboardView === 'personal-ranking' ? 'active' : ''}
             onClick={() => handleNavClick('personal-ranking')}
           >
@@ -134,7 +141,7 @@ function App() {
           ☰
         </button>
       </div>
-      
+
       {renderDashboardContent()}
     </div>
   );

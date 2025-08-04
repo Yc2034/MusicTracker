@@ -17,6 +17,55 @@
   color: var(--text-primary);
   background: var(--background-primary);
   min-height: 100vh;
+  transition: background 0.5s ease-in-out;
+}
+
+/* --- Artist Dashboard View (Dark Theme) --- */
+.dashboard.artist-view {
+    background: var(--background-dark);
+    color: var(--text-inverse);
+    max-width: 100%;
+    padding: 0;
+}
+
+.artist-dashboard-content {
+    position: relative;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: var(--spacing-lg);
+}
+
+/* Make header and song list transparent on dark background */
+.artist-view .artist-header,
+.artist-view .songs-section {
+    background: transparent;
+    border: 1px solid rgba(248, 246, 240, 0.2);
+    box-shadow: none;
+}
+
+.artist-view .artist-header:hover,
+.artist-view .songs-section:hover {
+    border-color: var(--accent-cedar);
+    transform: translateY(-4px);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+    background: rgba(44, 43, 40, 0.2);
+}
+
+/* Adjust text colors for dark mode */
+.artist-view .artist-name,
+.artist-view .songs-title,
+.artist-view .song-title,
+.artist-view .stream-count {
+    color: var(--text-inverse);
+}
+
+.artist-view .chart-position,
+.artist-view .rank-number,
+.artist-view .song-meta,
+.artist-view .stream-total {
+    background: var(--background-card-dark);
+    color: var(--text-inverse-secondary);
+    border-color: rgba(248, 246, 240, 0.2);
 }
 
 /* --- NEW Hamburger Navigation Styles (Right-to-Left) --- */
@@ -25,6 +74,12 @@
   justify-content: flex-end; /* Align items to the right */
   align-items: center;
   margin-bottom: var(--spacing-xl);
+  /* Add padding for when the view is full-width */
+  padding: 0 var(--spacing-lg);
+}
+
+.dashboard.artist-view .nav-container {
+    padding-top: var(--spacing-lg);
 }
 
 .hamburger-menu {
@@ -42,6 +97,24 @@
 .hamburger-menu:hover {
   background: var(--background-card-hover);
   border-color: var(--accent-cedar);
+}
+
+/* Dark mode adjustments for nav */
+.artist-view .hamburger-menu,
+.artist-view .nav-menu button {
+    background: var(--background-card-dark);
+    color: var(--text-inverse);
+    border-color: rgba(248, 246, 240, 0.2);
+}
+.artist-view .hamburger-menu:hover,
+.artist-view .nav-menu button:not(.active):hover {
+    background: rgba(44, 43, 40, 0.3);
+    border-color: var(--accent-cedar);
+}
+.artist-view .nav-menu button.active {
+    background-color: var(--accent-cedar);
+    color: var(--text-inverse);
+    border-color: var(--accent-cedar);
 }
 
 .nav-menu {

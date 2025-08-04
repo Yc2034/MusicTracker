@@ -52,6 +52,7 @@ npm run dev
 #### 2025-07-25 Add custom svg, kudos to gemini
 #### 2025-08-02 加入了音频播放功能
 #### 2025-08-03 采用minialist风格重置了基础页面
+#### 2025-08-04 SongList style update
 
 未来的方向
 1.
@@ -68,9 +69,7 @@ tyler the creator
 邓紫棋 周深 林俊杰
 IU
 
-3. 做一个动效，在用户on hover的时候
 
-4. 在artist主页加一个合适的背景
 
 4.
 研究如何更好的兼容歌手图片  imagegen comfyui 只做top artist
