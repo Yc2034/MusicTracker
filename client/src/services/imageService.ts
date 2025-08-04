@@ -1,10 +1,12 @@
 // src/services/imageService.ts
 import TheWeekndImage from '../assets/the-weeknd.png';
+import PostMaloneImage from '../assets/post-malone.png';
 // Import other artist images here
 // e.g. import OliviaRodrigoImage from '../assets/olivia-rodrigo.png';
 
 const artistImages: { [key: string]: string } = {
   'The Weeknd': TheWeekndImage,
+  'Post Malone': PostMaloneImage,
   // 'Olivia Rodrigo': OliviaRodrigoImage,
   // Add other artists and their imported images here
 };
