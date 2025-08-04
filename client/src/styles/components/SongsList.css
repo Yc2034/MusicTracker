@@ -1,252 +1,141 @@
 /* src/styles/components/SongsList.css */
 
-.songs-section {
-  background: var(--background-card);
-  border-radius: 0;
-  padding: 80px 60px;
-  backdrop-filter: blur(10px);
+/* --- START: V2 - Editorial Tracklist Design --- */
+
+.songs-section-v2 {
+  padding: 80px 0; /* Vertical padding, no horizontal */
   max-width: 1400px;
   margin: 0 auto;
-  border: 1px solid var(--primary-sage);
-  transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.songs-section:hover {
-  border-color: var(--accent-cedar);
-  transform: translateY(-4px);
-  box-shadow: 0 20px 60px rgba(44, 43, 40, 0.1);
-}
-
-.songs-title {
-  font-size: clamp(32px, 5vw, 48px);
-  font-weight: 300;
-  margin-bottom: 80px;
+.songs-title-v2 {
+  font-size: 1rem; /* Smaller, like a category label */
+  font-weight: 500;
+  margin-bottom: 40px;
   text-align: left;
-  color: var(--text-primary);
-  letter-spacing: -0.02em;
-  line-height: 0.9;
-  position: relative;
-}
-
-.songs-title::after {
-  content: '';
-  position: absolute;
-  bottom: -30px;
-  left: 0;
-  width: 40px;
-  height: 2px;
-  background: var(--accent-cedar);
-}
-
-.songs-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-  gap: 40px 60px;
-  max-width: none;
-  margin: 0;
-}
-
-/* --- START: Revamped Song Item Styles for Dark Mode --- */
-
-.song-item {
-  background: var(--background-card-dark); /* Use dark, transparent background */
-  border: 1px solid rgba(248, 246, 240, 0.2); /* Light border for glass effect */
-  border-radius: 0;
-  padding: 40px 32px;
-  display: grid;
-  grid-template-columns: auto 1fr auto;
-  gap: 32px;
-  align-items: start;
-  transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
-  backdrop-filter: blur(10px); /* Glassmorphism blur */
-  position: relative;
-  overflow: hidden;
-  min-height: 140px;
-}
-
-.song-item::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: rgba(248, 246, 240, 0.05); /* Softer hover effect */
-  transform: translateY(100%);
-  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
-  z-index: 1;
-}
-
-.song-item:hover::before {
-  transform: translateY(0);
-}
-
-.song-item:hover {
-  transform: translateY(-8px);
-  background: rgba(44, 43, 40, 0.3); /* Darker hover background */
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
-  border-color: var(--accent-cedar);
-}
-
-.song-rank {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-  position: relative;
-  z-index: 2;
-  min-width: 0;
-}
-
-.rank-number {
-  font-size: 14px;
-  font-weight: 500;
-  min-width: 50px;
-  text-align: center;
-  background: transparent;
-  border-radius: 0;
-  padding: 16px 20px;
-  backdrop-filter: blur(5px);
-  color: var(--text-inverse-secondary); /* Adjusted for dark mode */
-  letter-spacing: 0.1em;
+  color: var(--text-inverse-secondary);
+  letter-spacing: 0.2em; /* Wide letter spacing */
   text-transform: uppercase;
-  border: 1px solid rgba(248, 246, 240, 0.2); /* Adjusted for dark mode */
-  transition: all 0.3s ease;
-  flex-shrink: 0;
+  padding-left: 20px; /* Align with list items */
+  position: relative;
+}
+
+.songs-list-v2 {
   display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.song-item-v2 {
+  display: grid;
+  grid-template-columns: 80px 1fr auto;
   align-items: center;
-  justify-content: center;
-  height: 60px;
-  align-self: start;
-  margin-top: 8px;
-}
-
-.song-item:hover .rank-number {
-  color: var(--text-inverse);
-  border-color: var(--accent-cedar);
-}
-
-.song-title-container {
-  display: flex;
-  flex-direction: column;
+  gap: 32px;
+  padding: 24px 20px;
+  border-bottom: 1px solid rgba(248, 246, 240, 0.2);
+  transition: background-color 0.4s ease;
   position: relative;
-  z-index: 2;
-  flex: 1;
-  justify-content: center;
-  min-height: 60px;
-  min-width: 0;
-  max-width: 300px;
+  cursor: pointer;
 }
 
-.song-title {
+.song-item-v2:hover {
+  background-color: rgba(44, 43, 40, 0.3);
+}
+
+.song-rank-v2 span,
+.song-streams-v2 span {
+  font-size: 1rem;
   font-weight: 500;
-  font-size: clamp(18px, 2vw, 24px);
-  color: var(--text-inverse); /* Adjusted for dark mode */
-  margin-bottom: 8px;
-  line-height: 1.3;
-  letter-spacing: -0.01em;
-  transition: all 0.3s ease;
-  word-break: break-word;
-  overflow-wrap: break-word;
-  hyphens: auto;
+  color: var(--text-inverse-secondary);
+  letter-spacing: 0.1em;
+  transition: color 0.4s ease;
 }
 
-.song-item:hover .song-title {
-  font-weight: 600;
+.song-item-v2:hover .song-rank-v2 span,
+.song-item-v2:hover .song-streams-v2 span {
+  color: var(--text-inverse);
 }
 
-.song-meta {
-  font-size: 14px;
-  opacity: 0.8;
+.song-details-v2 {
+  overflow: hidden;
   display: flex;
   flex-direction: column;
-  gap: 4px;
-  margin-top: 8px;
-  color: var(--text-inverse-secondary); /* Adjusted for dark mode */
+  align-items: flex-start;
 }
 
-.song-streams {
-  text-align: right;
-  position: relative;
-  z-index: 2;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  justify-content: start;
-  min-height: 60px;
-  min-width: 120px;
-  align-self: start;
-  margin-top: 8px;
-}
-
-.stream-count {
-  font-size: clamp(18px, 2vw, 24px);
+.song-title-v2 {
   font-weight: 600;
-  margin-bottom: 4px;
-  color: var(--text-inverse); /* Adjusted for dark mode */
-  transition: all 0.3s ease;
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  color: var(--text-inverse);
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  transition: color 0.4s ease, transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.song-item:hover .stream-count {
+/* --- START: New Meta Info Styles --- */
+
+.song-meta-v2 {
+  display: flex;
+  gap: 24px;
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+  transition: max-height 0.4s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.4s ease, transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  transform: translateY(-10px);
+}
+
+.song-item-v2:hover .song-meta-v2 {
+  max-height: 30px; /* Animate height */
+  opacity: 1; /* Fade in */
+  transform: translateY(0); /* Slide in from top */
+}
+
+.meta-item-v2 {
+  font-size: 0.9rem;
+  font-weight: 400;
+  color: var(--text-inverse-secondary);
+  letter-spacing: 0.05em;
+  white-space: nowrap;
+}
+
+/* Adjust title on hover to make space */
+.song-item-v2:hover .song-title-v2 {
   color: var(--accent-cedar);
+  transform: translateY(-5px);
 }
 
-.stream-total {
-  font-size: 14px;
-  opacity: 0.7;
-  color: var(--text-inverse-secondary); /* Adjusted for dark mode */
-}
+/* --- END: New Meta Info Styles --- */
 
-/* --- END: Revamped Song Item Styles --- */
+/* --- END: V2 Design --- */
 
+
+/* --- Original Styles (Kept for reference if needed) --- */
+/*
+.songs-section { ... }
+.songs-grid { ... }
+.song-item { ... }
+...
+*/
 
 @media (max-width: 768px) {
-  .songs-section {
-    padding: 40px 24px;
+  .song-item-v2 {
+    grid-template-columns: 50px 1fr auto;
+    gap: 16px;
+    padding: 20px 10px;
   }
-  
-  .songs-title {
-    margin-bottom: 60px;
-  }
-  
-  .songs-title::after {
-    bottom: -20px;
-    width: 30px;
-  }
-  
-  .songs-grid {
-    grid-template-columns: 1fr;
-    gap: 24px;
-  }
-  
-  .song-item {
-    padding: 32px 24px;
-    gap: 20px;
-    min-height: 120px;
-    grid-template-columns: auto 1fr auto;
-    align-items: start;
-  }
-  
-  .rank-number {
-    min-width: 40px;
-    padding: 12px 16px;
-    height: 50px;
-    margin-top: 4px;
-  }
-  
-  .song-title-container {
-    min-height: 50px;
-    max-width: 200px;
-  }
-  
-  .song-streams {
-    min-height: 50px;
-    min-width: 80px;
-    margin-top: 4px;
-  }
-}
 
-@media (max-width: 480px) {
-  .songs-grid {
-    grid-template-columns: minmax(300px, 1fr);
+  .song-title-v2 {
+    font-size: clamp(1.8rem, 8vw, 2.5rem);
+  }
+
+  .song-rank-v2 span,
+  .song-streams-v2 span {
+    font-size: 0.8rem;
+  }
+  
+  .meta-item-v2 {
+    font-size: 0.8rem;
   }
 }

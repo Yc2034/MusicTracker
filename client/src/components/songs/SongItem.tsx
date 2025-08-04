@@ -1,7 +1,6 @@
 // src/components/songs/SongItem.tsx
 import React from 'react';
 import type { ProcessedSong } from '../../types';
-import { RankIndicator } from '../common/RankIndicator';
 import { formatWithCommas, formatDate } from '../../utils/formatters';
 
 interface SongItemProps {
@@ -9,34 +8,33 @@ interface SongItemProps {
 }
 
 export const SongItem: React.FC<SongItemProps> = ({ song }) => {
-  const songItemClasses = `song-item ${!song.live_event_date ? 'no-live-event' : ''}`;
   return (
-    <div className={songItemClasses}>
-      <div className="song-rank">
-        <span className="rank-number">{song.rank}</span>
-        <RankIndicator is_liked={song.is_liked} />
-        <div className="song-title-container">
-            <span className="song-title" title={song.title}>{song.title}</span>
-            <div className="song-meta">
-              {/* Display Release Date if it exists */}
-              {song.release_date && (
-                <span className="meta-item">
-                  Released: {formatDate(song.release_date)}
-                </span>
-              )}
-              {song.live_event_date && (
-                <span className="meta-item">
-                  Live {formatDate(song.live_event_date)} at {song.live_event_location}
-                </span>
-              )}
-            </div>
+    <div className="song-item-v2">
+      <div className="song-rank-v2">
+        <span>{song.rank.toString().padStart(2, '0')}</span>
+      </div>
+      <div className="song-details-v2">
+        <span className="song-title-v2" title={song.title}>
+          {song.title.toUpperCase()}
+        </span>
+        <div className="song-meta-v2">
+          {/* Display Release Date if it exists */}
+          {song.release_date && (
+            <span className="meta-item-v2">
+              Released: {formatDate(song.release_date)}
+            </span>
+          )}
+          {/* Display Live Event Date if it exists */}
+          {song.live_event_date && (
+            <span className="meta-item-v2">
+              Live: {formatDate(song.live_event_date)} at {song.live_event_location}
+            </span>
+          )}
         </div>
       </div>
-      
-      <div className="song-streams">
-        <div className="stream-count">{formatWithCommas(song.currentStreams)}</div>
+      <div className="song-streams-v2">
+        <span>{formatWithCommas(song.currentStreams)}</span>
       </div>
-      
     </div>
   );
 };
