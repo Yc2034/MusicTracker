@@ -117,7 +117,7 @@ function App() {
     return <div className="error">{allArtistsError}</div>;
   }
   
-  const dashboardClasses = `dashboard ${dashboardView === 'artist' ? 'artist-view' : ''}`;
+  const dashboardClasses = `dashboard dark-theme ${dashboardView}-view`;
 
   return (
     <div className={dashboardClasses}>
