@@ -302,14 +302,14 @@
 /* --- END: Revamped Audio Player Styles --- */
 
 .change-artist-btn {
-  background: var(--primary-ink);
-  color: var(--text-inverse);
-  border: 1px solid var(--primary-ink);
+  background: transparent; /* Make background transparent */
+  color: var(--text-inverse); /* Use the inverse text color (light) */
+  border: 2px solid rgba(255, 255, 255, 0.8); /* A solid, semi-transparent white border */
   padding: 16px 32px;
-  border-radius: 0;
-  font-weight: 500;
+  border-radius: 50px; /* Fully rounded corners for a modern, pill shape */
+  font-weight: 600; /* Slightly bolder text */
   cursor: pointer;
-  transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: all 0.3s ease; /* Smooth transition for hover effects */
   font-size: 14px;
   position: relative;
   z-index: 2;
@@ -319,10 +319,10 @@
 }
 
 .change-artist-btn:hover {
-  background: var(--accent-cedar);
-  border-color: var(--accent-cedar);
+  background: rgba(255, 255, 255, 0.2); /* A subtle background fill on hover */
+  border-color: #ffffff; /* Make the border fully white on hover */
   transform: translateY(-2px);
-  box-shadow: 0 8px 25px rgba(44, 43, 40, 0.15);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2); /* A soft shadow for depth */
 }
 
 @media (max-width: 768px) {
