@@ -53,6 +53,7 @@ npm run dev
 #### 2025-08-02 加入了音频播放功能
 #### 2025-08-03 采用minialist风格重置了基础页面
 #### 2025-08-04 SongList style update Use design pattern: Glassmorphism is a UI design style that creates a "through the glass" look and feel. 
+#### 2025-08-08 whole ui 风格一体化
 
 未来的方向
 1.
@@ -68,11 +69,6 @@ tyler the creator
 2. 中韩特定数据补齐 数据库redesign
 邓紫棋 周深 林俊杰
 IU
-
-3. 做一套新的svg 改一个新的threejs 模板 做一个tab
-
-5. artistheader 现在看起来太空了 需要补一些图片或者效果
-
 
 5. 
 可以做一个大的three js 播放器 每日随机 webgl方向 前后端
