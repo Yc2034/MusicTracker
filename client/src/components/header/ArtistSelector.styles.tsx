@@ -8,14 +8,14 @@ export const ArtistSelectorOverlay = styled(motion.div)`
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(10, 10, 10, 0.9);
+  /* Use the new music gradient for the background */
+  background: var(--background-music);
   backdrop-filter: blur(10px);
   z-index: 999;
   display: flex;
-  /* align-items: center; <--- THIS LINE IS REMOVED */
   justify-content: center;
-  overflow-y: auto; /* This will now work correctly */
-  padding-top: 80px; /* Add some padding to space the list from the top */
+  overflow-y: auto;
+  padding-top: 80px;
   padding-bottom: 80px;
 `;
 
@@ -29,15 +29,24 @@ export const CloseButton = styled.button`
   position: absolute;
   top: 40px;
   right: 40px;
-  background: transparent;
-  border: none;
+  /* Make the button background slightly opaque for better visibility */
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-radius: 50%; /* Make it circular */
   color: #fff;
-  font-size: 32px;
+  font-size: 24px; /* Adjusted font size */
   cursor: pointer;
   z-index: 1001;
+  width: 50px; /* Set width */
+  height: 50px; /* Set height */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
 
   &:hover {
-    color: var(--accent-cedar);
+    background: rgba(255, 255, 255, 0.2);
+    transform: scale(1.1);
   }
 `;
 
@@ -54,12 +63,13 @@ export const ArtistName = styled(motion.span)`
   color: #fff;
   display: block;
   transition: color 0.3s ease, transform 0.3s ease;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3); /* Add a subtle shadow to text */
 `;
 
 export const ArtistListItem = styled(motion.li)<{ $isSelected: boolean }>`
   padding: 10px 0;
   cursor: pointer;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2); /* Make border lighter */
 
   &:last-child {
     border-bottom: none;
@@ -70,7 +80,8 @@ export const ArtistListItem = styled(motion.li)<{ $isSelected: boolean }>`
     css`
       cursor: not-allowed;
       ${ArtistName} {
-        color: var(--accent-cedar);
+        /* Use a more vibrant color for selected item to pop against the gradient */
+        color: var(--sand-warm);
         transform: translateX(20px);
       }
     `}
@@ -80,7 +91,7 @@ export const ArtistListItem = styled(motion.li)<{ $isSelected: boolean }>`
     css`
       &:hover {
         ${ArtistName} {
-          color: var(--accent-cedar);
+          color: var(--sand-warm);
           transform: translateX(20px);
         }
       }
