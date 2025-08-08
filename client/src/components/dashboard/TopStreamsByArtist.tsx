@@ -1,6 +1,6 @@
 // src/components/dashboard/TopStreamsByArtist.tsx
 import React from 'react';
-import Tilt from 'react-parallax-tilt';
+import { motion } from 'framer-motion';
 import type { ArtistStreamCount } from '../../types';
 import { formatWithCommas } from '../../utils/formatters';
 import '../../styles/components/TopStreamsByArtist.css';
@@ -10,7 +10,7 @@ interface TopStreamsByArtistProps {
   onArtistSelect: (artistName: string) => void;
 }
 
-// Helper for stream count color grades
+// Helper for stream count color grades (no changes)
 const getStreamColorClass = (streams: number) => {
   if (streams > 20_000_000_000) return 'stream-grade-7';
   if (streams > 10_000_000_000) return 'stream-grade-6';
@@ -21,7 +21,7 @@ const getStreamColorClass = (streams: number) => {
   return 'stream-grade-1';
 };
 
-// Internal V2 Podium component
+// Internal V2 Podium component (no changes)
 const PodiumV2: React.FC<{ artists: ArtistStreamCount[]; onArtistSelect: (artistName: string) => void; }> = ({ artists, onArtistSelect }) => {
   const [gold, silver, bronze] = artists;
 
@@ -57,28 +57,42 @@ export const TopStreamsByArtist: React.FC<TopStreamsByArtistProps> = ({ topArtis
       
       {podiumArtists.length === 3 && <PodiumV2 artists={podiumArtists} onArtistSelect={onArtistSelect} />}
 
-      <div className="top-artists-list-v2">
+      <motion.div 
+        className="artist-honeycomb-v2"
+        initial="hidden"
+        animate="visible"
+        variants={{
+          visible: { transition: { staggerChildren: 0.05 } }
+        }}
+      >
         {listArtists.map((artist, index) => (
-          <Tilt
+          <motion.div
             key={index}
-            scale={1.05}
-            glareEnable={true}
-            glareMaxOpacity={0.5}
-            tiltMaxAngleX={25}
-            tiltMaxAngleY={25}
+            className="honeycomb-cell-v2"
+            onClick={() => onArtistSelect(artist.artistName)}
+            variants={{
+              hidden: { opacity: 0, scale: 0.8 },
+              visible: { opacity: 1, scale: 1 },
+            }}
+            whileHover={{ rotateY: 180 }}
+            transition={{ duration: 0.6, ease: "easeInOut" }}
           >
-            <div className="top-artist-item-v2" onClick={() => onArtistSelect(artist.artistName)}>
-              <div className="top-artist-rank-v2">{index + 4}</div>
-              <div className="top-artist-details-v2">
-                <div className="top-artist-name-v2">{artist.artistName}</div>
-                <div className={`top-artist-song-count-v2 ${getStreamColorClass(artist.totalStreams)}`}>
-                  {formatWithCommas(artist.totalStreams)} streams
-                </div>
+            {/* Front Face */}
+            <div className="honeycomb-face honeycomb-face--front">
+              <div className="honeycomb-rank-v2">#{index + 4}</div>
+              <div className="honeycomb-artist-name-v2">{artist.artistName}</div>
+              <div className={`honeycomb-artist-streams-v2 ${getStreamColorClass(artist.totalStreams)}`}>
+                {formatWithCommas(artist.totalStreams)} streams
               </div>
             </div>
-          </Tilt>
+
+            {/* Back Face */}
+            <div className="honeycomb-face honeycomb-face--back">
+              View Stats
+            </div>
+          </motion.div>
         ))}
-      </div>
+      </motion.div>
     </div>
   );
 };

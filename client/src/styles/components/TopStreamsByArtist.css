@@ -113,65 +113,83 @@
 
 /* --- END: V2 Podium Styles --- */
 
-
-.top-artists-list-v2 {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: var(--spacing-lg);
-  max-width: 1000px;
-  margin: 0 auto;
-  grid-auto-rows: 1fr;
+/* --- START: V3 Honeycomb Grid --- */
+.artist-honeycomb-v2 {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px; /* Increased gap slightly */
+  margin: 40px auto; /* Add margin for spacing */
+  max-width: 1100px;
+  perspective: 1000px; /* Add perspective for 3D effect */
 }
 
-.top-artist-item-v2 {
-  display: grid;
-  grid-template-columns: 60px 1fr;
-  gap: var(--spacing-lg);
-  align-items: center;
-  padding: var(--spacing-lg) var(--spacing-xl);
-  border-radius: var(--radius-xl);
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+.honeycomb-cell-v2 {
+  flex: 0 0 260px; /* Use flex shorthand */
+  height: 300px;
+  position: relative;
   cursor: pointer;
-  background: rgba(56, 178, 172, 0.08);
-  border: 1px solid rgba(56, 178, 172, 0.12);
-  backdrop-filter: blur(5px);
-  position: relative;
-  overflow: hidden;
-  min-height: 80px;
+  transition: transform 0.6s;
+  transform-style: preserve-3d; /* Enable 3D space for children */
+}
+
+/* New alignment logic for cleaner staggering */
+.artist-honeycomb-v2 .honeycomb-cell-v2:nth-child(even) {
+  transform: translateY(50px);
+}
+
+.honeycomb-face {
+  position: absolute;
+  width: 100%;
   height: 100%;
-}
-
-.top-artist-item-v2:hover {
-  background: rgba(56, 178, 172, 0.15);
-  transform: translateY(-2px);
-  box-shadow: 0 8px 25px rgba(56, 178, 172, 0.15);
-  border-color: rgba(56, 178, 172, 0.2);
-}
-
-.top-artist-rank-v2 {
-  font-size: var(--font-size-xl);
-  font-weight: bold;
-  color: var(--text-inverse);
+  backface-visibility: hidden; /* Hide the back of the element */
+  clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+  background: var(--background-card-dark);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 24px;
   text-align: center;
-  background: var(--background-coastal-card);
-  border-radius: var(--radius-lg);
-  padding: var(--spacing-sm) var(--spacing-md);
+  border: 1px solid transparent;
   backdrop-filter: blur(5px);
-  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
-  position: relative;
-  z-index: 1;
-  border: 1px solid rgba(56, 178, 172, 0.3);
+  transition: border-color 0.3s ease;
 }
 
-.top-artist-details-v2, .top-artist-name-v2 {
-  font-size: var(--font-size-lg);
+.honeycomb-cell-v2:hover .honeycomb-face--front {
+  border-color: rgba(246, 173, 85, 0.4);
+}
+
+.honeycomb-face--back {
+  background: rgba(246, 173, 85, 0.1);
+  transform: rotateY(180deg);
+  border: 1px solid rgba(246, 173, 85, 0.3);
+  color: var(--sand-warm);
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+.honeycomb-rank-v2 {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--sand-warm);
+  margin-bottom: 12px;
+}
+
+.honeycomb-artist-name-v2 {
+  font-size: 1.5rem;
   font-weight: 600;
   color: var(--text-inverse);
-  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
-  margin-bottom: var(--spacing-xs);
-  word-break: break-word;
-  overflow-wrap: break-word;
+  line-height: 1.2;
+  margin-bottom: 8px;
 }
+
+.honeycomb-artist-streams-v2 {
+  font-size: 0.9rem;
+  color: var(--text-inverse-secondary);
+  font-weight: 500;
+}
+/* --- END: V3 Honeycomb Grid --- */
 
 .stream-grade-1 { color: var(--sea-light); }
 .stream-grade-2 { color: var(--sea-teal); }
@@ -181,16 +199,6 @@
 .stream-grade-6 { color: var(--sunset-pink); }
 .stream-grade-7 { color: var(--ocean-deep); }
 
-.top-artist-song-count-v2 {
-  font-size: var(--font-size-md);
-  color: var(--sea-teal);
-  font-weight: 500;
-  transition: color 0.3s ease;
-}
-
-.top-artist-item-v2:hover .top-artist-song-count-v2 {
-  color: var(--sand-warm);
-}
 
 @media (max-width: 900px) {
   .podium-container-v2 {
@@ -209,7 +217,23 @@
     order: 3; /* Then bronze */
   }
   
-  .top-artists-list-v2 {
-    grid-template-columns: 1fr;
+  .honeycomb-cell-v2 {
+    flex-basis: 220px;
+    height: 250px;
+  }
+}
+
+@media (max-width: 600px) {
+  .honeycomb-cell-v2 {
+    flex-basis: 180px;
+    height: 210px;
+  }
+  
+  .artist-honeycomb-v2 .honeycomb-cell-v2:nth-child(even) {
+    transform: translateY(40px);
+  }
+  
+  .honeycomb-artist-name-v2 {
+      font-size: 1.2rem;
   }
 }
