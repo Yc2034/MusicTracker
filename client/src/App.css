@@ -22,7 +22,7 @@
 
 /* --- Dark Theme --- */
 .dashboard.dark-theme {
-    background: var(--background-coastal-primary);
+    background: var(--background-music);
     color: var(--text-inverse);
     max-width: 100%;
     padding: 0;

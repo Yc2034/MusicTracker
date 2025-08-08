@@ -2,7 +2,7 @@
 
 .personal-songs-dashboard {
   min-height: 100vh;
-  background: var(--background-coastal-primary);
+  background: var(--background-music);
   padding: 0;
   position: relative;
   overflow-x: hidden;

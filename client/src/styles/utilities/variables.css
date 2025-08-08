@@ -41,7 +41,9 @@
   --background-coastal-primary: linear-gradient(135deg, #1e3a5f 0%, #2c5282 100%); /* Deep ocean */
   --background-coastal-card: rgba(56, 178, 172, 0.1); /* Teal sea */
   --background-coastal-card-hover: rgba(56, 178, 172, 0.2);
-  
+
+ --background-music: linear-gradient(135deg, #8A2387 0%, #E94057 50%, #F27121 100%);
+ 
   /* Sun and Ocean theme for Top Artists components */
   --background-sun-ocean: linear-gradient(135deg, #1e3a5f 0%, #f6ad55 100%); /* Ocean to sunset */
   --background-orange-card: rgba(246, 173, 85, 0.1); /* Warm sand */

@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 
 export const PersonalRankingContainer = styled.div`
   min-height: 100vh;
-  background: var(--background-coastal-primary);
+  background: var(--background-music);
   padding: 0;
   position: relative;
   overflow-x: hidden;

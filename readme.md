@@ -74,7 +74,7 @@ IU
 可以做一个大的three js 播放器 每日随机 webgl方向 前后端
 
 Check web design:
-https://dribbble.com/
+https://thefwa.com/awards/page/1/
 https://www.awwwards.com/inspiration/music-page-clara-venice
 
 
