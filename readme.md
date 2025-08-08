@@ -71,8 +71,6 @@ IU
 
 3. 做一套新的svg 改一个新的threejs 模板 做一个tab
 
-4. 补充top aritst的图源
-
 5. artistheader 现在看起来太空了 需要补一些图片或者效果
 
 
@@ -86,14 +84,15 @@ https://www.awwwards.com/inspiration/music-page-clara-venice
 
 Suggested prompt for imageGen
 
-1.
+1. Dark mode
 
 Cinematic atmospheric portrait of [Artist Name], moody and introspective, dramatic chiaroscuro lighting, shot on film, deep rich colors against a dark minimalist background, with significant negative space on the left, photorealistic, 8K --ar 16:9
 
-2.
+2. Bright mode
 
-Ethereal half-lit portrait of [Artist Name] emerging from shadows, volumetric light beams cutting through a hazy, atmospheric scene, desaturated tones with a single accent of [A Key Color, e.g., neon green or electric blue], minimalist composition, hyper-detailed, feeling of quiet intensity --ar 16:9
+Bright and airy cinematic portrait of [Artist Name], contemplative and open, soft diffused lighting, shot on film, deep rich colors against a light minimalist background, subject small in frame and positioned on the right side with significant negative space on the left, facing towards the right, photorealistic, 8K --ar 16:9
 
-3.
 
-High-fashion editorial photograph of [Artist Name], striking a powerful pose, profile shot with sharp rim lighting, monochrome color palette, set in a vast, empty brutalist architectural space, ultra-detailed fabric textures, elegant and dominant composition --ar 16:9
+
+
+
