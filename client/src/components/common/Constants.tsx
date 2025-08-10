@@ -15,6 +15,7 @@ export const AVAILABLE_ARTISTS = [
     'Conan Gray',
     'Raye',
     'Stephen Sanchez',
+    'Kissoflife',
     'Thuy',
     'Cannons',
     'Dominic Fike',

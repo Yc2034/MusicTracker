@@ -54,11 +54,12 @@ npm run dev
 #### 2025-08-03 采用minialist风格重置了基础页面
 #### 2025-08-04 SongList style update Use design pattern: Glassmorphism is a UI design style that creates a "through the glass" look and feel. 
 #### 2025-08-08 whole ui 风格一体化
+#### 2025-08-10 做出了想要的钢琴风
 
 未来的方向
 1.
 数据源补齐
-kissoflife yoasobi aespa
+yoasobi aespa
 wheein ive g-idle itzy 
  blackpink
 
