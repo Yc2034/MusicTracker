@@ -1,6 +1,5 @@
 // src/components/dashboard/PersonalRankingDashboard.tsx
 import React from 'react';
-import { motion } from 'framer-motion';
 import { PERSONAL_RANKING } from '../common/Constants';
 import { Stars } from '../common/Stars';
 import {
@@ -8,67 +7,61 @@ import {
   StarsCanvasContainer,
   PersonalRankingContent,
   PersonalRankingTitle,
-  PersonalRankingList,
-  RankingListItem,
-  RankingCard,
-  RankingNumber,
-  RankingArtistName,
-  RankingAccent,
+  PianoContainer,
+  KeySet,
+  WhiteKey,
+  BlackKey,
+  ArtistName,
+  ArtistRank,
 } from './PersonalRankingDashboard.styles';
 
 interface PersonalRankingDashboardProps {
   onArtistSelect: (artistName: string) => void;
 }
 
-const containerVariants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.1,
-      delayChildren: 0.2,
-    },
-  },
-};
-
-const itemVariants = {
-  hidden: { 
-    opacity: 0, 
-    y: 30,
-    scale: 0.95 
-  },
-  visible: { 
-    opacity: 1, 
-    y: 0,
-    scale: 1,
-    transition: {
-      type: 'spring',
-      stiffness: 100,
-      damping: 12,
-    },
-  },
-};
-
-const cardHoverVariants = {
-  hover: { 
-    y: -8,
-    transition: {
-      type: 'spring',
-      stiffness: 300,
-      damping: 20,
-    },
-  },
-  tap: { 
-    scale: 0.98,
-    transition: {
-      type: 'spring',
-      stiffness: 400,
-      damping: 25,
-    },
-  },
-};
-
 export const PersonalRankingDashboard: React.FC<PersonalRankingDashboardProps> = ({ onArtistSelect }) => {
+  const keys = [];
+  let i = 0;
+  let rank = 1;
+
+  while (i < PERSONAL_RANKING.length) {
+    const whiteKeyArtist = PERSONAL_RANKING[i];
+    const whiteKeyRank = rank;
+    i++;
+    rank++;
+
+    const isBlackKeyPosition = [0, 1, 3, 4, 5].includes((whiteKeyRank - 1) % 7);
+
+    if (isBlackKeyPosition && i < PERSONAL_RANKING.length) {
+      const blackKeyArtist = PERSONAL_RANKING[i];
+      const blackKeyRank = rank;
+      i++;
+      rank++;
+      
+      keys.push(
+        <KeySet key={i}>
+          <WhiteKey onClick={() => onArtistSelect(whiteKeyArtist)}>
+            <ArtistRank>#{whiteKeyRank}</ArtistRank>
+            <ArtistName>{whiteKeyArtist}</ArtistName>
+          </WhiteKey>
+          <BlackKey onClick={() => onArtistSelect(blackKeyArtist)}>
+            <ArtistRank>#{blackKeyRank}</ArtistRank>
+            <ArtistName>{blackKeyArtist}</ArtistName>
+          </BlackKey>
+        </KeySet>
+      );
+    } else {
+      keys.push(
+        <KeySet key={i}>
+          <WhiteKey onClick={() => onArtistSelect(whiteKeyArtist)}>
+            <ArtistRank>#{whiteKeyRank}</ArtistRank>
+            <ArtistName>{whiteKeyArtist}</ArtistName>
+          </WhiteKey>
+        </KeySet>
+      );
+    }
+  }
+
   return (
     <PersonalRankingContainer>
       <StarsCanvasContainer>
@@ -76,32 +69,9 @@ export const PersonalRankingDashboard: React.FC<PersonalRankingDashboardProps> =
       </StarsCanvasContainer>
       <PersonalRankingContent>
         <PersonalRankingTitle>My Personal Artist Ranking</PersonalRankingTitle>
-        <PersonalRankingList
-          as={motion.ol}
-          variants={containerVariants}
-          initial="hidden"
-          animate="visible"
-        >
-          {PERSONAL_RANKING.map((artist, index) => (
-            <RankingListItem
-              key={index}
-              $index={index}
-              onClick={() => onArtistSelect(artist)}
-              tabIndex={0}
-              onKeyPress={(e) => e.key === 'Enter' && onArtistSelect(artist)}
-            >
-              <RankingCard
-                $index={index}
-                whileHover="hover"
-                whileTap="tap"
-              >
-                <RankingNumber>#{(index + 1).toString().padStart(2, '0')}</RankingNumber>
-                <RankingArtistName>{artist}</RankingArtistName>
-                <RankingAccent $index={index} />
-              </RankingCard>
-            </RankingListItem>
-          ))}
-        </PersonalRankingList>
+        <PianoContainer>
+          {keys}
+        </PianoContainer>
       </PersonalRankingContent>
     </PersonalRankingContainer>
   );
