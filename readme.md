@@ -66,14 +66,13 @@ concert
 taylor swift
 tyler the creator
 
-2. 中韩特定数据补齐 数据库redesign
+2. 中韩特定数据补齐 只改前端display
 邓紫棋 周深 林俊杰
 IU
 
-3. Video supplyment
 
 5. 
-可以做一个大的three js 播放器 每日随机 webgl方向 前后端
+可以做一个大的three js 播放器 每日随机 webgl方向 后端新的数据库 前端fetch
 
 Check web design:
 https://thefwa.com/awards/page/1/

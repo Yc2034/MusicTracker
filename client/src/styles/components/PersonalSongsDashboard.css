@@ -71,8 +71,6 @@
   padding: 0;
   margin: 0;
   transform-origin: center;
-  
-  /* Asymmetrical positioning for visual interest */
 }
 
 .song-list-item:nth-child(3n+2) {
@@ -98,17 +96,20 @@
   background: var(--background-coastal-card);
   border: 1px solid rgba(56, 178, 172, 0.3);
   border-radius: 0;
-  padding: 40px 32px;
+  padding: 24px;
   transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
   position: relative;
   overflow: hidden;
-  height: 200px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+  display: grid;
+  grid-template-areas:
+    "rank streams"
+    "info info"
+    "meta meta";
+  grid-template-columns: 1fr auto;
+  grid-template-rows: auto 1fr auto;
+  gap: 16px;
   backdrop-filter: blur(10px);
   box-shadow: 0 8px 32px rgba(30, 58, 95, 0.3);
-  border-image: linear-gradient(45deg, rgba(56, 178, 172, 0.3), rgba(246, 173, 85, 0.2)) 1;
 }
 
 .song-list-card::before {
@@ -141,6 +142,7 @@
 }
 
 .song-list-rank {
+  grid-area: rank;
   font-size: 14px;
   font-weight: 500;
   color: var(--text-inverse-secondary);
@@ -156,19 +158,22 @@
 }
 
 .song-list-info {
+  grid-area: info;
   position: relative;
   z-index: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .song-list-title {
-  font-size: clamp(24px, 3vw, 32px);
-  font-weight: 400;
+  font-size: clamp(22px, 2.5vw, 28px);
+  font-weight: 500;
   color: var(--text-inverse);
   line-height: 1.2;
   letter-spacing: -0.01em;
   position: relative;
   z-index: 2;
-  margin-top: auto;
   transition: all 0.3s ease;
   text-shadow: 0 2px 15px rgba(56, 178, 172, 0.3);
   word-break: break-word;
@@ -178,7 +183,7 @@
 
 .song-list-card:hover .song-list-title {
   color: var(--text-inverse);
-  font-weight: 500;
+  font-weight: 600;
   text-shadow: 0 2px 20px rgba(56, 178, 172, 0.5);
 }
 
@@ -197,12 +202,14 @@
 }
 
 .song-list-streams {
-  font-size: clamp(18px, 2vw, 24px);
+  grid-area: streams;
+  font-size: clamp(18px, 2vw, 22px);
   font-weight: 600;
   color: var(--text-inverse);
   position: relative;
   z-index: 2;
   transition: all 0.3s ease;
+  text-align: right;
 }
 
 .song-list-card:hover .song-list-streams {
@@ -210,10 +217,12 @@
 }
 
 .song-list-meta {
+  grid-area: meta;
   font-size: 12px;
   opacity: 0.8;
   display: flex;
-  gap: 16px;
+  flex-direction: column;
+  gap: 8px;
   margin-top: 8px;
   color: var(--text-inverse-secondary);
   position: relative;
@@ -245,7 +254,7 @@
 
 @media (max-width: 768px) {
   .song-list-card {
-    padding: 32px 24px;
-    height: 160px;
+    padding: 24px;
+    gap: 12px;
   }
 }
