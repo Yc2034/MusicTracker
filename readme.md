@@ -60,7 +60,7 @@ npm run dev
 1.
 数据源补齐
 yoasobi aespa
-wheein ive g-idle itzy 
+wheein g-idle itzy 
  blackpink
 
 concert
