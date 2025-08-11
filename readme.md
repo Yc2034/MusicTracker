@@ -59,7 +59,7 @@ npm run dev
 未来的方向
 1.
 数据源补齐
-yoasobi aespa
+yoasobi 
 wheein g-idle 
  blackpink
 
