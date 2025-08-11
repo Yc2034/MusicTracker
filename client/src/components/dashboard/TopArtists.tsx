@@ -1,6 +1,7 @@
 // src/components/dashboard/TopArtists.tsx
 import React from 'react';
-import { motion } from 'framer-motion';
+// Import Variants alongside motion
+import { motion, type Variants } from 'framer-motion';
 import type { ArtistSongCount } from '../../types';
 import '../../styles/components/TopArtists.css';
 
@@ -9,7 +10,8 @@ interface TopArtistsProps {
   onArtistSelect: (artistName: string) => void;
 }
 
-const listVariants = {
+// Add the : Variants type annotation
+const listVariants: Variants = {
   hidden: { opacity: 0 },
   visible: {
     opacity: 1,
@@ -20,7 +22,8 @@ const listVariants = {
   },
 };
 
-const itemVariants = {
+// Add the : Variants type annotation here as well
+const itemVariants: Variants = {
   hidden: { opacity: 0, x: -30 },
   visible: {
     opacity: 1,
@@ -34,6 +37,7 @@ const itemVariants = {
 };
 
 export const TopArtists: React.FC<TopArtistsProps> = ({ topArtists, onArtistSelect }) => {
+  // ... rest of your component code remains the same
   return (
     <div className="top-artists-container">
       <h2 className="top-artists-title">Most Songs Collected</h2>
