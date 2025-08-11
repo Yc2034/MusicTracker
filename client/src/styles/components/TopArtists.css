@@ -21,8 +21,8 @@
 }
 
 .top-artists-list {
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
   gap: 16px;
   width: 100%;
 }
@@ -39,10 +39,23 @@
   cursor: pointer;
 }
 
+.top-artist-item.right-aligned {
+  flex-direction: row-reverse;
+}
+
+.top-artist-item.right-aligned .top-artist-details {
+  text-align: right;
+  align-items: flex-end;
+}
+
 .top-artist-item:hover {
   background: rgba(56, 178, 172, 0.1);
   border-color: var(--sea-teal);
   transform: translateX(8px);
+}
+
+.top-artist-item.right-aligned:hover {
+    transform: translateX(-8px);
 }
 
 .top-artist-rank {
@@ -61,8 +74,9 @@
 
 .top-artist-details {
   display: flex;
-  align-items: center;
-  gap: 24px;
+  flex-direction: column; /* Changed to column */
+  align-items: flex-start; /* Align items to the start */
+  gap: 4px; /* Add a small gap between name and song count */
 }
 
 .top-artist-name {

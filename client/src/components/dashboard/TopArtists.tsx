@@ -36,6 +36,19 @@ const itemVariants: Variants = {
   },
 };
 
+const itemVariantsRight: Variants = {
+    hidden: { opacity: 0, x: 30 },
+    visible: {
+      opacity: 1,
+      x: 0,
+      transition: {
+        type: 'spring',
+        stiffness: 120,
+        damping: 15,
+      },
+    },
+  };
+
 export const TopArtists: React.FC<TopArtistsProps> = ({ topArtists, onArtistSelect }) => {
   // ... rest of your component code remains the same
   return (
@@ -50,9 +63,9 @@ export const TopArtists: React.FC<TopArtistsProps> = ({ topArtists, onArtistSele
         {topArtists.map((artist, index) => (
           <motion.div
             key={index}
-            className="top-artist-item"
+            className={`top-artist-item ${index % 2 !== 0 ? 'right-aligned' : ''}`}
             onClick={() => onArtistSelect(artist.artistName)}
-            variants={itemVariants}
+            variants={index % 2 === 0 ? itemVariants : itemVariantsRight}
             whileHover={{
               x: 8,
               transition: { type: 'spring', stiffness: 300, damping: 20 },

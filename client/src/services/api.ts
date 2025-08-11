@@ -91,7 +91,7 @@ export const getTopArtistsBySongCount = (allArtistsData: ArtistData[]): ArtistSo
     songCount: artist.songs.length
   }));
 
-  return artistSongCounts.sort((a, b) => b.songCount - a.songCount).slice(0, 5);
+  return artistSongCounts.sort((a, b) => b.songCount - a.songCount).slice(0, 10);
 };
 
 /**
