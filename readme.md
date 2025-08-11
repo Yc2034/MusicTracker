@@ -60,20 +60,27 @@ npm run dev
 1.
 数据源补齐
 yoasobi aespa
-wheein g-idle itzy 
+wheein g-idle 
  blackpink
 
 concert
 taylor swift
 tyler the creator
 
-2. 中韩特定数据补齐 只改前端display
-邓紫棋 周深 林俊杰
-IU
+2. 中韩特定数据补齐 只改前端display 换数据源后端不改schema
+邓紫棋 周深 林俊杰 IU
 
+3. 改一下当前artist header里面的播放器
+不用全场音乐，用截取的3-5min音频 并且展示音频名字 
+单个音乐 主要展示没有视频cover的音乐 经典案例 in the stars
+
+4. 做一个新页面 视频
+像小抖音一样 做精彩的视频片段播放器，滑动播放，都选择竖屏视频
 
 5. 
-可以做一个大的three js 播放器 每日随机 webgl方向 后端新的数据库 前端fetch
+可以做一个大的three js 播放器 每日随机 webgl方向
+音乐 + 专辑封面 + 现场音乐mp3 
+
 
 Check web design:
 https://thefwa.com/awards/page/1/

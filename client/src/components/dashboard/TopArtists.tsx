@@ -36,7 +36,7 @@ const itemVariants = {
 export const TopArtists: React.FC<TopArtistsProps> = ({ topArtists, onArtistSelect }) => {
   return (
     <div className="top-artists-container">
-      <h2 className="top-artists-title">Top Listened Artists</h2>
+      <h2 className="top-artists-title">Most Songs Collected</h2>
       <motion.div
         className="top-artists-list"
         variants={listVariants}
