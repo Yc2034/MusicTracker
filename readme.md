@@ -60,7 +60,7 @@ npm run dev
 1.
 数据源补齐
 yoasobi 
-wheein g-idle 
+wheein
  blackpink
 
 concert

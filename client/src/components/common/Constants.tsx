@@ -5,6 +5,7 @@ export const AVAILABLE_ARTISTS = [
     'Benson Boone',
     'The Weeknd', 
     'Sabrina Carpenter',
+    'G-idle',
     'Ive',
     'Itzy',
     'Aespa',
