@@ -47,9 +47,13 @@ const PodiumV2: React.FC<{ artists: ArtistStreamCount[]; onArtistSelect: (artist
   );
 };
 
+
 export const TopStreamsByArtist: React.FC<TopStreamsByArtistProps> = ({ topArtists, onArtistSelect }) => {
   const podiumArtists = topArtists.slice(0, 3);
   const listArtists = topArtists.slice(3);
+  
+  // Find the max stream count among the list artists to normalize bar widths
+  const maxStreams = Math.max(...listArtists.map(a => a.totalStreams), 0);
 
   return (
     <div className="top-artists-container-v2">
@@ -57,42 +61,36 @@ export const TopStreamsByArtist: React.FC<TopStreamsByArtistProps> = ({ topArtis
       
       {podiumArtists.length === 3 && <PodiumV2 artists={podiumArtists} onArtistSelect={onArtistSelect} />}
 
-      <motion.div 
-        className="artist-honeycomb-v2"
-        initial="hidden"
-        animate="visible"
-        variants={{
-          visible: { transition: { staggerChildren: 0.05 } }
-        }}
-      >
-        {listArtists.map((artist, index) => (
-          <motion.div
-            key={index}
-            className="honeycomb-cell-v2"
-            onClick={() => onArtistSelect(artist.artistName)}
-            variants={{
-              hidden: { opacity: 0, scale: 0.8 },
-              visible: { opacity: 1, scale: 1 },
-            }}
-            whileHover={{ rotateY: 180 }}
-            transition={{ duration: 0.6, ease: "easeInOut" }}
-          >
-            {/* Front Face */}
-            <div className="honeycomb-face honeycomb-face--front">
-              <div className="honeycomb-rank-v2">#{index + 4}</div>
-              <div className="honeycomb-artist-name-v2">{artist.artistName}</div>
-              <div className={`honeycomb-artist-streams-v2 ${getStreamColorClass(artist.totalStreams)}`}>
-                {formatWithCommas(artist.totalStreams)} streams
+      <div className="artist-bar-chart-list">
+        {listArtists.map((artist, index) => {
+          const barWidth = maxStreams > 0 ? (artist.totalStreams / maxStreams) * 100 : 0;
+          return (
+            <motion.div
+              key={index}
+              className="artist-bar-item"
+              onClick={() => onArtistSelect(artist.artistName)}
+              initial={{ opacity: 0, x: -50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true, amount: 0.5 }}
+              transition={{ duration: 0.5, delay: index * 0.05, ease: "easeOut" }}
+            >
+              <div className="bar-rank">#{index + 4}</div>
+              <div className="bar-artist-name">{artist.artistName}</div>
+              <div className="bar-graph">
+                <motion.div
+                  className="bar-fill"
+                  style={{ width: `${barWidth}%` }}
+                  initial={{ scaleX: 0 }}
+                  whileInView={{ scaleX: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.8, delay: index * 0.05 + 0.3, ease: [0.16, 1, 0.3, 1] }}
+                />
               </div>
-            </div>
-
-            {/* Back Face */}
-            <div className="honeycomb-face honeycomb-face--back">
-              View Stats
-            </div>
-          </motion.div>
-        ))}
-      </motion.div>
+              <div className="bar-stream-count">{formatWithCommas(artist.totalStreams)}</div>
+            </motion.div>
+          );
+        })}
+      </div>
     </div>
   );
 };
