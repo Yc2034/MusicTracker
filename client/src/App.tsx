@@ -89,7 +89,7 @@ function App() {
               onArtistChange={handleArtistChange}
             />
             <div className="songs-list-background" style={songListStyle}>
-              <SongsList songs={processedSongs} maxSongs={20} />
+              <SongsList songs={processedSongs} maxSongs={40} />
             </div>
         </div>
       </div>

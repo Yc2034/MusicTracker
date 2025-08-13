@@ -55,13 +55,13 @@ npm run dev
 #### 2025-08-04 SongList style update Use design pattern: Glassmorphism is a UI design style that creates a "through the glass" look and feel. 
 #### 2025-08-08 whole ui 风格一体化
 #### 2025-08-10 做出了想要的钢琴风
+#### 2025-08-12 做出来dashboard visualization来展示streams
 
 未来的方向
 1.
 数据源补齐
 yoasobi 
 wheein
- blackpink
 
 concert
 taylor swift
@@ -74,12 +74,14 @@ tyler the creator
 不用全场音乐，用截取的3-5min音频 并且展示音频名字 
 单个音乐 主要展示没有视频cover的音乐 经典案例 in the stars
 
-4. 做一个新页面 视频
-像小抖音一样 做精彩的视频片段播放器，滑动播放，都选择竖屏视频
+4. 做一个新页面 随机音乐
+这个dependency是上一个的音乐
+参考
+https://www.awwwards.com/sites/50-years-of-charts
 
 5. 
 可以做一个大的three js 播放器 每日随机 webgl方向
-音乐 + 专辑封面 + 现场音乐mp3 
+音乐 + 专辑封面 + 现场视频
 
 
 Check web design:
