@@ -1,5 +1,6 @@
 // Constants
 export const AVAILABLE_ARTISTS = [
+    'IU',
     'Billie Eilish',
     'Blackpink',
     'Post Malone',

@@ -61,7 +61,6 @@ npm run dev
 1.
 数据源补齐
 yoasobi 
-IU
 
 concert
 taylor swift
