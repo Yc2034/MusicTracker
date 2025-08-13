@@ -61,14 +61,14 @@ npm run dev
 1.
 数据源补齐
 yoasobi 
-wheein
+IU
 
 concert
 taylor swift
 tyler the creator
 
-2. 中韩特定数据补齐 只改前端display 换数据源后端不改schema
-邓紫棋 周深 林俊杰 IU
+2. 中特定数据补齐 只改前端display 换数据源后端不改schema
+邓紫棋 周深 林俊杰 
 
 3. 改一下当前artist header里面的播放器
 不用全场音乐，用截取的3-5min音频 并且展示音频名字 
