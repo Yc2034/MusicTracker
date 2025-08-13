@@ -65,11 +65,11 @@ IU
 
 concert
 taylor swift
-tyler the creator
 
 2. 中特定数据补齐 只改前端display 换数据源后端不改schema
 邓紫棋 周深 林俊杰 
 
+需要较大功夫的就是剪辑对应的音频了
 3. 改一下当前artist header里面的播放器
 不用全场音乐，用截取的3-5min音频 并且展示音频名字 
 单个音乐 主要展示没有视频cover的音乐 经典案例 in the stars

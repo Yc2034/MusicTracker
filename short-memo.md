@@ -14,10 +14,11 @@ good 4 u 听了只是那个时候已经人离场了
 5. Carly Rae Jepsen
 就是历史太久了，吃了没spotify的亏，早年成名曲比如this kiss播放量已经很低了
 
+6. Tyler the creator
+绝了 看的那一场上新专了 和前面的安排都不一样了，时长不变的情况下很多歌就比较短了
 
-发现我这个和chartmetric所做的事情没差太多，哈哈哈哈，免费做了个数据收集
+7. Blackpink
+确实是女团独一份的火，剩下的五代团还真是一个水平线上的
 
-https://soridata.com/artists/IU.html
-
-这也是个好的平台
-
+8. Wheein
+离开团单飞，真成冷门歌手了，没想到这个播放量这么低
