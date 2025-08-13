@@ -8,7 +8,7 @@ interface SongsListProps {
   maxSongs?: number;
 }
 
-export const SongsList: React.FC<SongsListProps> = ({ songs, maxSongs = 40 }) => {
+export const SongsList: React.FC<SongsListProps> = ({ songs, maxSongs = 50 }) => {
   const displaySongs = songs.slice(0, maxSongs);
 
   return (

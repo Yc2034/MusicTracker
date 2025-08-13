@@ -27,3 +27,7 @@ good 4 u 听了只是那个时候已经人离场了
  最喜欢的小众明星
  歌曲横跨了这么多代
  有一点像carly在spotify出来以前就很活跃了，而且是韩国天后所以在spotify有这样成绩非常厉害了
+
+ 10. Taylor Swift
+ 真神降临， 唯一没听过现场的就是 safe and sound
+ 真的高中时候必备，还有买过fearless实体专辑

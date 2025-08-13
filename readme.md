@@ -62,9 +62,6 @@ npm run dev
 数据源补齐
 yoasobi 
 
-concert
-taylor swift
-
 2. 中特定数据补齐 只改前端display 换数据源后端不改schema
 邓紫棋 周深 林俊杰 
 
