@@ -43,6 +43,8 @@
   --background-coastal-card-hover: rgba(56, 178, 172, 0.2);
 
  --background-music: linear-gradient(135deg, #8A2387 0%, #E94057 50%, #F27121 100%);
+  --background-spotify-player: linear-gradient(135deg, #28a745 0%, #191414 100%);
+
  
   /* Sun and Ocean theme for Top Artists components */
   --background-sun-ocean: linear-gradient(135deg, #1e3a5f 0%, #f6ad55 100%); /* Ocean to sunset */

@@ -98,25 +98,28 @@
   gap: var(--spacing-lg);
 }
 
+/* src/styles/components/ArtistHeader.css */
+
 /* --- START: Revamped Audio Player Styles --- */
+
 
 .audio-player {
   position: relative;
   z-index: 2;
-  background: rgba(10, 10, 10, 0.5); /* Dark, semi-transparent background */
-  border: 1px solid rgba(255, 255, 255, 0.1); /* Subtle border for glass effect */
-  border-radius: var(--radius-xl); /* Softer corners */
+  /* Apply the new Spotify gradient */
+  background: var(--background-music);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: var(--radius-xl);
   padding: 24px;
-  backdrop-filter: blur(15px); /* Key for the glassmorphism effect */
-  -webkit-backdrop-filter: blur(15px);
   min-width: 450px;
   transition: all 0.3s ease;
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
 }
 
 .audio-player:hover {
-  border-color: rgba(255, 255, 255, 0.2);
+  /* Keep a subtle hover effect */
   box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
+  transform: scale(1.02);
 }
 
 .player-controls {
