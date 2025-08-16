@@ -59,18 +59,13 @@ npm run dev
 #### 2025-08-16 中文歌手无法找到源数据，所以做一个中文特辑 随机中文音乐
 
 未来的方向
-1.
-数据源补齐
-yoasobi 
-
 
 
 需要较大功夫的就是剪辑对应的音频了
 3. 改一下当前artist header里面的播放器
 不用全场音乐，用截取的3-5min音频 
 
-4. 做一个新页面 随机音乐
-这个dependency是上一个的音乐
+4. 做一个新页面 随机中文音乐现场live
 参考
 https://www.awwwards.com/sites/50-years-of-charts
 
