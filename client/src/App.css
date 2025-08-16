@@ -7,6 +7,7 @@
 @import './styles/components/SongsList.css';
 @import './styles/components/PersonalSongsDashboard.css';
 @import './styles/components/TopStreamsByArtist.css';
+@import './styles/components/MusicLive.css';
 @import './styles/utilities/responsive.css';
 
 /* Main Dashboard Layout */
@@ -138,7 +139,7 @@
 }
 
 .nav-menu.open {
-  max-width: 600px; /* Adjust as needed */
+  max-width: 1200px; /* Adjust as needed */
 }
 
 /* Connect hamburger to the menu when open */

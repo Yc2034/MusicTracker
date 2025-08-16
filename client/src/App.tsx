@@ -14,11 +14,12 @@ import { ArtistHeader } from './components/header/ArtistHeader';
 import { SongsList } from './components/songs/SongsList';
 import { PersonalSongsDashboard } from './components/dashboard/PersonalSongsDashboard';
 import { PersonalRankingDashboard } from './components/dashboard/PersonalRankingDashboard';
+import { MusicLive } from './components/dashboard/MusicLive'; // Import MusicLive
 import { AVAILABLE_ARTISTS } from './components/common/Constants';
 import { Stars } from './components/common/Stars';
 import type { ArtistData } from './types';
 
-type DashboardView = 'artist' | 'personal' | 'personal-ranking';
+type DashboardView = 'artist' | 'personal' | 'personal-ranking' | 'music-live';
 
 function App() {
   const [selectedArtist, setSelectedArtist] = useState(AVAILABLE_ARTISTS[0]);
@@ -104,6 +105,8 @@ function App() {
         return <PersonalSongsDashboard allArtistsData={allArtistsData} onArtistSelect={handleSelectArtistFromRanking} />;
       case 'personal-ranking':
         return <PersonalRankingDashboard onArtistSelect={handleSelectArtistFromRanking} />;
+      case 'music-live':
+        return <MusicLive />;
       default:
         return renderArtistDashboard();
     }
@@ -140,6 +143,12 @@ function App() {
             onClick={() => handleNavClick('personal-ranking')}
           >
             Personal Ranking
+          </button>
+          <button
+            className={dashboardView === 'music-live' ? 'active' : ''}
+            onClick={() => handleNavClick('music-live')}
+          >
+            Music Live
           </button>
         </div>
         <button className="hamburger-menu" onClick={() => setIsMenuOpen(!isMenuOpen)}>
