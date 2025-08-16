@@ -80,25 +80,23 @@ export const KeySet = styled.div`
   flex-shrink: 0;
 `;
 
-const disabledKeyStyles = css`
-  opacity: 0.5;
-  cursor: not-allowed;
+const unavailableKeyStyles = css`
+  /* Keep the white key look, but add an accent */
+  color: var(--primary-clay);
+  border: 1px solid var(--accent-cedar);
+
   &:hover {
-    background: #f8f6f0;
-    transform: translateY(0);
+    border-color: var(--accent-ocean);
   }
 `;
 
-const disabledBlackKeyStyles = css`
-  opacity: 0.5;
-  cursor: not-allowed;
-  &:hover {
-    background: #2c2b28;
-    transform: translateX(-50%) translateY(0);
-  }
+const unavailableBlackKeyStyles = css`
+  /* Keep the black key look, but add an accent */
+  color: var(--sand-warm);
+  border: 1px solid var(--sand-warm);
 `;
 
-export const WhiteKey = styled.div<{ disabled: boolean }>`
+export const WhiteKey = styled.div<{ $isAvailable: boolean }>`
   width: 120px;
   height: 540px;
   background: #f8f6f0;
@@ -117,10 +115,10 @@ export const WhiteKey = styled.div<{ disabled: boolean }>`
     transform: translateY(-5px);
   }
 
-  ${({ disabled }) => disabled && disabledKeyStyles}
+  ${({ $isAvailable }) => !$isAvailable && unavailableKeyStyles}
 `;
 
-export const BlackKey = styled.div<{ disabled: boolean }>`
+export const BlackKey = styled.div<{ $isAvailable: boolean }>`
   position: absolute;
   top: 0;
   left: 100%;
@@ -145,7 +143,7 @@ export const BlackKey = styled.div<{ disabled: boolean }>`
     transform: translateX(-50%) translateY(-5px);
   }
 
-  ${({ disabled }) => disabled && disabledBlackKeyStyles}
+  ${({ $isAvailable }) => !$isAvailable && unavailableBlackKeyStyles}
 `;
 
 

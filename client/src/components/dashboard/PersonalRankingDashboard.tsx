@@ -17,9 +17,10 @@ import {
 
 interface PersonalRankingDashboardProps {
   onArtistSelect: (artistName: string) => void;
+  onUnavailableArtistSelect: () => void;
 }
 
-export const PersonalRankingDashboard: React.FC<PersonalRankingDashboardProps> = ({ onArtistSelect }) => {
+export const PersonalRankingDashboard: React.FC<PersonalRankingDashboardProps> = ({ onArtistSelect, onUnavailableArtistSelect }) => {
   const keys = [];
   let i = 0;
   let rank = 1;
@@ -43,15 +44,15 @@ export const PersonalRankingDashboard: React.FC<PersonalRankingDashboardProps> =
       keys.push(
         <KeySet key={i}>
           <WhiteKey 
-            onClick={() => isWhiteKeyArtistAvailable && onArtistSelect(whiteKeyArtist)}
-            disabled={!isWhiteKeyArtistAvailable}
+            onClick={() => isWhiteKeyArtistAvailable ? onArtistSelect(whiteKeyArtist) : onUnavailableArtistSelect()}
+            $isAvailable={isWhiteKeyArtistAvailable}
           >
             <ArtistRank>#{whiteKeyRank}</ArtistRank>
             <ArtistName>{whiteKeyArtist}</ArtistName>
           </WhiteKey>
           <BlackKey 
-            onClick={() => isBlackKeyArtistAvailable && onArtistSelect(blackKeyArtist)}
-            disabled={!isBlackKeyArtistAvailable}
+            onClick={() => isBlackKeyArtistAvailable ? onArtistSelect(blackKeyArtist) : onUnavailableArtistSelect()}
+            $isAvailable={isBlackKeyArtistAvailable}
           >
             <ArtistRank>#{blackKeyRank}</ArtistRank>
             <ArtistName>{blackKeyArtist}</ArtistName>
@@ -62,8 +63,8 @@ export const PersonalRankingDashboard: React.FC<PersonalRankingDashboardProps> =
       keys.push(
         <KeySet key={i}>
           <WhiteKey 
-            onClick={() => isWhiteKeyArtistAvailable && onArtistSelect(whiteKeyArtist)}
-            disabled={!isWhiteKeyArtistAvailable}
+            onClick={() => isWhiteKeyArtistAvailable ? onArtistSelect(whiteKeyArtist) : onUnavailableArtistSelect()}
+            $isAvailable={isWhiteKeyArtistAvailable}
           >
             <ArtistRank>#{whiteKeyRank}</ArtistRank>
             <ArtistName>{whiteKeyArtist}</ArtistName>

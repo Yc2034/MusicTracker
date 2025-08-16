@@ -14,7 +14,7 @@ import { ArtistHeader } from './components/header/ArtistHeader';
 import { SongsList } from './components/songs/SongsList';
 import { PersonalSongsDashboard } from './components/dashboard/PersonalSongsDashboard';
 import { PersonalRankingDashboard } from './components/dashboard/PersonalRankingDashboard';
-import { MusicLive } from './components/dashboard/MusicLive'; // Import MusicLive
+import { MusicLive } from './components/dashboard/MusicLive';
 import { AVAILABLE_ARTISTS } from './components/common/Constants';
 import { Stars } from './components/common/Stars';
 import type { ArtistData } from './types';
@@ -63,6 +63,10 @@ function App() {
     setDashboardView(view);
   };
 
+  const handleUnavailableArtistSelect = () => {
+    setDashboardView('music-live');
+  };
+
   const renderArtistDashboard = () => {
     if (artistLoading) return <div className="loading">Loading artist data...</div>;
     if (artistError) return <div className="error">{artistError}</div>;
@@ -104,7 +108,7 @@ function App() {
       case 'personal':
         return <PersonalSongsDashboard allArtistsData={allArtistsData} onArtistSelect={handleSelectArtistFromRanking} />;
       case 'personal-ranking':
-        return <PersonalRankingDashboard onArtistSelect={handleSelectArtistFromRanking} />;
+        return <PersonalRankingDashboard onArtistSelect={handleSelectArtistFromRanking} onUnavailableArtistSelect={handleUnavailableArtistSelect} />;
       case 'music-live':
         return <MusicLive />;
       default:
