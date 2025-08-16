@@ -1,6 +1,6 @@
 // src/components/dashboard/PersonalRankingDashboard.tsx
 import React from 'react';
-import { PERSONAL_RANKING } from '../common/Constants';
+import { AVAILABLE_ARTISTS, PERSONAL_RANKING } from '../common/Constants';
 import { Stars } from '../common/Stars';
 import {
   PersonalRankingContainer,
@@ -26,6 +26,7 @@ export const PersonalRankingDashboard: React.FC<PersonalRankingDashboardProps> =
 
   while (i < PERSONAL_RANKING.length) {
     const whiteKeyArtist = PERSONAL_RANKING[i];
+    const isWhiteKeyArtistAvailable = AVAILABLE_ARTISTS.includes(whiteKeyArtist);
     const whiteKeyRank = rank;
     i++;
     rank++;
@@ -34,17 +35,24 @@ export const PersonalRankingDashboard: React.FC<PersonalRankingDashboardProps> =
 
     if (isBlackKeyPosition && i < PERSONAL_RANKING.length) {
       const blackKeyArtist = PERSONAL_RANKING[i];
+      const isBlackKeyArtistAvailable = AVAILABLE_ARTISTS.includes(blackKeyArtist);
       const blackKeyRank = rank;
       i++;
       rank++;
       
       keys.push(
         <KeySet key={i}>
-          <WhiteKey onClick={() => onArtistSelect(whiteKeyArtist)}>
+          <WhiteKey 
+            onClick={() => isWhiteKeyArtistAvailable && onArtistSelect(whiteKeyArtist)}
+            disabled={!isWhiteKeyArtistAvailable}
+          >
             <ArtistRank>#{whiteKeyRank}</ArtistRank>
             <ArtistName>{whiteKeyArtist}</ArtistName>
           </WhiteKey>
-          <BlackKey onClick={() => onArtistSelect(blackKeyArtist)}>
+          <BlackKey 
+            onClick={() => isBlackKeyArtistAvailable && onArtistSelect(blackKeyArtist)}
+            disabled={!isBlackKeyArtistAvailable}
+          >
             <ArtistRank>#{blackKeyRank}</ArtistRank>
             <ArtistName>{blackKeyArtist}</ArtistName>
           </BlackKey>
@@ -53,7 +61,10 @@ export const PersonalRankingDashboard: React.FC<PersonalRankingDashboardProps> =
     } else {
       keys.push(
         <KeySet key={i}>
-          <WhiteKey onClick={() => onArtistSelect(whiteKeyArtist)}>
+          <WhiteKey 
+            onClick={() => isWhiteKeyArtistAvailable && onArtistSelect(whiteKeyArtist)}
+            disabled={!isWhiteKeyArtistAvailable}
+          >
             <ArtistRank>#{whiteKeyRank}</ArtistRank>
             <ArtistName>{whiteKeyArtist}</ArtistName>
           </WhiteKey>

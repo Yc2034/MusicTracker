@@ -1,5 +1,5 @@
 // src/components/dashboard/PersonalRankingDashboard.styles.ts
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 export const PersonalRankingContainer = styled.div`
   min-height: 100vh;
@@ -80,7 +80,25 @@ export const KeySet = styled.div`
   flex-shrink: 0;
 `;
 
-export const WhiteKey = styled.div`
+const disabledKeyStyles = css`
+  opacity: 0.5;
+  cursor: not-allowed;
+  &:hover {
+    background: #f8f6f0;
+    transform: translateY(0);
+  }
+`;
+
+const disabledBlackKeyStyles = css`
+  opacity: 0.5;
+  cursor: not-allowed;
+  &:hover {
+    background: #2c2b28;
+    transform: translateX(-50%) translateY(0);
+  }
+`;
+
+export const WhiteKey = styled.div<{ disabled: boolean }>`
   width: 120px;
   height: 540px;
   background: #f8f6f0;
@@ -98,9 +116,11 @@ export const WhiteKey = styled.div`
     background: #e5e1db;
     transform: translateY(-5px);
   }
+
+  ${({ disabled }) => disabled && disabledKeyStyles}
 `;
 
-export const BlackKey = styled.div`
+export const BlackKey = styled.div<{ disabled: boolean }>`
   position: absolute;
   top: 0;
   left: 100%;
@@ -124,7 +144,10 @@ export const BlackKey = styled.div`
     background: #3d3b36;
     transform: translateX(-50%) translateY(-5px);
   }
+
+  ${({ disabled }) => disabled && disabledBlackKeyStyles}
 `;
+
 
 export const ArtistName = styled.span`
   font-size: 1.2rem;
