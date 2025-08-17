@@ -48,3 +48,10 @@ export interface ArtistStreamCount {
   artistName: string;
   totalStreams: number;
 }
+
+export interface Video {
+  videoSrc: string;
+  title: string;
+  description: string;
+  date: string;
+}

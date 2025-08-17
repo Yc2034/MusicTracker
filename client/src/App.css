@@ -178,3 +178,22 @@
   border-color: var(--accent-cedar);
 }
 /* --- END of Hamburger Navigation Styles --- */
+
+
+/* --- START: Fix for MusicLive View Navigation --- */
+.dashboard.music-live-view .nav-container {
+  position: fixed; /* Use fixed positioning to keep it in the viewport */
+  top: 20px;
+  right: 40px;
+  z-index: 1002; /* Higher than sidebar (z-index: 2) and stars (z-index: 1) */
+  margin-bottom: 0; /* Remove default spacing */
+  padding: 0; /* Remove default padding */
+}
+
+/* Ensure the hamburger and menu items in this view have a visible background */
+.dashboard.music-live-view .hamburger-menu,
+.dashboard.music-live-view .nav-menu button {
+    background: rgba(30, 30, 30, 0.8); /* Semi-transparent dark background */
+    backdrop-filter: blur(10px);
+}
+/* --- END: Fix for MusicLive View Navigation --- */

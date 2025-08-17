@@ -61,13 +61,11 @@ npm run dev
 未来的方向
 
 
-需要较大功夫的就是剪辑对应的音频了
+需要较大功夫的就是剪辑对应的音频了 视频了
 3. 改一下当前artist header里面的播放器
 不用全场音乐，用截取的3-5min音频 
 
-4. 做一个新页面 随机中文音乐现场live
-参考
-https://www.awwwards.com/sites/50-years-of-charts
+中文歌就是视频
 
 5. 
 可以做一个大的three js 播放器 每日随机 webgl方向
@@ -77,6 +75,7 @@ https://www.awwwards.com/sites/50-years-of-charts
 Check web design:
 https://thefwa.com/awards/page/1/
 https://www.awwwards.com/inspiration/music-page-clara-venice
+https://www.awwwards.com/sites/50-years-of-charts
 
 
 Suggested prompt for imageGen
