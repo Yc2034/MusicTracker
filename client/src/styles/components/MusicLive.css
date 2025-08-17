@@ -57,3 +57,67 @@
     background: rgba(255, 255, 255, 0.2);
     transform: translateX(10px);
 }
+
+/* --- START: New Styles for Unavailable Artists Table --- */
+
+.unavailable-artists-section {
+  max-width: 800px;
+  margin: 80px auto 0;
+  text-align: center;
+}
+
+.unavailable-artists-title {
+  font-size: 2rem;
+  font-weight: 600;
+  color: var(--text-inverse);
+  margin-bottom: 16px;
+}
+
+.unavailable-artists-subtitle {
+  font-size: 1.1rem;
+  color: var(--text-inverse-secondary);
+  margin-bottom: 40px;
+}
+
+.artist-table-container {
+  background: rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: var(--radius-lg);
+  overflow: hidden; /* Ensures the border-radius is applied to the table */
+  backdrop-filter: blur(10px);
+}
+
+.artist-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.artist-table th,
+.artist-table td {
+  padding: 16px 24px;
+  text-align: left;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.artist-table th {
+  background-color: rgba(255, 255, 255, 0.1);
+  font-weight: 600;
+  font-size: 1rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.artist-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.artist-table tbody tr:hover {
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+.artist-table td {
+  font-size: 1.1rem;
+  color: var(--text-inverse-secondary);
+}
+
+/* --- END: New Styles --- */
