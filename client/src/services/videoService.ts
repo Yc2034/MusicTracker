@@ -5,21 +5,9 @@ const artistVideos: { [key: string]: Video[] } = {
   'Zhou Shen': [
     {
       videoSrc: 'zhoushen-1.mp4',
-      title: '开场',
-      description: 'A brief description of the video.',
-      date: '2025-01-01',
-    },
-    {
-      videoSrc: 'zhoushen-2.mp4',
-      title: 'Song Title 2',
-      description: 'Another brief description.',
-      date: '2025-02-15',
-    },
-    {
-      videoSrc: 'zhoushen-3.mp4',
-      title: 'Song Title 3',
-      description: 'Another brief description 3.',
-      date: '2025-02-15',
+      title: '9.29Hz演唱会开场',
+      description: '完整歌单 https://open.spotify.com/playlist/3gNNFiLoWShDfGP9jvDifz',
+      date: '2025-03-09',
     },
   ],
   'G.E.M': [
@@ -27,7 +15,23 @@ const artistVideos: { [key: string]: Video[] } = {
       videoSrc: 'gem-1.mp4',
       title: 'Light Years Away',
       description: 'Theme song for the movie "Passengers".',
-      date: '2024-12-20',
+      date: '2025-03-29',
+    },
+  ],
+  'JJ Lin': [
+    {
+      videoSrc: 'gem-1.mp4',
+      title: 'Light Years Away',
+      description: 'Theme song for the movie "Passengers".',
+      date: '2025-02-22',
+    },
+  ],
+  'Ed Sheeran': [
+    {
+      videoSrc: 'ed-sheeran-1.mp4',
+      title: 'Divide Tour % 演唱会',
+      description: '完整歌单 https://www.setlist.fm/stats/average-setlist/ed-sheeran-53d5f3bd.html?year=2018',
+      date: '2018-10-20',
     },
   ],
   // Add other artists and their videos here
