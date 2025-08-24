@@ -15,6 +15,9 @@ export const MusicLive = () => {
   const [selectedArtist, setSelectedArtist] = useState<string>(unavailableArtists[0] || '');
   const videos = getArtistVideos(selectedArtist);
 
+  // Conditionally apply a class if there is only one video
+  const galleryClassName = videos.length === 1 ? 'video-gallery single-video' : 'video-gallery';
+
   return (
     <div className="music-live-container-v2">
       <div className="stars-background">
@@ -51,7 +54,7 @@ export const MusicLive = () => {
               </p>
             </header>
 
-            <div className="video-gallery">
+            <div className={galleryClassName}>
               {videos.length > 0 ? (
                 videos.map((video, index) => (
                   <motion.div

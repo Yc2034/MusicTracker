@@ -5,7 +5,8 @@
   grid-template-columns: 280px 1fr;
   height: 100vh;
   overflow: hidden;
-  background: #0a0a0a;
+  /* Removed the specific background color to allow the app's theme to apply */
+  background: transparent;
   color: var(--text-inverse);
 }
 
@@ -113,6 +114,17 @@
   grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
   gap: 40px;
 }
+
+/* --- START: Style for single video --- */
+.video-gallery.single-video {
+  grid-template-columns: 1fr; /* Force a single column */
+  max-width: 100%;
+}
+
+.video-gallery.single-video .video-card-v2 {
+  max-width: none; /* Allow it to take full width of the container */
+}
+/* --- END: Style for single video --- */
 
 .video-card-v2 {
   background: rgba(20, 20, 20, 0.5);
