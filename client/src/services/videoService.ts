@@ -13,16 +13,16 @@ const artistVideos: { [key: string]: Video[] } = {
   'G.E.M': [
     {
       videoSrc: 'gem-1.mp4',
-      title: 'Light Years Away',
-      description: 'Theme song for the movie "Passengers".',
+      title: 'Im Gloria 演唱会',
+      description: '完整歌单 https://open.spotify.com/playlist/5CJ9QNQ7tpxuaxVMYG1OT8',
       date: '2025-03-29',
     },
   ],
   'JJ Lin': [
     {
-      videoSrc: 'gem-1.mp4',
-      title: 'Light Years Away',
-      description: 'Theme song for the movie "Passengers".',
+      videoSrc: 'jjlin-1.mp4',
+      title: 'JJ Final Lap 演唱会',
+      description: '完整歌单 https://open.spotify.com/playlist/12oiEvROwngNqhVCcJoEvl',
       date: '2025-02-22',
     },
   ],
