@@ -59,6 +59,7 @@ export const PERSONAL_RANKING = [
     'Tyler the creator',
     'Tyla',
     'Everglow',
+    'Ed Sheeran',
     'SZA',
     'Conan Gray',
     'Raye',
