@@ -58,15 +58,9 @@ npm run dev
 #### 2025-08-12 做出来dashboard visualization来展示streams
 #### 2025-08-16 中文歌手无法找到源数据，所以做一个中文特辑 随机中文音乐
 #### 2025-08-16  做一个musiclive 视频播放界面 功能来讲这个项目完结了
+#### 2025-08-24  Use virtualization, or windowing 提升了长list加载的性能
 
 未来的方向
-
-
-需要较大功夫的就是剪辑对应的音频了 视频了
-不用全场音乐，用截取的3-5min音频 
-
-中文歌就是视频 最多四个
-
 
 Check web design:
 https://thefwa.com/awards/page/1/

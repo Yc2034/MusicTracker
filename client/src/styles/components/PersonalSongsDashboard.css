@@ -252,9 +252,16 @@
   text-shadow: 0 0 8px rgba(252, 129, 129, 0.3);
 }
 
+.songs-list-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 80px 80px;
+  position: relative;
+  z-index: 2;
+}
+
 @media (max-width: 768px) {
-  .song-list-card {
-    padding: 24px;
-    gap: 12px;
+  .songs-list-container {
+    padding: 0 24px 60px;
   }
 }
