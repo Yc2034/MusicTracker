@@ -62,7 +62,9 @@ npm run dev
 
 未来的方向
 
-Check web design:
+
+
+Check very good design:
 https://thefwa.com/awards/page/1/
 https://www.awwwards.com/inspiration/music-page-clara-venice
 https://www.awwwards.com/sites/50-years-of-charts

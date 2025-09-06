@@ -50,6 +50,7 @@ export const PERSONAL_RANKING = [
     'G-idle',
     'Ive',
     'Itzy',
+    'LE SSERAFIM',
     'Aespa',
     'Olivia Rodrigo',
     'Carly Rae Jepsen',
