@@ -62,7 +62,8 @@ npm run dev
 
 未来的方向
 
-
+唱歌相关笔记
+前端美化进阶
 
 Check very good design:
 https://thefwa.com/awards/page/1/
