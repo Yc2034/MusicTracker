@@ -11,6 +11,8 @@ import SabImage from '../assets/sabrina-carpenter-min.png';
 import BenImage from '../assets/benson-boone-min.png';
 import GidleImage from '../assets/Gidle-min.png';
 import IveImage from '../assets/ive-min.png';
+import ItzyImage from '../assets/itzy-min.png';
+import AespaImage from '../assets/aespa-min.png';
 // Import other artist images here
 // e.g. import OliviaRodrigoImage from '../assets/olivia-rodrigo.png';
 
@@ -27,6 +29,8 @@ const artistImages: { [key: string]: string } = {
   'Benson Boone': BenImage,
   'G-idle': GidleImage,
   'Ive': IveImage,
+  'Itzy': ItzyImage,
+  'Aespa': AespaImage,
   // 'Olivia Rodrigo': OliviaRodrigoImage,
   // Add other artists and their imported images here
 };
