@@ -1,6 +1,8 @@
 // src/services/api.ts
+
 import axios from 'axios';
 import type { ArtistData, ArtistMetrics, ProcessedSong, Song, ArtistSongCount, ArtistStreamCount } from '../types';
+import { ARTIST_CATEGORIES } from '../components/common/Constants';
 
 const API_BASE_URL = 'http://localhost:3001/api';
 
@@ -106,9 +108,10 @@ export const getTopArtistsByStreamCount = (allArtistsData: ArtistData[]): Artist
     return {
       artistName: artist.name,
       totalStreams,
+      category: ARTIST_CATEGORIES[artist.name] || 'Other',
     };
   });
 
   //top 20 artists
-  return artistStreamCounts.sort((a, b) => b.totalStreams - a.totalStreams).slice(0, 20);
+  return artistStreamCounts.sort((a, b) => b.totalStreams - a.totalStreams).slice(0, 40);
 };

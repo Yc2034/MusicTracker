@@ -1,9 +1,11 @@
 // src/components/dashboard/TopStreamsByArtist.tsx
-import React from 'react';
+
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import type { ArtistStreamCount } from '../../types';
 import { formatWithCommas } from '../../utils/formatters';
 import '../../styles/components/TopStreamsByArtist.css';
+import { CATEGORIES } from '../common/Constants';
 
 interface TopStreamsByArtistProps {
   topArtists: ArtistStreamCount[];
@@ -49,15 +51,29 @@ const PodiumV2: React.FC<{ artists: ArtistStreamCount[]; onArtistSelect: (artist
 
 
 export const TopStreamsByArtist: React.FC<TopStreamsByArtistProps> = ({ topArtists, onArtistSelect }) => {
+  const [selectedCategory, setSelectedCategory] = useState('All');
   const podiumArtists = topArtists.slice(0, 3);
-  const listArtists = topArtists.slice(3);
+  const listArtists = topArtists.slice(3).filter(artist => selectedCategory === 'All' || artist.category === selectedCategory);
   
   // Find the max stream count among the list artists to normalize bar widths
   const maxStreams = Math.max(...listArtists.map(a => a.totalStreams), 0);
 
   return (
     <div className="top-artists-container-v2">
-      <h2 className="top-artists-title-v2">Top Streams by Artist</h2>
+      <div className="top-artists-header">
+        <h2 className="top-artists-title-v2">Top Streams by Artist</h2>
+        <div className="category-filters">
+          {CATEGORIES.map(category => (
+            <button
+              key={category}
+              className={`category-filter-btn ${selectedCategory === category ? 'active' : ''}`}
+              onClick={() => setSelectedCategory(category)}
+            >
+              {category}
+            </button>
+          ))}
+        </div>
+      </div>
       
       {podiumArtists.length === 3 && <PodiumV2 artists={podiumArtists} onArtistSelect={onArtistSelect} />}
 
@@ -66,7 +82,7 @@ export const TopStreamsByArtist: React.FC<TopStreamsByArtistProps> = ({ topArtis
           const barWidth = maxStreams > 0 ? (artist.totalStreams / maxStreams) * 100 : 0;
           return (
             <motion.div
-              key={index}
+              key={artist.artistName}
               className="artist-bar-item"
               onClick={() => onArtistSelect(artist.artistName)}
               initial={{ opacity: 0, x: -50 }}

@@ -47,6 +47,7 @@ export interface ArtistSongCount {
 export interface ArtistStreamCount {
   artistName: string;
   totalStreams: number;
+  category: string;
 }
 
 export interface Video {

@@ -171,6 +171,42 @@
   transform-origin: left;
 }
 
+.top-artists-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.category-filters {
+  display: flex;
+  gap: 10px;
+}
+
+.category-filter-btn {
+  background: rgba(44, 43, 40, 0.3);
+  border: 1px solid rgba(248, 246, 240, 0.2);
+  color: var(--text-inverse-secondary);
+  padding: 8px 16px;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.category-filter-btn:hover {
+  background: rgba(44, 43, 40, 0.5);
+  border-color: var(--accent-cedar);
+  color: var(--text-inverse);
+}
+
+.category-filter-btn.active {
+  background: var(--accent-cedar);
+  border-color: var(--accent-cedar);
+  color: var(--text-inverse);
+  font-weight: 600;
+}
+
+
 @media (max-width: 900px) {
   .podium-container-v2 {
     grid-template-columns: 1fr;

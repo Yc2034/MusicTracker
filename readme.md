@@ -59,6 +59,7 @@ npm run dev
 #### 2025-08-16 中文歌手无法找到源数据，所以做一个中文特辑 随机中文音乐
 #### 2025-08-16  做一个musiclive 视频播放界面 功能来讲这个项目完结了
 #### 2025-08-24  Use virtualization, or windowing 提升了长list加载的性能,改了musiclive的layout
+#### 2025-09-13 添加了一个歌手对应的category并且可以依照这个排序
 
 未来可能的方向
 
