@@ -7,7 +7,10 @@ import LEImage from '../assets/lesserafim-min.png';
 import TaylorImage from '../assets/taylorswift-min.png';
 import BlackpinkImage from '../assets/blackpink.jpg';
 import KatyImage from '../assets/katy-perry-min.png';
-import SabImage from '../assets/sabrina-carpenter-min.png'
+import SabImage from '../assets/sabrina-carpenter-min.png';
+import BenImage from '../assets/benson-boone-min.png';
+import GidleImage from '../assets/Gidle-min.png';
+import IveImage from '../assets/ive-min.png';
 // Import other artist images here
 // e.g. import OliviaRodrigoImage from '../assets/olivia-rodrigo.png';
 
@@ -21,6 +24,9 @@ const artistImages: { [key: string]: string } = {
   'Blackpink': BlackpinkImage,
   'Katy Perry': KatyImage,
   'Sabrina Carpenter': SabImage,
+  'Benson Boone': BenImage,
+  'G-idle': GidleImage,
+  'Ive': IveImage,
   // 'Olivia Rodrigo': OliviaRodrigoImage,
   // Add other artists and their imported images here
 };
