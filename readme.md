@@ -60,10 +60,10 @@ npm run dev
 #### 2025-08-16  做一个musiclive 视频播放界面 功能来讲这个项目完结了
 #### 2025-08-24  Use virtualization, or windowing 提升了长list加载的性能,改了musiclive的layout
 
-未来的方向
+未来可能的方向
 
 唱歌相关笔记
-前端美化进阶
+
 
 Check very good design:
 https://thefwa.com/awards/page/1/
