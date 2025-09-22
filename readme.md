@@ -1,5 +1,4 @@
 
-1. 一点点思考 做长期有价值的事情，个人很喜欢看live那就做一个偏炫技的网站吧
 
 music tracker
 使用kworb网站作为数据源头 https://kworb.net/
@@ -45,7 +44,7 @@ npm run dev
 
 #### 2025-06-25 最基本的功能思路都实现了
 #### 2025-06-30 功能完毕，剩下数据填鸭
-#### 2025-07-01 挺好玩的搞了个vibe coding的mvp
+#### 2025-07-01 vibe coding的mvp
 #### 2025-07-20 加了react motion tilt 加了音乐节数据 提升了基础ui 做了最简单的threejs
 
 #### 2025-07-24 加了podium颁奖台，稍微提升了ui layout
