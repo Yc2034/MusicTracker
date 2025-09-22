@@ -63,6 +63,7 @@ npm run dev
 未来可能的方向
 
 music live中做一点和地点排序的信息
+“音乐足迹”时间线 (Music Journey Timeline)
 
 唱歌相关笔记
 
